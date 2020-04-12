@@ -5,39 +5,42 @@
     grid-template-rows: repeat(6, 1fr);
     /* temporary */
     width: 90%;
-    height: 825px;
+    height: 100vh;
 }
 
 .sidemenu-container {
     grid-column: 1 / 2;
     grid-row: 1 / 7;
-    background-color: rgb(131, 201, 131);
 }
 
 .map-container {
     grid-column: 2 / 6;
     grid-row: 1 / 5;
-    background-color: rgb(202, 133, 133);
 }
 
 .main-barchart-container {
     grid-column: 2 / 5;
     grid-row: 5/7;
-    background-color: rgb(162, 162, 223);
 }
 
 .main-piechart-container {
     grid-column: 5 / 6;
     grid-row: 5/7;
-    background-color: rgb(204, 131, 204);
 }
 
 .main-page-container {
-    border: 2px solid rgb(255, 255, 255);
-    margin: 10px;
-    padding: 50px;
+    background-color: #0e153a; 
+    margin: 13px;
+    padding: 13px;
+    color: #e2f3f5; /*#22d1ee*/
+    box-shadow: 8px 8px 2px 0px #e2f3f5;
 }
 
 body {
-    background: rgb(36, 36, 36);
+    background: #3d5af1;
+    font: small-caps bold 14px/1 sans-serif;
+}
+
+h1{
+    margin: auto;
 }
