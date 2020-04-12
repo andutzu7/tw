@@ -1,3 +1,10 @@
+body {
+    background: #3d5af1;
+    font: small-caps bold 20px/1 sans-serif;
+    text-align: center;
+}
+
+
 .wrapper {
     margin: auto;
     display: grid;
@@ -31,16 +38,37 @@
 .main-page-container {
     background-color: #0e153a; 
     margin: 13px;
-    padding: 13px;
+    padding: 13px 0;
     color: #e2f3f5; /*#22d1ee*/
-    box-shadow: 8px 8px 2px 0px #e2f3f5;
+    /*box-shadow: 8px 8px 2px 0px #e2f3f5;*/
+    border: 2px solid #e2f3f5;
 }
 
-body {
-    background: #3d5af1;
-    font: small-caps bold 14px/1 sans-serif;
+
+
+.criterii-info{
+    width: 100%;
 }
 
-h1{
+.criterii h1{
     margin: auto;
+}
+
+ul {
+    margin: 0;
+    padding: 13px 0;
+    text-indent: 0;
+    list-style-type: none;
+    width: 100%;
+}
+
+.criterii ul li{
+    padding: 15px 0;
+    width: 100%;
+}
+
+
+.criterii ul .selectat{
+    background-color: #182563;
+    color: white;
 }
