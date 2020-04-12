@@ -44,6 +44,20 @@ def get_csv_links(month_link):
     return month, links
 
 
+def read_csv(url):
+    page = requests.get(url, verify=False)  # I get a SSL exception without the verify kwarg
+    if not page.ok:
+        print('request failed {}'.format)
+        exit()
+    
+    lines = page.text.splitlines()
+    reader = csv.reader(lines)
+    parsed_csv = list(reader)
+
+    for line in parsed_csv:
+        print(line)
+
+
 def main():
     demo = get_month_links()
 
