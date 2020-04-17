@@ -12,6 +12,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -30,10 +31,19 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/romaniaHigh.svg" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\Facultate\Anul 2\Sem 2\Tehnologii Web\git tw\tw\interactive map" />
+      <recent name="G:\Facultate\Anul 2\Sem 2\Tehnologii Web\git tw\tw\interactive map\SCRIPTS" />
+      <recent name="G:\Facultate\Anul 2\Sem 2\Tehnologii Web\git tw\tw\interactive map\HTML" />
+      <recent name="G:\Facultate\Anul 2\Sem 2\Tehnologii Web\git tw\tw\interactive map\SVG  Map" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration name="pls" type="NodeJSConfigurationType" path-to-js-file="kk.js" working-dir="$PROJECT_DIR$">
+    <configuration name="pls" type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/SCRIPTS/kk.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
   </component>
@@ -49,7 +59,7 @@
       <updated>1587117949324</updated>
       <workItem from="1587117952603" duration="930000" />
       <workItem from="1587125711182" duration="280000" />
-      <workItem from="1587131122125" duration="988000" />
+      <workItem from="1587131122125" duration="4137000" />
     </task>
     <servers />
   </component>
@@ -65,22 +75,22 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1587131256001" />
-    <state width="1515" height="201" key="GridCell.Tab.0.bottom" timestamp="1587131956029">
+    <state width="1515" height="201" key="GridCell.Tab.0.bottom" timestamp="1587137489846">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="201" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1587131956029" />
-    <state width="1515" height="201" key="GridCell.Tab.0.center" timestamp="1587131956029">
+    <state width="1515" height="201" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1587137489846" />
+    <state width="1515" height="201" key="GridCell.Tab.0.center" timestamp="1587137489846">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="201" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1587131956029" />
-    <state width="1515" height="201" key="GridCell.Tab.0.left" timestamp="1587131956029">
+    <state width="1515" height="201" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1587137489846" />
+    <state width="1515" height="201" key="GridCell.Tab.0.left" timestamp="1587137489846">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="201" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1587131956029" />
-    <state width="1515" height="201" key="GridCell.Tab.0.right" timestamp="1587131956029">
+    <state width="1515" height="201" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1587137489846" />
+    <state width="1515" height="201" key="GridCell.Tab.0.right" timestamp="1587137489846">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="201" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1587131956029" />
+    <state width="1515" height="201" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1587137489846" />
     <state x="0" y="75" key="SettingsEditor" timestamp="1587131142748">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
