@@ -11,11 +11,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1afDr1pgApYDXnhkykpiDzkHqJU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -25,9 +26,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/kk.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/romaniaHigh.svg" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager">
     <configuration name="pls" type="NodeJSConfigurationType" path-to-js-file="kk.js" working-dir="$PROJECT_DIR$">
@@ -46,6 +49,7 @@
       <updated>1587117949324</updated>
       <workItem from="1587117952603" duration="930000" />
       <workItem from="1587125711182" duration="280000" />
+      <workItem from="1587131122125" duration="988000" />
     </task>
     <servers />
   </component>
@@ -57,25 +61,29 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1587125828644" />
-    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1587118202329">
+    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1587131256001">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1587118202329" />
-    <state width="746" height="201" key="GridCell.Tab.0.bottom" timestamp="1587125993112">
+    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1587131256001" />
+    <state width="1515" height="201" key="GridCell.Tab.0.bottom" timestamp="1587131956029">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="746" height="201" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1587125993112" />
-    <state width="746" height="201" key="GridCell.Tab.0.center" timestamp="1587125993112">
+    <state width="1515" height="201" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1587131956029" />
+    <state width="1515" height="201" key="GridCell.Tab.0.center" timestamp="1587131956029">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="746" height="201" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1587125993112" />
-    <state width="746" height="201" key="GridCell.Tab.0.left" timestamp="1587125993112">
+    <state width="1515" height="201" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1587131956029" />
+    <state width="1515" height="201" key="GridCell.Tab.0.left" timestamp="1587131956029">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="746" height="201" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1587125993112" />
-    <state width="746" height="201" key="GridCell.Tab.0.right" timestamp="1587125993112">
+    <state width="1515" height="201" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1587131956029" />
+    <state width="1515" height="201" key="GridCell.Tab.0.right" timestamp="1587131956029">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="746" height="201" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1587125993112" />
+    <state width="1515" height="201" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1587131956029" />
+    <state x="0" y="75" key="SettingsEditor" timestamp="1587131142748">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="0" y="75" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1587131142748" />
   </component>
 </project>
