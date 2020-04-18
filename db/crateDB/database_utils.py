@@ -2,20 +2,35 @@ import mysql.connector
 from contextlib import contextmanager
 from datagov_scraper import get_all_csv_links, print_dict
 import urllib3
-import pretty
+import os
 
 
 @contextmanager
-def get_db(*args, **kwds):
-    db = mysql.connector.connect(*args, **kwds)
+def get_cursor(*args, **kwargs):
+    db = mysql.connector.connect(*args, **kwargs)
+    cursor = db.cursor()
     try:
-        yield db
+        yield cursor
     finally:
+        cursor.close()
         db.close()
 
 
-def create_tables(db):
-    pass
+def setup(cursor):
+    for name in ['medii', 'varste', 'rata', 'educatie']:
+        cursor.execute('drop table {}'.format(name))
+        print('dropped table {}'.format(name))
+
+
+def create_tables(cursor):
+    for name in ['medii', 'varste', 'rata', 'educatie']:
+        filename = 'create_table_{}.sql'.format(name)
+        filepath = os.path.join('sql_commands', filename)
+        with open(filepath, 'r') as fd:
+            cursor.execute(fd.read())
+            print('created table "{}"'.format(name))
+
+
 
 
 def main():
@@ -27,8 +42,9 @@ def main():
 
     #print_dict(get_all_csv_links())
 
-    with get_db(host=url, user=user, passwd=password, database=database) as db:
-        create_tables(db)
+    with get_cursor(host=url, user=user, passwd=password, database=database, autocommit=True) as cursor:
+        #setup(cursor)
+        create_tables(cursor)
 
 
 if __name__ == '__main__':
