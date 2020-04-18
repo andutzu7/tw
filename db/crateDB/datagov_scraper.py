@@ -6,10 +6,9 @@ import urllib3
 import os
 
 
-
-
 def print_dict(dictionary):
     print(json.dumps(dictionary, indent=4))
+
 
 MONTHS = ['ianuarie', 'februarie', 'martie', 'aprilie', 'mai', 'iunie', 'iulie', 'august', 'sepembrie', 'octombrie', 'noiembrie', 'decembrie']
 
@@ -32,7 +31,7 @@ def get_month_links():
     # filter unnecessary links
     links = [link for link in links if '/dataset/somajul-inregistrat-' in link]
 
-    #remove duplicates
+    # remove duplicates
     links = list(set(links))
 
     return links
@@ -49,6 +48,18 @@ def get_csv_links(month_link):
     return month, links
 
 
+def get_all_csv_links():
+    month_links = get_month_links()
+
+    all_csv_links = dict()
+
+    for month_link in month_links:
+        month, csv_links = get_csv_links(month_link)
+        all_csv_links[month] = csv_links
+
+    return all_csv_links
+
+
 def read_csv(url):
     page = requests.get(url, verify=False)  # I get a SSL exception without the verify kwarg
     if not page.ok:
@@ -59,11 +70,7 @@ def read_csv(url):
 
     lines = page.text.splitlines()
     reader = csv.reader(lines)
-    parsed_csv = list(reader)
-
-    # for line in parsed_csv:
-    #     print(line)
-    # TODO
+    return list(reader)
 
 
 def download_url_to_path(url, path):
@@ -86,16 +93,7 @@ def download_all_csv(all_csv_links, dir='csv_backup'):
 
 
 def backup():
-    demo = get_month_links()
-
-    all_csv_links = dict()
-
-    for month_link in demo:
-        month, csv_links = get_csv_links(month_link)
-        all_csv_links[month] = csv_links
-
-    # print_dict(all_csv_links)
-    # read_csv(all_csv_links['iunie'][1])
+    all_csv_links = get_all_csv_links()
     download_all_csv(all_csv_links)
 
 
