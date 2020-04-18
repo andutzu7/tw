@@ -1,3 +1,4 @@
+//DE ADAUGAT NISTE COMENTARII
 // selectam svg-ul
 let svg = d3.select("svg"),
     width = +svg.attr("width"),
@@ -18,9 +19,10 @@ let data = d3.map();
 /*Creem color scheme-ul. scaleThreshold e cel mai okay pt harti de tipul
 choropleth pt ca poti sa specifici in domeniu stamp urile pt fiecare nuanta
 * */
+
 let colorScale = d3.scaleThreshold()
-    .domain([1000, 1500, 2000, 3000, 4000, 5000])
-    .range(d3.schemeBuPu[7]);
+    .domain([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,250])
+    .range(d3.schemeBuPu[9]);
 
 /*Preluam fisierele json. Folosim queue ptc putem executa asincron mai multe
 taskuri si putem primi usor feedback in caz de erori
@@ -34,7 +36,8 @@ taskuri si putem primi usor feedback in caz de erori
 d3.queue()
     .defer(d3.json, "https://raw.githubusercontent.com/andutzu7/DATAFORPROJECT/master/romania.geojson")
     .defer(d3.csv, "https://raw.githubusercontent.com/andutzu7/DATAFORPROJECT/master/somaj.csv", function (d) {
-        data.set(d.ID, d.nrt);
+           if(d.nrt != "")
+              data.set(d.ID, parseInt(d.nrt));
     })
     .await(ready);
 
@@ -60,6 +63,8 @@ function ready(error, topo) {
         )
        .attr("fill", function (d) {
            d.total = data.get(d.properties.cartodb_id) || 0;
+            let v=colorScale(d.total);
             return colorScale(d.total);
-        });
+
+       });
 }
