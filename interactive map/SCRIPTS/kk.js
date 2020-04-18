@@ -19,7 +19,7 @@ let data = d3.map();
 choropleth pt ca poti sa specifici in domeniu stamp urile pt fiecare nuanta
 * */
 let colorScale = d3.scaleThreshold()
-    .domain([500, 1000, 2000, 3000, 4000, 5000])
+    .domain([1000, 1500, 2000, 3000, 4000, 5000])
     .range(d3.schemeBuPu[7]);
 
 /*Preluam fisierele json. Folosim queue ptc putem executa asincron mai multe
@@ -32,9 +32,9 @@ taskuri si putem primi usor feedback in caz de erori
 
 * */
 d3.queue()
-    .defer(d3.json, "https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/romania.geojson")
-    .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world_population.csv", function (d) {
-        data.set(d.code, d.pop);
+    .defer(d3.json, "https://raw.githubusercontent.com/andutzu7/DATAFORPROJECT/master/romania.geojson")
+    .defer(d3.csv, "https://raw.githubusercontent.com/andutzu7/DATAFORPROJECT/master/somaj.csv", function (d) {
+        data.set(d.ID, d.nrt);
     })
     .await(ready);
 
@@ -59,7 +59,7 @@ function ready(error, topo) {
         .attr("d", d3.geoPath().projection(projection)
         )
        .attr("fill", function (d) {
-           d.total = data.get(d.cartodb_id) || 1000;
+           d.total = data.get(d.properties.cartodb_id) || 0;
             return colorScale(d.total);
         });
 }
