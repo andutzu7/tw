@@ -12,6 +12,16 @@ let projection = d3.geoMercator()
     .center([25, 45 ])
     .translate([width / 2, height / 2]);
 
+
+//initializizam un obiect de tip map
+let data = d3.map();
+/*Creem color scheme-ul. scaleThreshold e cel mai okay pt harti de tipul
+choropleth pt ca poti sa specifici in domeniu stamp urile pt fiecare nuanta
+* */
+let colorScale = d3.scaleThreshold()
+    .domain([500, 1000, 2000, 3000, 4000, 5000])
+    .range(d3.schemeBuPu[7]);
+
 /*Preluam fisierele json. Folosim queue ptc putem executa asincron mai multe
 taskuri si putem primi usor feedback in caz de erori
     //d3 json parseaza fisierul json"(in cazul nostru este un geojson)
@@ -23,6 +33,10 @@ taskuri si putem primi usor feedback in caz de erori
 * */
 d3.queue()
     .defer(d3.json, "https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/romania.geojson")
+    .defer(d3.json, 'convertcsv.json', function (d) {
+        data.set(d.ID, d.nrt);
+        console.log(d);
+    })
     .await(ready);
 
 /*
@@ -42,7 +56,11 @@ function ready(error, topo) {
         .data(topo.features)
         .enter()
         .append("path")
+        // draw each country
         .attr("d", d3.geoPath().projection(projection)
         )
-
+       .attr("fill", function (d) {
+           d.total = data.get(d.cartodb_id) || 1000;
+            return colorScale(d.total);
+        });
 }
