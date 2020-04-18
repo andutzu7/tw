@@ -33,9 +33,8 @@ taskuri si putem primi usor feedback in caz de erori
 * */
 d3.queue()
     .defer(d3.json, "https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/romania.geojson")
-    .defer(d3.json, 'convertcsv.json', function (d) {
-        data.set(d.ID, d.nrt);
-        console.log(d);
+    .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world_population.csv", function (d) {
+        data.set(d.code, d.pop);
     })
     .await(ready);
 
