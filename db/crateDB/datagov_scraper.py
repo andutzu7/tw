@@ -50,13 +50,10 @@ def get_csv_links(month_link):
 
 def quick_fix(all_csv_links):
     """
-    linkul pe medii pentru luna mai este un link catre un dataset pe varste
+    linkul pe medii pentru luna mai de pe data.gov este un link catre un dataset pe varste
     pentru a rezolva am luat linkul pe medii din luna decembrie
     """
-    for link_decembrie in all_csv_links['decembrie']:
-        if 'medii' in link_decembrie:
-            all_csv_links['mai'] = [link if 'medii' not in link else link_decembrie for link in all_csv_links['mai']]
-            break
+    all_csv_links['mai']['medii'] = all_csv_links['decembrie']['medii']
 
 
 def get_all_csv_links():
@@ -66,7 +63,10 @@ def get_all_csv_links():
 
     for month_link in month_links:
         month, csv_links = get_csv_links(month_link)
-        all_csv_links[month] = csv_links
+        all_csv_links[month] = dict()
+        for link in csv_links:
+            category = [categ for categ in ['varste', 'medii', 'educatie', 'rata'] if categ in link][0]
+            all_csv_links[month][category] = link
 
     quick_fix(all_csv_links)
     return all_csv_links
@@ -77,8 +77,6 @@ def read_csv(url):
     if not page.ok:
         print('request failed {}'.format)
         exit()
-    
-    print(page.content)
 
     lines = page.text.splitlines()
     reader = csv.reader(lines)
@@ -110,7 +108,10 @@ def backup():
 
 
 def main():
-    print_dict(get_all_csv_links())
+    a = get_all_csv_links()
+    print_dict(a)
+    print(a['mai']['medii'])
+    print(a['decembrie']['medii'])
 
 
 if __name__ == '__main__':
