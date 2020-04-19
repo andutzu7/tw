@@ -48,6 +48,17 @@ def get_csv_links(month_link):
     return month, links
 
 
+def quick_fix(all_csv_links):
+    """
+    linkul pe medii pentru luna mai este un link catre un dataset pe varste
+    pentru a rezolva am luat linkul pe medii din luna decembrie
+    """
+    for link_decembrie in all_csv_links['decembrie']:
+        if 'medii' in link_decembrie:
+            all_csv_links['mai'] = [link if 'medii' not in link else link_decembrie for link in all_csv_links['mai']]
+            break
+
+
 def get_all_csv_links():
     month_links = get_month_links()
 
@@ -57,6 +68,7 @@ def get_all_csv_links():
         month, csv_links = get_csv_links(month_link)
         all_csv_links[month] = csv_links
 
+    quick_fix(all_csv_links)
     return all_csv_links
 
 
@@ -98,7 +110,7 @@ def backup():
 
 
 def main():
-    pass
+    print_dict(get_all_csv_links())
 
 
 if __name__ == '__main__':
