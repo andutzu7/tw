@@ -1,7 +1,6 @@
 import json
 import os
 from datagov_scraper import get_all_csv_links, print_dict, read_csv
-import csv
 import urllib3
 
 
@@ -85,7 +84,6 @@ def check_column_names(all_csv_links):
     print_column_names(all_csv_links, 'varste')
     print_column_names(all_csv_links, 'educatie')
     print_column_names(all_csv_links, 'medii')
-
 
 
 def assert_county_names_are_consistent():
