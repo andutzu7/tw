@@ -74,7 +74,18 @@ def check_column_names(all_csv_links):
     print_column_names(all_csv_links, 'medii')
 
 
+
+def assert_county_names_are_consistent():
+    with open('judete.json', 'r') as fd:
+        ids = json.load(fd)
+    judete = sorted(list(set([name.upper() for name in list(ids.keys())])))
+    judetecsv = sorted(list(set(list(get_consistency_filter().values()))))
+
+    for a, b in zip(judetecsv, judete):
+        assert a == b, str(a + " " + b)
+
+    print("names ar consistent")
+
+
 urllib3.disable_warnings()
-
-
-print_dict(get_consistency_filter())
+assert_county_names_are_consistent()

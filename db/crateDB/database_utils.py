@@ -3,6 +3,7 @@ from contextlib import contextmanager
 from datagov_scraper import get_all_csv_links, print_dict
 import urllib3
 import os
+import json
 
 
 @contextmanager
@@ -17,13 +18,13 @@ def get_cursor(*args, **kwargs):
 
 
 def setup(cursor):
-    for name in ['medii', 'varste', 'rata', 'educatie']:
+    for name in ['medii', 'varste', 'rata', 'educatie', 'judete']:
         cursor.execute('drop table {}'.format(name))
         print('dropped table {}'.format(name))
 
 
 def create_tables(cursor):
-    for name in ['medii', 'varste', 'rata', 'educatie']:
+    for name in ['medii', 'varste', 'rata', 'educatie', 'judete']:
         filename = 'create_table_{}.sql'.format(name)
         filepath = os.path.join('sql_commands', filename)
         with open(filepath, 'r') as fd:
@@ -31,6 +32,12 @@ def create_tables(cursor):
             print('created table "{}"'.format(name))
 
 
+def init_judete(cursor):
+    with open('judete.json', 'r') as fd:
+        judete = json.load(fd)
+        entries = [(judete[name], name) for name in judete]
+        query = "insert into judete(id, nume) values(%s, %s)"
+        cursor.executemany(query, entries)
 
 
 def main():
@@ -39,12 +46,8 @@ def main():
     database = "heroku_79d4353e46b22ee"
     password = "0aa128f5"
     user = "b4ce0916cecd87"
-
-    #print_dict(get_all_csv_links())
-
     with get_cursor(host=url, user=user, passwd=password, database=database, autocommit=True) as cursor:
-        #setup(cursor)
-        create_tables(cursor)
+        init_judete(cursor)
 
 
 if __name__ == '__main__':
