@@ -55,8 +55,21 @@ def get_consistency_filter():
     return filter
 
 
-def filter_names(sets):
-    print_dict(get_consistency_filter(sets))
+filter = None
+def filter_name(name):
+    global filter
+    if filter is None:
+        filter = get_consistency_filter()
+    return filter[name.upper().replace(' ', '')]
+
+
+ids = None
+def get_judet_id(name):
+    global ids
+    if ids is None:
+        with open('judete.json', 'r') as fd:
+            ids = json.load(fd)
+    return ids[filter_name(name)]
 
 
 def print_column_names(all_csv_links, categ):

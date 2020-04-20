@@ -1,5 +1,5 @@
 create table educatie(
-    judet varchar(32),
+    id_judet int,
     total int,
     fara_studii int,
     primar int,
@@ -9,9 +9,6 @@ create table educatie(
     profesional int,
     universitar int,
     an int,
-    month int,
-    primary key (judet, an, month)
+    luna int,
+    primary key (id_judet, an, luna)
 );
-
-
-

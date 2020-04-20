@@ -1,6 +1,7 @@
 import mysql.connector
 from contextlib import contextmanager
-from datagov_scraper import get_all_csv_links, print_dict
+from datagov_scraper import get_all_csv_links, print_dict, read_csv, MONTHS
+from judete_utils import filter_name, get_judet_id
 import urllib3
 import os
 import json
@@ -40,6 +41,38 @@ def init_judete(cursor):
         cursor.executemany(query, entries)
 
 
+def init_educatie(cursor):
+    csv_links = get_all_csv_links()
+    entries = []
+    for month in csv_links:
+        link = csv_links[month]['educatie']
+
+        rows = read_csv(link)
+        for row in rows[1:43]:
+            judet = row[0].upper()
+            judet = filter_name(judet)
+            id_judet = get_judet_id(judet)
+            total = int(row[1])
+            fara_studii = int(row[2])
+            primar = int(row[3])
+            gimnazial = int(row[4])
+            liceal = int(row[5])
+            postliceal = int(row[6])
+            profesional = int(row[7])
+            univ = int(row[8])
+            month_index = MONTHS.index(month) + 1
+            e = (id_judet, total, fara_studii, primar, gimnazial, liceal, postliceal, profesional, univ, 2019, month_index)
+            entries.append(e)
+    query = "insert into educatie(id_judet, total, fara_studii, primar, gimnazial, liceal, postliceal, profesional, universitar, an, luna) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+    cursor.executemany(query, entries)
+
+    print('tabel "educatie" initializat')
+
+
+
+
+
+
 def main():
     # longUrl = "mysql://b4ce0916cecd87:0aa128f5@eu-cdbr-west-03.cleardb.net/heroku_79d4353e46b22ee?reconnect=true"
     url = "eu-cdbr-west-03.cleardb.net"
@@ -47,7 +80,7 @@ def main():
     password = "0aa128f5"
     user = "b4ce0916cecd87"
     with get_cursor(host=url, user=user, passwd=password, database=database, autocommit=True) as cursor:
-        init_judete(cursor)
+        init_educatie(cursor)
 
 
 if __name__ == '__main__':
