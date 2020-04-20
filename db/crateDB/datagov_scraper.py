@@ -65,6 +65,10 @@ def quick_fix(all_csv_links):
 
 
 def get_all_csv_links():
+    if os.path.exists('all_csv_links.json'):
+        with open('all_csv_links.json', 'r') as fd:
+            return json.load(fd)
+
     month_links = get_month_links()
 
     all_csv_links = dict()
@@ -75,8 +79,11 @@ def get_all_csv_links():
         for link in csv_links:
             category = [categ for categ in ['varste', 'medii', 'educatie', 'rata'] if categ in link][0]
             all_csv_links[month][category] = link
-
     quick_fix(all_csv_links)
+
+    # cache
+    with open('all_csv_links.json', 'w') as fd:
+        json.dump(all_csv_links, fd, indent=4)
     return all_csv_links
 
 
