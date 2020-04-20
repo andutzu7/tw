@@ -97,6 +97,32 @@ def init_varste(cursor):
     print('tabel "varste" initializat')
 
 
+def init_medii(cursor):
+    csv_links = get_all_csv_links()
+    entries = []
+    for month in csv_links:
+        month_index = MONTHS.index(month) + 1
+        link = csv_links[month]['medii']
+        rows = read_csv(link)
+
+        for row in rows[1:43]:
+            judet = row[0].upper()
+            judet = filter_name(judet)
+            id_judet = get_judet_id(judet)
+            urban_femei = int(row[5])
+            urban_barbati = int(row[6])
+            rural_femei = int(row[8])
+            rural_barbati = int(row[9])
+
+            e = (id_judet, urban_femei, urban_barbati, rural_femei, rural_barbati, 2019, month_index)
+            entries.append(e)
+
+    query = "insert into medii(id_judet, urban_femei, urban_barbati, rural_femei, rural_barbati, an, luna) values(%s,%s,%s,%s,%s,%s,%s)"
+    cursor.executemany(query, entries)
+
+    print('tabel "medii" initializat')
+
+
 def main():
     # longUrl = "mysql://b4ce0916cecd87:0aa128f5@eu-cdbr-west-03.cleardb.net/heroku_79d4353e46b22ee?reconnect=true"
     url = "eu-cdbr-west-03.cleardb.net"
@@ -104,7 +130,7 @@ def main():
     password = "0aa128f5"
     user = "b4ce0916cecd87"
     with get_cursor(host=url, user=user, passwd=password, database=database, autocommit=True) as cursor:
-        init_varste(cursor)
+        init_medii(cursor)
 
 
 if __name__ == '__main__':
