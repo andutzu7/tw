@@ -123,6 +123,36 @@ def init_medii(cursor):
     print('tabel "medii" initializat')
 
 
+def init_rata(cursor):
+    csv_links = get_all_csv_links()
+    entries = []
+    for month in csv_links:
+        month_index = MONTHS.index(month) + 1
+        link = csv_links[month]['rata']
+        rows = read_csv(link)
+
+        for row in rows[1:43]:
+            judet = row[0].upper()
+            judet = filter_name(judet)
+            id_judet = get_judet_id(judet)
+            total = int(row[1].replace(',', ''))
+            total_femei = int(row[2].replace(',', ''))
+            total_barbati = int(row[3].replace(',', ''))
+            indemnizati = int(row[4].replace(',', ''))
+            neindemnizati = int(row[5].replace(',', ''))
+            procent_total = float(row[6].replace(' ', ''))
+            procent_femei = float(row[7].replace(' ', ''))
+            procent_barbati = float(row[8].replace(' ', ''))
+
+            e = (id_judet, total, total_femei, total_barbati, indemnizati,neindemnizati,procent_total,procent_femei,procent_barbati, 2019, month_index)
+            entries.append(e)
+
+    query = "insert into rata(id_judet, total, total_femei, total_barbati, insdemnizati, neindemnizati, procent_total, procent_femei, procent_barbati, an, luna) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+    cursor.executemany(query, entries)
+
+    print('tabel "rata" initializat')
+
+
 def main():
     # longUrl = "mysql://b4ce0916cecd87:0aa128f5@eu-cdbr-west-03.cleardb.net/heroku_79d4353e46b22ee?reconnect=true"
     url = "eu-cdbr-west-03.cleardb.net"
@@ -130,7 +160,7 @@ def main():
     password = "0aa128f5"
     user = "b4ce0916cecd87"
     with get_cursor(host=url, user=user, passwd=password, database=database, autocommit=True) as cursor:
-        init_medii(cursor)
+        init_rata(cursor)
 
 
 if __name__ == '__main__':
