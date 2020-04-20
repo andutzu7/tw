@@ -1,5 +1,5 @@
 create table varste(
-    judet varchar(32),
+    id_judet int,
     sub25 int,
     interval25_29 int,
     interval30_39 int,
@@ -7,6 +7,6 @@ create table varste(
     interval50_55 int,
     peste55 int,
     an int,
-    month int,
-    primary key (judet, an, month)
+    luna int,
+    primary key (id_judet, an, luna)
 );

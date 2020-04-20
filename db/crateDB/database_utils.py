@@ -45,9 +45,10 @@ def init_educatie(cursor):
     csv_links = get_all_csv_links()
     entries = []
     for month in csv_links:
+        month_index = MONTHS.index(month) + 1
         link = csv_links[month]['educatie']
-
         rows = read_csv(link)
+
         for row in rows[1:43]:
             judet = row[0].upper()
             judet = filter_name(judet)
@@ -60,17 +61,40 @@ def init_educatie(cursor):
             postliceal = int(row[6])
             profesional = int(row[7])
             univ = int(row[8])
-            month_index = MONTHS.index(month) + 1
             e = (id_judet, total, fara_studii, primar, gimnazial, liceal, postliceal, profesional, univ, 2019, month_index)
             entries.append(e)
+
     query = "insert into educatie(id_judet, total, fara_studii, primar, gimnazial, liceal, postliceal, profesional, universitar, an, luna) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
     cursor.executemany(query, entries)
 
     print('tabel "educatie" initializat')
 
 
+def init_varste(cursor):
+    csv_links = get_all_csv_links()
+    entries = []
+    for month in csv_links:
+        month_index = MONTHS.index(month) + 1
+        link = csv_links[month]['varste']
+        rows = read_csv(link)
 
+        for row in rows[1:43]:
+            judet = row[0].upper()
+            judet = filter_name(judet)
+            id_judet = get_judet_id(judet)
+            sub25 = int(row[2])
+            interval25_29 = int(row[3])
+            interval30_39 = int(row[4])
+            interval40_49 = int(row[5])
+            interval50_55 = int(row[6])
+            peste55 = int(row[7])
+            e = (id_judet, sub25, interval25_29, interval30_39, interval40_49, interval50_55, peste55, 2019, month_index)
+            entries.append(e)
 
+    query = "insert into varste(id_judet, sub25, interval25_29, interval30_39, interval40_49, interval50_55, peste55, an, luna) values(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+    cursor.executemany(query, entries)
+
+    print('tabel "varste" initializat')
 
 
 def main():
@@ -80,7 +104,7 @@ def main():
     password = "0aa128f5"
     user = "b4ce0916cecd87"
     with get_cursor(host=url, user=user, passwd=password, database=database, autocommit=True) as cursor:
-        init_educatie(cursor)
+        init_varste(cursor)
 
 
 if __name__ == '__main__':
