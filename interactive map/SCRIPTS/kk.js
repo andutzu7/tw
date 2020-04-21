@@ -9,8 +9,8 @@ let path = d3.geoPath();
 
 //folosim o proiectie de tip mercator ca sa fie harta flat*
 let projection = d3.geoMercator()
-    .scale(1500)
-    .center([25, 45 ])
+    .scale(5000)
+    .center([15, 48 ])
     .translate([width / 2, height / 2]);
 
 
