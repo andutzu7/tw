@@ -24,7 +24,7 @@ connection.end()
 
 
 
-const hostname = 'arcane-sierra-19327.herokuapp.com';
+const hostname = 'localhost';
 const port = process.env.PORT || 3000;
 const server = http.createServer((req, res) => {
     valid_url = false;
