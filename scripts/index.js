@@ -1,5 +1,10 @@
 
-fetch('http://127.0.0.1:3000/rata')
+api_url = 'https://arcane-sierra-19327.herokuapp.com'
+//valid_table_names = ['varste', 'medii', 'educatie', 'rata', 'judete']
+
+table_name = 'varste'
+
+fetch(`${api_url}/${table_name}`)
   .then((response) => {
     return response.json();
   })
