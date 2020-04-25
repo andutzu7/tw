@@ -1,6 +1,6 @@
 const http = require('http');
 const url = require('url');
-const database = require('./database');
+const database = require('./scripts/database');
 
 
 db = new database.Database('eu-cdbr-west-03.cleardb.net', 'b4ce0916cecd87', '0aa128f5', 'heroku_79d4353e46b22ee');
