@@ -1,68 +1,90 @@
 {
-    "ianuarie": {
-        "rata": "https://data.gov.ro/dataset/1465327a-103d-44a1-a6e8-c589a5af1fab/resource/37de99c6-6e9c-4fed-b4ec-356f47f79546/download/date-deschise-somaj-la-31-ianuarie-2019-rata.csv",
-        "medii": "https://data.gov.ro/dataset/1465327a-103d-44a1-a6e8-c589a5af1fab/resource/102eb3c5-8a30-4e10-8fe0-36d823c75cb9/download/date-deschise-somaj-la-31-ianuarie-2019-medii.csv",
-        "educatie": "https://data.gov.ro/dataset/1465327a-103d-44a1-a6e8-c589a5af1fab/resource/3d98383a-3852-4d9c-b534-7c4b52bcc7d7/download/date-deschise-somaj-la-31-ianuarie-2019-nivel-educatie.csv",
-        "varste": "https://data.gov.ro/dataset/1465327a-103d-44a1-a6e8-c589a5af1fab/resource/91a4ef82-22f2-4686-93fb-e42bd9db53a0/download/date-deschise-somaj-la-31-ianuarie-2019-varste.csv"
+    "2019": {
+        "mai": {
+            "medii": "https://data.gov.ro/dataset/731bea45-9bc7-4ac2-8f9c-b8a79fa1cdc8/resource/6d469680-59c2-48f3-9973-4f3cbb66f5c8/download/rata-somaj-mai-2019.csv",
+            "varste": "https://data.gov.ro/dataset/731bea45-9bc7-4ac2-8f9c-b8a79fa1cdc8/resource/b2757bfb-4844-4eaf-b8f8-c851d56186ed/download/varste-somaj-mai-2019.csv",
+            "rata": "https://data.gov.ro/dataset/c35cd323-ff6d-4299-a959-61094c4d6ec1/resource/ad377cb2-db70-43b9-b0db-5dce8ea60879/download/date-deschise-somaj-rata-dec.csv",
+            "educatie": "https://data.gov.ro/dataset/731bea45-9bc7-4ac2-8f9c-b8a79fa1cdc8/resource/0f520ea0-15c8-41ee-a588-7d365ae00104/download/educatie-somaj-mai-2019.csv"
+        },
+        "martie": {
+            "educatie": "https://data.gov.ro/dataset/efef6742-7edb-41d3-bd5a-a776b540f4da/resource/166fdd40-e027-4eb3-b0de-5c14824ba42a/download/educatie-somaj-martie-2019.csv",
+            "varste": "https://data.gov.ro/dataset/efef6742-7edb-41d3-bd5a-a776b540f4da/resource/2963cd73-817f-4a13-be89-75e1190a1173/download/varste-somaj-martie-2019.csv",
+            "medii": "https://data.gov.ro/dataset/efef6742-7edb-41d3-bd5a-a776b540f4da/resource/ebc6f948-ead5-4cdd-9a4b-c7205546a361/download/medii-somaj-martie-2019.csv",
+            "rata": "https://data.gov.ro/dataset/efef6742-7edb-41d3-bd5a-a776b540f4da/resource/8bc45902-1d99-4318-bbda-77a470ab63b8/download/rata-somaj-martie-2019.csv"
+        },
+        "noiembrie": {
+            "rata": "https://data.gov.ro/dataset/b95464f9-cead-4bf7-b671-2ca025e51786/resource/74353505-2850-48eb-acf4-fdba4f1b2e99/download/rata.csv",
+            "educatie": "https://data.gov.ro/dataset/b95464f9-cead-4bf7-b671-2ca025e51786/resource/8361da35-4596-4322-9cba-2a135aefb641/download/educatie.csv",
+            "varste": "https://data.gov.ro/dataset/b95464f9-cead-4bf7-b671-2ca025e51786/resource/6fe70397-28ee-470b-a36c-82ce7df94d05/download/varste.csv",
+            "medii": "https://data.gov.ro/dataset/b95464f9-cead-4bf7-b671-2ca025e51786/resource/49c862f9-2cd0-4c3f-a3cd-3534e872eba0/download/medii.csv"
+        },
+        "februarie": {
+            "rata": "https://data.gov.ro/dataset/7af6b20f-1d4c-4fee-8786-853b5083f582/resource/b46807c9-48c4-4ce7-b9b1-1dc3ad6c5507/download/rata-somaj-februarie-2019-1.csv",
+            "varste": "https://data.gov.ro/dataset/7af6b20f-1d4c-4fee-8786-853b5083f582/resource/a15b4ecb-a6ff-4850-8af7-e7d42c7f3a8b/download/varste-somaj-februarie-2019.csv",
+            "medii": "https://data.gov.ro/dataset/7af6b20f-1d4c-4fee-8786-853b5083f582/resource/af40d1f7-4e7e-4e96-a465-75c4ca29c5aa/download/medii-somaj-februarie-2019.csv",
+            "educatie": "https://data.gov.ro/dataset/7af6b20f-1d4c-4fee-8786-853b5083f582/resource/be16a984-6c70-400c-ac05-02bde52a75b4/download/nivel-educatie-somaj-februarie-2019.csv"
+        },
+        "iulie": {
+            "educatie": "https://data.gov.ro/dataset/a2659f47-b48c-49c0-ad63-70f28f8db6d2/resource/c41c462f-70f4-4ea1-bf66-d9b0fc6c5832/download/educatie-somaj-iulie-2019.csv",
+            "varste": "https://data.gov.ro/dataset/a2659f47-b48c-49c0-ad63-70f28f8db6d2/resource/82f89867-6049-4624-9213-9917921b85ad/download/varste-somaj-iulie-2019.csv",
+            "rata": "https://data.gov.ro/dataset/a2659f47-b48c-49c0-ad63-70f28f8db6d2/resource/c91c771b-5f7a-47b4-8c75-7f0ac2655a83/download/rata-somaj-iulie-2019.csv",
+            "medii": "https://data.gov.ro/dataset/a2659f47-b48c-49c0-ad63-70f28f8db6d2/resource/b66b56d2-20d4-477a-81fb-f4cd7d61d804/download/medii-somaj-iulie-2019.csv"
+        },
+        "ianuarie": {
+            "educatie": "https://data.gov.ro/dataset/1465327a-103d-44a1-a6e8-c589a5af1fab/resource/3d98383a-3852-4d9c-b534-7c4b52bcc7d7/download/date-deschise-somaj-la-31-ianuarie-2019-nivel-educatie.csv",
+            "varste": "https://data.gov.ro/dataset/1465327a-103d-44a1-a6e8-c589a5af1fab/resource/91a4ef82-22f2-4686-93fb-e42bd9db53a0/download/date-deschise-somaj-la-31-ianuarie-2019-varste.csv",
+            "medii": "https://data.gov.ro/dataset/1465327a-103d-44a1-a6e8-c589a5af1fab/resource/102eb3c5-8a30-4e10-8fe0-36d823c75cb9/download/date-deschise-somaj-la-31-ianuarie-2019-medii.csv",
+            "rata": "https://data.gov.ro/dataset/1465327a-103d-44a1-a6e8-c589a5af1fab/resource/37de99c6-6e9c-4fed-b4ec-356f47f79546/download/date-deschise-somaj-la-31-ianuarie-2019-rata.csv"
+        },
+        "octombrie": {
+            "rata": "https://data.gov.ro/dataset/ff4249fd-fe19-4948-8feb-9549957ed517/resource/751264ef-6369-487c-9c8d-aacb691f524f/download/rata.csv",
+            "medii": "https://data.gov.ro/dataset/ff4249fd-fe19-4948-8feb-9549957ed517/resource/4678809d-3bcd-4e25-8e3f-e86084496e6b/download/medii.csv",
+            "educatie": "https://data.gov.ro/dataset/ff4249fd-fe19-4948-8feb-9549957ed517/resource/b0c5687b-16ab-44aa-ad35-d0228b2e73ee/download/educatie.csv",
+            "varste": "https://data.gov.ro/dataset/ff4249fd-fe19-4948-8feb-9549957ed517/resource/925552a5-3277-48bf-a15d-c12360929750/download/varste.csv"
+        },
+        "aprilie": {
+            "varste": "https://data.gov.ro/dataset/3930481c-d8fb-4d04-a0b0-1b5c363fa723/resource/c76474e4-3d8d-4069-b344-75032044aff1/download/varste-somaj-aprilie-2019.csv",
+            "medii": "https://data.gov.ro/dataset/3930481c-d8fb-4d04-a0b0-1b5c363fa723/resource/d7e97f93-07b7-435c-8735-36eba10155f3/download/medii-somaj-aprilie-2019.csv",
+            "rata": "https://data.gov.ro/dataset/3930481c-d8fb-4d04-a0b0-1b5c363fa723/resource/72e212f0-1aa6-4c02-b328-168f18f6858d/download/rata-somaj-aprilie-2019.csv",
+            "educatie": "https://data.gov.ro/dataset/3930481c-d8fb-4d04-a0b0-1b5c363fa723/resource/65d2ed25-35aa-4860-8847-3825b9332de5/download/educatie-somaj-aprilie-2019.csv"
+        },
+        "decembrie": {
+            "medii": "https://data.gov.ro/dataset/c35cd323-ff6d-4299-a959-61094c4d6ec1/resource/d9803414-d39b-405f-9cd1-7bffd701583a/download/medii-somaj-decembrie-2019.csv",
+            "educatie": "https://data.gov.ro/dataset/c35cd323-ff6d-4299-a959-61094c4d6ec1/resource/4b0b1bf7-678b-42ac-b366-4fa19b450082/download/nivel-educatie-somaj-decembrie-2019.csv",
+            "varste": "https://data.gov.ro/dataset/c35cd323-ff6d-4299-a959-61094c4d6ec1/resource/f173a67a-251b-4575-8e5f-dd62ffaf929b/download/varste-somaj-decembrie-2019.csv",
+            "rata": "https://data.gov.ro/dataset/c35cd323-ff6d-4299-a959-61094c4d6ec1/resource/ad377cb2-db70-43b9-b0db-5dce8ea60879/download/date-deschise-somaj-rata-dec.csv"
+        },
+        "sepembrie": {
+            "rata": "https://data.gov.ro/dataset/ab82cc83-ac39-4437-aa9e-4c3bd2062f8b/resource/4c5c8d9c-6ca9-4812-9114-e9cb9d56f20d/download/rata-somaj-septembrie-2019.csv",
+            "varste": "https://data.gov.ro/dataset/ab82cc83-ac39-4437-aa9e-4c3bd2062f8b/resource/4d2f2a70-b3f8-4de5-b475-5a8755eee4a9/download/varste-somaj-septembrie-2019.csv",
+            "medii": "https://data.gov.ro/dataset/ab82cc83-ac39-4437-aa9e-4c3bd2062f8b/resource/f81e172d-2f4a-4664-9337-25f288a08b3c/download/medii-somaj-septembrie-2019.csv",
+            "educatie": "https://data.gov.ro/dataset/ab82cc83-ac39-4437-aa9e-4c3bd2062f8b/resource/8e6c18af-2749-4def-84cc-a111ad2038f2/download/educatie-somaj-septembrie-2019.csv"
+        },
+        "iunie": {
+            "medii": "https://data.gov.ro/dataset/1ac49336-95e8-4c63-b71b-d36ef5df4c5d/resource/a7c37a44-5a9b-4d63-8d30-cbe84a85c19a/download/medii-somaj-iunie-2019.csv",
+            "educatie": "https://data.gov.ro/dataset/1ac49336-95e8-4c63-b71b-d36ef5df4c5d/resource/1cbe1c3d-2989-4c98-bb32-abfbf50741dd/download/educatie-somaj-iunie-2019.csv",
+            "varste": "https://data.gov.ro/dataset/1ac49336-95e8-4c63-b71b-d36ef5df4c5d/resource/f2d17438-3c76-4b72-a560-653c8a20e9e0/download/varste-somaj-iunie-2019.csv",
+            "rata": "https://data.gov.ro/dataset/1ac49336-95e8-4c63-b71b-d36ef5df4c5d/resource/336a42da-fd61-4962-b60f-90a2cd98060d/download/rata-somaj-iunie-2019.csv"
+        }
     },
-    "iunie": {
-        "rata": "https://data.gov.ro/dataset/1ac49336-95e8-4c63-b71b-d36ef5df4c5d/resource/336a42da-fd61-4962-b60f-90a2cd98060d/download/rata-somaj-iunie-2019.csv",
-        "medii": "https://data.gov.ro/dataset/1ac49336-95e8-4c63-b71b-d36ef5df4c5d/resource/a7c37a44-5a9b-4d63-8d30-cbe84a85c19a/download/medii-somaj-iunie-2019.csv",
-        "educatie": "https://data.gov.ro/dataset/1ac49336-95e8-4c63-b71b-d36ef5df4c5d/resource/1cbe1c3d-2989-4c98-bb32-abfbf50741dd/download/educatie-somaj-iunie-2019.csv",
-        "varste": "https://data.gov.ro/dataset/1ac49336-95e8-4c63-b71b-d36ef5df4c5d/resource/f2d17438-3c76-4b72-a560-653c8a20e9e0/download/varste-somaj-iunie-2019.csv"
-    },
-    "martie": {
-        "rata": "https://data.gov.ro/dataset/efef6742-7edb-41d3-bd5a-a776b540f4da/resource/8bc45902-1d99-4318-bbda-77a470ab63b8/download/rata-somaj-martie-2019.csv",
-        "medii": "https://data.gov.ro/dataset/efef6742-7edb-41d3-bd5a-a776b540f4da/resource/ebc6f948-ead5-4cdd-9a4b-c7205546a361/download/medii-somaj-martie-2019.csv",
-        "educatie": "https://data.gov.ro/dataset/efef6742-7edb-41d3-bd5a-a776b540f4da/resource/166fdd40-e027-4eb3-b0de-5c14824ba42a/download/educatie-somaj-martie-2019.csv",
-        "varste": "https://data.gov.ro/dataset/efef6742-7edb-41d3-bd5a-a776b540f4da/resource/2963cd73-817f-4a13-be89-75e1190a1173/download/varste-somaj-martie-2019.csv"
-    },
-    "noiembrie": {
-        "rata": "https://data.gov.ro/dataset/b95464f9-cead-4bf7-b671-2ca025e51786/resource/74353505-2850-48eb-acf4-fdba4f1b2e99/download/rata.csv",
-        "medii": "https://data.gov.ro/dataset/b95464f9-cead-4bf7-b671-2ca025e51786/resource/49c862f9-2cd0-4c3f-a3cd-3534e872eba0/download/medii.csv",
-        "educatie": "https://data.gov.ro/dataset/b95464f9-cead-4bf7-b671-2ca025e51786/resource/8361da35-4596-4322-9cba-2a135aefb641/download/educatie.csv",
-        "varste": "https://data.gov.ro/dataset/b95464f9-cead-4bf7-b671-2ca025e51786/resource/6fe70397-28ee-470b-a36c-82ce7df94d05/download/varste.csv"
-    },
-    "mai": {
-        "rata": "https://data.gov.ro/dataset/c35cd323-ff6d-4299-a959-61094c4d6ec1/resource/ad377cb2-db70-43b9-b0db-5dce8ea60879/download/date-deschise-somaj-rata-dec.csv",
-        "medii": "https://data.gov.ro/dataset/731bea45-9bc7-4ac2-8f9c-b8a79fa1cdc8/resource/6d469680-59c2-48f3-9973-4f3cbb66f5c8/download/rata-somaj-mai-2019.csv",
-        "educatie": "https://data.gov.ro/dataset/731bea45-9bc7-4ac2-8f9c-b8a79fa1cdc8/resource/0f520ea0-15c8-41ee-a588-7d365ae00104/download/educatie-somaj-mai-2019.csv",
-        "varste": "https://data.gov.ro/dataset/731bea45-9bc7-4ac2-8f9c-b8a79fa1cdc8/resource/b2757bfb-4844-4eaf-b8f8-c851d56186ed/download/varste-somaj-mai-2019.csv"
-    },
-    "iulie": {
-        "rata": "https://data.gov.ro/dataset/a2659f47-b48c-49c0-ad63-70f28f8db6d2/resource/c91c771b-5f7a-47b4-8c75-7f0ac2655a83/download/rata-somaj-iulie-2019.csv",
-        "medii": "https://data.gov.ro/dataset/a2659f47-b48c-49c0-ad63-70f28f8db6d2/resource/b66b56d2-20d4-477a-81fb-f4cd7d61d804/download/medii-somaj-iulie-2019.csv",
-        "educatie": "https://data.gov.ro/dataset/a2659f47-b48c-49c0-ad63-70f28f8db6d2/resource/c41c462f-70f4-4ea1-bf66-d9b0fc6c5832/download/educatie-somaj-iulie-2019.csv",
-        "varste": "https://data.gov.ro/dataset/a2659f47-b48c-49c0-ad63-70f28f8db6d2/resource/82f89867-6049-4624-9213-9917921b85ad/download/varste-somaj-iulie-2019.csv"
-    },
-    "februarie": {
-        "rata": "https://data.gov.ro/dataset/7af6b20f-1d4c-4fee-8786-853b5083f582/resource/b46807c9-48c4-4ce7-b9b1-1dc3ad6c5507/download/rata-somaj-februarie-2019-1.csv",
-        "medii": "https://data.gov.ro/dataset/7af6b20f-1d4c-4fee-8786-853b5083f582/resource/af40d1f7-4e7e-4e96-a465-75c4ca29c5aa/download/medii-somaj-februarie-2019.csv",
-        "educatie": "https://data.gov.ro/dataset/7af6b20f-1d4c-4fee-8786-853b5083f582/resource/be16a984-6c70-400c-ac05-02bde52a75b4/download/nivel-educatie-somaj-februarie-2019.csv",
-        "varste": "https://data.gov.ro/dataset/7af6b20f-1d4c-4fee-8786-853b5083f582/resource/a15b4ecb-a6ff-4850-8af7-e7d42c7f3a8b/download/varste-somaj-februarie-2019.csv"
-    },
-    "octombrie": {
-        "rata": "https://data.gov.ro/dataset/ff4249fd-fe19-4948-8feb-9549957ed517/resource/751264ef-6369-487c-9c8d-aacb691f524f/download/rata.csv",
-        "medii": "https://data.gov.ro/dataset/ff4249fd-fe19-4948-8feb-9549957ed517/resource/4678809d-3bcd-4e25-8e3f-e86084496e6b/download/medii.csv",
-        "educatie": "https://data.gov.ro/dataset/ff4249fd-fe19-4948-8feb-9549957ed517/resource/b0c5687b-16ab-44aa-ad35-d0228b2e73ee/download/educatie.csv",
-        "varste": "https://data.gov.ro/dataset/ff4249fd-fe19-4948-8feb-9549957ed517/resource/925552a5-3277-48bf-a15d-c12360929750/download/varste.csv"
-    },
-    "aprilie": {
-        "rata": "https://data.gov.ro/dataset/3930481c-d8fb-4d04-a0b0-1b5c363fa723/resource/72e212f0-1aa6-4c02-b328-168f18f6858d/download/rata-somaj-aprilie-2019.csv",
-        "medii": "https://data.gov.ro/dataset/3930481c-d8fb-4d04-a0b0-1b5c363fa723/resource/d7e97f93-07b7-435c-8735-36eba10155f3/download/medii-somaj-aprilie-2019.csv",
-        "educatie": "https://data.gov.ro/dataset/3930481c-d8fb-4d04-a0b0-1b5c363fa723/resource/65d2ed25-35aa-4860-8847-3825b9332de5/download/educatie-somaj-aprilie-2019.csv",
-        "varste": "https://data.gov.ro/dataset/3930481c-d8fb-4d04-a0b0-1b5c363fa723/resource/c76474e4-3d8d-4069-b344-75032044aff1/download/varste-somaj-aprilie-2019.csv"
-    },
-    "sepembrie": {
-        "rata": "https://data.gov.ro/dataset/ab82cc83-ac39-4437-aa9e-4c3bd2062f8b/resource/4c5c8d9c-6ca9-4812-9114-e9cb9d56f20d/download/rata-somaj-septembrie-2019.csv",
-        "medii": "https://data.gov.ro/dataset/ab82cc83-ac39-4437-aa9e-4c3bd2062f8b/resource/f81e172d-2f4a-4664-9337-25f288a08b3c/download/medii-somaj-septembrie-2019.csv",
-        "educatie": "https://data.gov.ro/dataset/ab82cc83-ac39-4437-aa9e-4c3bd2062f8b/resource/8e6c18af-2749-4def-84cc-a111ad2038f2/download/educatie-somaj-septembrie-2019.csv",
-        "varste": "https://data.gov.ro/dataset/ab82cc83-ac39-4437-aa9e-4c3bd2062f8b/resource/4d2f2a70-b3f8-4de5-b475-5a8755eee4a9/download/varste-somaj-septembrie-2019.csv"
-    },
-    "decembrie": {
-        "rata": "https://data.gov.ro/dataset/c35cd323-ff6d-4299-a959-61094c4d6ec1/resource/ad377cb2-db70-43b9-b0db-5dce8ea60879/download/date-deschise-somaj-rata-dec.csv",
-        "medii": "https://data.gov.ro/dataset/c35cd323-ff6d-4299-a959-61094c4d6ec1/resource/d9803414-d39b-405f-9cd1-7bffd701583a/download/medii-somaj-decembrie-2019.csv",
-        "educatie": "https://data.gov.ro/dataset/c35cd323-ff6d-4299-a959-61094c4d6ec1/resource/4b0b1bf7-678b-42ac-b366-4fa19b450082/download/nivel-educatie-somaj-decembrie-2019.csv",
-        "varste": "https://data.gov.ro/dataset/c35cd323-ff6d-4299-a959-61094c4d6ec1/resource/f173a67a-251b-4575-8e5f-dd62ffaf929b/download/varste-somaj-decembrie-2019.csv"
+    "2020": {
+        "martie": {
+            "varste": "https://data.gov.ro/dataset/8b35094d-0724-4b24-bc17-d94efefbdd9f/resource/f10910fa-1463-4207-8c87-d0aba4a6e60e/download/varste.csv",
+            "educatie": "https://data.gov.ro/dataset/8b35094d-0724-4b24-bc17-d94efefbdd9f/resource/428847d3-9945-46cf-a87f-4b6f7d80d6f5/download/nivel-ed.csv",
+            "medii": "https://data.gov.ro/dataset/8b35094d-0724-4b24-bc17-d94efefbdd9f/resource/82abf905-5f84-4f5b-95dd-85c8ea22a528/download/medii.csv",
+            "rata": "https://data.gov.ro/dataset/8b35094d-0724-4b24-bc17-d94efefbdd9f/resource/30029704-12c3-42e9-b41b-88d5b5629eda/download/rata.csv"
+        },
+        "februarie": {
+            "rata": "https://data.gov.ro/dataset/d34ebdcd-4958-491e-a389-8dea75e0ee4b/resource/1041c7b0-e6c4-490e-a941-32f44c1c35cc/download/rata.csv",
+            "medii": "https://data.gov.ro/dataset/d34ebdcd-4958-491e-a389-8dea75e0ee4b/resource/16b288d9-02ca-4839-8aa7-7f4dce32460f/download/medii.csv",
+            "educatie": "https://data.gov.ro/dataset/d34ebdcd-4958-491e-a389-8dea75e0ee4b/resource/ace1dbc2-6467-4811-8829-101420c3bc62/download/nivel-ed.csv",
+            "varste": "https://data.gov.ro/dataset/d34ebdcd-4958-491e-a389-8dea75e0ee4b/resource/ab153002-b245-4a4c-87ae-a59aa541c8fc/download/varste.csv"
+        },
+        "ianuarie": {
+            "varste": "https://data.gov.ro/dataset/26254b75-c572-4c65-b255-26071b39d1bc/resource/ea089394-a862-49da-881e-b821802694dd/download/varste.csv",
+            "rata": "https://data.gov.ro/dataset/26254b75-c572-4c65-b255-26071b39d1bc/resource/7fbf7a17-066c-40f2-b301-71f06c2d0a44/download/rata.csv",
+            "medii": "https://data.gov.ro/dataset/26254b75-c572-4c65-b255-26071b39d1bc/resource/a3dc8d62-70bd-43ff-b8bb-74b342775000/download/medii.csv",
+            "educatie": "https://data.gov.ro/dataset/26254b75-c572-4c65-b255-26071b39d1bc/resource/09110ab3-0600-446f-a7aa-5bc3e8c40f2b/download/nivel-ed.csv"
+        }
     }
 }

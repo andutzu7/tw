@@ -19,7 +19,13 @@ def get_all_hrefs_from_url(url):
         print('request failed')
         exit()
     webpage = html.fromstring(page.content)
-    return webpage.xpath('//a/@href')
+
+    links = webpage.xpath('//a/@href')
+
+    # remove duplicates
+    links = list(set(links))
+
+    return links
 
 
 def get_month_links():
@@ -31,21 +37,19 @@ def get_month_links():
     # filter unnecessary links
     links = [link for link in links if '/dataset/somajul-inregistrat-' in link]
 
-    # remove duplicates
-    links = list(set(links))
-
     return links
 
 
 def get_csv_links(month_link):
-    _, _, month, _ = month_link.split('-')
+    _, _, month, year = month_link.split('-')
+
     url = 'https://data.gov.ro{}'.format(month_link)
 
     links = get_all_hrefs_from_url(url)
 
     filters = ['csv', 'resource']
     links = [link for link in links if all(word in link for word in filters)]
-    return month, links
+    return year, month, links
 
 
 def quick_fix(all_csv_links):
@@ -60,12 +64,12 @@ def quick_fix(all_csv_links):
     am copiat datasetul pentru luna decembrie, categoria rata
     """
 
-    all_csv_links['mai']['medii'] = all_csv_links['mai']['rata']
-    all_csv_links['mai']['rata'] = all_csv_links['decembrie']['rata']
+    all_csv_links['2019']['mai']['medii'] = all_csv_links['2019']['mai']['rata']
+    all_csv_links['2019']['mai']['rata'] = all_csv_links['2019']['decembrie']['rata']
 
 
-def get_all_csv_links():
-    if os.path.exists('all_csv_links.json'):
+def get_all_csv_links(force_update=False):
+    if os.path.exists('all_csv_links.json') and not force_update:
         with open('all_csv_links.json', 'r') as fd:
             return json.load(fd)
 
@@ -74,11 +78,22 @@ def get_all_csv_links():
     all_csv_links = dict()
 
     for month_link in month_links:
-        month, csv_links = get_csv_links(month_link)
-        all_csv_links[month] = dict()
+        year, month, csv_links = get_csv_links(month_link)
+        if year not in all_csv_links:
+            all_csv_links[year] = dict()
+        all_csv_links[year][month] = dict()
         for link in csv_links:
-            category = [categ for categ in ['varste', 'medii', 'educatie', 'rata'] if categ in link][0]
-            all_csv_links[month][category] = link
+            category = None
+            for categ in ['varste', 'medii', 'rata', 'ed']:
+                if categ in link:
+                    category = categ
+                    break
+            if category is None:
+                print("invalid link: {}".format(link))
+                exit()
+            if category == 'ed':
+                category = 'educatie'
+            all_csv_links[year][month][category] = link
     quick_fix(all_csv_links)
 
     # cache
@@ -123,7 +138,7 @@ def backup():
 
 
 def main():
-    a = get_all_csv_links()
+    a = get_all_csv_links(force_update=True)
     print_dict(a)
 
 
