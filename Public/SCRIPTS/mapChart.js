@@ -9,7 +9,7 @@ function drawMap(data,scaleArray) {
 
 //folosim o proiectie de tip mercator ca sa fie harta flat*
     let projection = d3.geoMercator()
-        .scale(4000)
+        .scale(500)
         .center([19, 49])
         .translate([width / 2, height / 2]);
 
