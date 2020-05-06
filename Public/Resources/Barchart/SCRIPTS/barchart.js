@@ -9,7 +9,7 @@ function generateBarMonths(months, monthsIndex) {
 }
 
 function createBarChart(months, values) {
-    var ctx = document.getElementById("myChart");
+    var ctx = document.getElementById("lineBarChart");
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -29,6 +29,9 @@ function createBarChart(months, values) {
             ]
         },
         options: {
+            legend: {
+                display:false
+            },
             title: {
                 display: true,
                 text: 'Statistica somajului in perioada in perioada Ianuarie 2019 - Martie 2020* '//this label has to also be changed to be reusable:)))
