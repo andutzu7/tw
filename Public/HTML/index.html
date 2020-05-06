@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CSS Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Libraries import-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <!--Script import-->
+    <!-- <script src="scripts/index.js"></script> -->
+    <!--Stylesheets import-->
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../Resources/Choropleth/CSS/styling.css">
+
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="sidemenu-container main-page-container">
+        <div class="criterii">
+            <h1>CRITERII</h1>
+            <ul>
+                <li>Varsta</li>
+                <li>Nivel educatie</li>
+                <li>Mediu</li>
+                <li>Indemnizatie</li>
+                <li class="selectat">Rata somajului</li>
+                <li>Sex</li>
+                <li>TOTAL</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="map-container main-page-container">
+        <h1>map</h1>
+
+        <svg id="romanian_map" ></svg>
+    </div>
+
+    <div class="main-barchart-container main-page-container">
+        <div class="chart-info">
+            <h1>bar chart</h1>
+            <canvas id="myChart" ></canvas>
+        </div>
+    </div>
+
+    <div class="main-piechart-container main-page-container">
+        <div class="chart-info">
+            <h1>pie chart</h1>
+            <canvas id="pieChart" ></canvas>
+        </div>
+    </div>
+</div>
+<!--Script import-->
+
+<script src="../Resources/Piechart/SCRIPTS/pieChart.js" ></script>
+<script src="../Resources/Barchart/SCRIPTS/barchart.js" ></script>
+<script src="../Resources/Choropleth/SCRIPTS/kk.js"></script>
+</body>
+
+</html>
