@@ -1,30 +1,30 @@
-var Final = [];
+var final = [];
 
-function generateBarMonths(Months, MonthsIndex) {
+function generateMonths(months, monthsIndex) {
     let displayedLabel = [];
-    for (let i = 0; i < MonthsIndex.length; i++) {
-        displayedLabel.push(Months[MonthsIndex[i] - 1]);
+    for (let i = 0; i < monthsIndex.length; i++) {
+        displayedLabel.push(months[monthsIndex[i] - 1]);
     }
     return displayedLabel;
 }
 
-function createBarChart(Months, Values) {
+function createChart(months, values) {
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: Months,
+            labels: months,
             datasets: [{
                 label: "Numar total someri ",
                 type: "line",
                 borderColor: "#8e5ea2",
-                data: Values,
+                data: values,
                 fill: false
             }, {
                 label: "Numar total someri",
                 type: "bar",
                 backgroundColor: "rgba(0,0,0,0.1)",
-                data: Values,
+                data: values,
             }
             ]
         },
@@ -35,7 +35,7 @@ function createBarChart(Months, Values) {
             }, scales: {
                 xAxes: [{
                     ticks: {
-                        callback: function (value, index, Values) {
+                        callback: function (value, index, values) {
                             if (index < 11)
                                 return value + ' 2019';
                             else
@@ -52,31 +52,32 @@ function createBarChart(Months, Values) {
     });
 }
 
-var idJudet = 20;
-var Months = ['Ian', 'Feb', 'Mar', 'Apr', 'Mai', 'Iun', 'Iul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-var Values = [];
-var month_index = [];
-let API_url = 'https://arcane-sierra-19327.herokuapp.com'
-//valid_tableNames = ['varste', 'medii', 'educatie', 'rata', 'judete']
+var id_judet = 23;
+var months = ['Ian', 'Feb', 'Mar', 'Apr', 'Mai', 'Iun', 'Iul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+var values = [];
+var monthIndex = [];
+let API_URL = 'https://arcane-sierra-19327.herokuapp.com'
+//valid_TABLE_NAMEs = ['varste', 'medii', 'educatie', 'rata', 'judete']
 
-let tableName = 'varste';
+let TABLE_NAME = 'varste';
 
-fetch(`${API_url}/${tableName}`)
+fetch(`${API_URL}/${TABLE_NAME}`)
     .then((response) => {
         return response.json();
     })
     .then((data) => {
 
         for (let row of data) {
-            if (row['idJudet'] === idJudet) {
-                Final.push(row);
-                Values.push(row['interval25_29']);//this has to be implemented in the gui
+            if (row['id_judet'] === id_judet) {
+                final.push(row);
+                values.push(row['interval25_29']);//this has to be implemented in the gui
                 if (row['luna'] !== 12)
-                    month_index.push(row['luna'] % 12);
+                    monthIndex.push(row['luna'] % 12);
                 else
-                    month_index.push(12);
+                    monthIndex.push(12);
             }
         }
-        let displayedLabel = generateBarMonths(Months, month_index);
-        createBarChart(displayedLabel, Values);
+        console.log(final);
+        let displayedLabel = generateMonths(months, monthIndex);
+        createChart(displayedLabel, values);
     });
