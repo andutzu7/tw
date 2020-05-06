@@ -1,6 +1,6 @@
-var final = [];
+var Final = [];
 
-function generateMonths(months, monthsIndex) {
+function generateBarMonths(months, monthsIndex) {
     let displayedLabel = [];
     for (let i = 0; i < monthsIndex.length; i++) {
         displayedLabel.push(months[monthsIndex[i] - 1]);
@@ -8,7 +8,7 @@ function generateMonths(months, monthsIndex) {
     return displayedLabel;
 }
 
-function createChart(months, values) {
+function createBarChart(months, values) {
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
         type: 'bar',
@@ -52,10 +52,10 @@ function createChart(months, values) {
     });
 }
 
-var id_judet = 23;
-var months = ['Ian', 'Feb', 'Mar', 'Apr', 'Mai', 'Iun', 'Iul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-var values = [];
-var monthIndex = [];
+var ID_judet = 23;
+var Months = ['Ian', 'Feb', 'Mar', 'Apr', 'Mai', 'Iun', 'Iul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+var Values = [];
+var MonthIndex = [];
 let API_URL = 'https://arcane-sierra-19327.herokuapp.com'
 //valid_TABLE_NAMEs = ['varste', 'medii', 'educatie', 'rata', 'judete']
 
@@ -68,16 +68,15 @@ fetch(`${API_URL}/${TABLE_NAME}`)
     .then((data) => {
 
         for (let row of data) {
-            if (row['id_judet'] === id_judet) {
-                final.push(row);
-                values.push(row['interval25_29']);//this has to be implemented in the gui
+            if (row['id_judet'] === ID_judet) {
+                Final.push(row);
+                Values.push(row['interval25_29']);//this has to be implemented in the gui
                 if (row['luna'] !== 12)
-                    monthIndex.push(row['luna'] % 12);
+                    MonthIndex.push(row['luna'] % 12);
                 else
-                    monthIndex.push(12);
+                    MonthIndex.push(12);
             }
         }
-        console.log(final);
-        let displayedLabel = generateMonths(months, monthIndex);
-        createChart(displayedLabel, values);
+        let displayedLabel = generateBarMonths(Months, MonthIndex);
+        createBarChart(displayedLabel, Values);
     });
