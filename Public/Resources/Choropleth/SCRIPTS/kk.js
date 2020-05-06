@@ -1,6 +1,6 @@
 function drawMap(data,scaleArray) {
 // selectam svg-ul
-    let svg = d3.select("svg"),
+    let svg = d3.select("svg#choropleth_map"),
         width = +svg.attr("width"),
         height = +svg.attr("height");
 
@@ -9,8 +9,8 @@ function drawMap(data,scaleArray) {
 
 //folosim o proiectie de tip mercator ca sa fie harta flat*
     let projection = d3.geoMercator()
-        .scale(5000)
-        .center([15, 48])
+        .scale(4000)
+        .center([19, 49])
         .translate([width / 2, height / 2]);
 
 

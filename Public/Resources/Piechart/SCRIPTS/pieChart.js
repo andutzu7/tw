@@ -26,7 +26,7 @@ function createPieChart(months, values) {
             },
             title: {
                 display: true,
-                text: 'Statistica somajului in perioada in perioada Ianuarie 2019 - Martie 2020 (Datele pentru luna august 2019 nu sunt puse la dispozitie pe site-ul guvernului.)'
+                text: 'Statistica somajului in perioada in perioada Ianuarie 2019 - Martie 2020 *)'
             }
         }
     });
