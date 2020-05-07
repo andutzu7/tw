@@ -23,12 +23,14 @@ function createBarChart(months, values) {
             }, {
                 label: "Numar total someri",
                 type: "bar",
-                backgroundColor: "rgba(0,0,0,0.1)",
+                backgroundColor: "rgba(255, 0, 255 , 0.15)",
                 data: values,
             }
             ]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             legend: {
                 display:false
             },

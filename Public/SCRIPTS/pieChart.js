@@ -20,13 +20,15 @@ function createPieChart(months, values) {
                 data: values
             }]
         },
-        options: {
+        options: { 
+            responsive: true,
+            maintainAspectRatio: false,
             legend: {
                 display: false
             },
             title: {
                 display: true,
-                text: 'Statistica somajului in perioada in perioada Ianuarie 2019 - Martie 2020 *)'
+                text: 'https://youtu.be/QaPrQa3oMy0'
             }
         }
     });
