@@ -11,46 +11,48 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="sidemenu-container main-page-container">
-            <div class="criterii">
-                <h1>CRITERII</h1>
-                <ul>
-                    <li>Varsta</li>
-                    <li>Nivel educatie</li>
-                    <li>Mediu</li>
-                    <li>Indemnizatie</li>
-                    <li class="selectat">Rata somajului</li>
-                    <li>Sex</li>
-                    <li>TOTAL</li>
-                </ul>
-            </div>
-        </div>
-
-
-        <div class="map-container main-page-container">
-            <svg id="choropleth_map"></svg>
-        </div>
-
-        <div class="main-barchart-container main-page-container">
-            <canvas id="lineBarChart" ></canvas>
-        </div>
-
-        <div class="main-piechart-container main-page-container">
-            <canvas id="pieChart" ></canvas>
+<div class="wrapper">
+    <div class="sidemenu-container main-page-container">
+        <div class="criterii">
+            <h1>CRITERII</h1>
+            <ul>
+                <li>Varsta</li>
+                <li>Nivel educatie</li>
+                <li>Mediu</li>
+                <li>Indemnizatie</li>
+                <li class="selectat">Rata somajului</li>
+                <li>Sex</li>
+                <li>TOTAL</li>
+            </ul>
         </div>
     </div>
 
-    <!--Libraries import-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <script src="https://d3js.org/d3.v4.js"></script>
-    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
 
-    <!--Script import-->
-    <script src="../SCRIPTS/pieChart.js" ></script>
-    <script src="../SCRIPTS/barChart.js" ></script>
-    <script src="../SCRIPTS/mapChart.js"></script>
+    <div class="map-container main-page-container">
+        <svg id="choropleth_map"  width="700" height="700"
+             viewBox="0 0 700 700"
+             preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+
+    <div class="main-barchart-container main-page-container">
+        <canvas id="lineBarChart"></canvas>
+    </div>
+
+    <div class="main-piechart-container main-page-container">
+        <canvas id="pieChart"></canvas>
+    </div>
+</div>
+
+<!--Libraries import-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+<!--Script import-->
+<script src="../SCRIPTS/pieChart.js"></script>
+<script src="../SCRIPTS/barChart.js"></script>
+<script src="../SCRIPTS/mapChart.js"></script>
 </body>
 </html>

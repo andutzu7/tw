@@ -1,16 +1,37 @@
-function drawMap(data,scaleArray) {
-// selectam svg-ul
-    let svg = d3.select("svg#choropleth_map"),
-        width = +svg.attr("width"),
-        height = +svg.attr("height");
+function responsivefy(svg) {
+    const container = d3.select(svg.node().parentNode),
+        width = parseInt(svg.style('width'), 10),
+        height = parseInt(svg.style('height'), 10),
+        aspect = width / height;
 
+    svg.attr('viewBox', `0 0 ${width} ${height}`)
+        .attr('preserveAspectRatio', 'xMinYMid')
+        .call(resize);
+
+    d3.select(window).on(
+        'resize.' + container.attr('id'),
+        resize
+    );
+
+    function resize() {
+        const w = parseInt(container.style('width'));
+        svg.attr('width', w);
+        svg.attr('height', Math.round(w / aspect));
+    }
+}
+function drawMap(data, scaleArray) {
+    // selectam svg-ul
+    let svg=d3.select('svg#choropleth_map')
+        .call(responsivefy),
+        width = +svg.attr("width"),
+        height = +svg.attr("height"); // tada!
 //creem path-ul
     let path = d3.geoPath();
 
 //folosim o proiectie de tip mercator ca sa fie harta flat*
     let projection = d3.geoMercator()
-        .scale(500)
-        .center([19, 49])
+        .scale(4000)
+        .center([25, 46])
         .translate([width / 2, height / 2]);
 
 
@@ -33,7 +54,7 @@ function drawMap(data,scaleArray) {
         }
         return result;
     };
-    let range = fct(scaleArray,12);//12 e pt testing
+    let range = fct(scaleArray, 12);//12 e pt testing
     let colorScale = d3.scaleThreshold()
         .domain(range)
         .range(d3.schemeBuPu[9]);
@@ -100,6 +121,6 @@ fetch(`${api_URL}/${table_Name}`)
                 stats.set(row['id_judet'], row['total']);//asta se sch in functie de tabel, de facut un map de string string
             }
         }
-        drawMap(stats,scaleArray);
+        drawMap(stats, scaleArray);
 
     });
