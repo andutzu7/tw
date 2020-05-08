@@ -9,6 +9,29 @@ function set_county_color(county_id, color){
 }
 
 
-set_county_color(25, 'orange')
-set_county_color(4, 'rgb(69, 4, 20)')
-set_county_color(41, '#9900ff')
+function map_value_to_color(value){
+    max_value = 10000;
+    value = Math.min(max_value, value)
+    color_value = value / max_value * 255
+    r = color_value
+    g = 255 - color_value
+    b = 255 - color_value
+    return `rgb(${r}, ${g}, ${b})`
+}
+
+
+function myfunc(API_URL, TABLE_NAME){
+    fetch(`${API_URL}/${TABLE_NAME}`)
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        for(let row of data){
+            if(row.luna == 1){ //hardcoded
+                set_county_color(row.id_judet, map_value_to_color(row.total))
+            }
+        }
+    });
+}
+url = 'https://arcane-sierra-19327.herokuapp.com'
+myfunc(url, 'rata')
