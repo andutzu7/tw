@@ -4,6 +4,7 @@ https://mapsvg.com/maps/romania --may become useless asap
 https://www.d3-graph-gallery.com/graph/choropleth_basic.html
 https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/
 https://www.chartjs.org/docs/latest/
+http://www.petercollingridge.co.uk/tutorials/svg/interactive/tooltip/
 
 svg source
 https://www.amcharts.com/svg-maps/?map=romania
