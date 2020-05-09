@@ -9,3 +9,4 @@ https://developer.mozilla.org/en-US/ !!!! most important
 
 svg source
 https://www.amcharts.com/svg-maps/?map=romania
+https://www.flaticon.com/authors/freepik --svg icon

@@ -81,7 +81,12 @@ toate chestiile din clasa country tebuiesc modificate except the visibility stuf
 
     color: #ffff
 }
+.country_back_button{
+    width: 3%;
+    height: 3%;
+    visibility: hidden;
 
+}
 
 .criterii-info {
     width: 100%;

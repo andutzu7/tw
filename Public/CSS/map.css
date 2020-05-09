@@ -6,7 +6,7 @@
     stroke-opacity: 1;
 }
 
-svg {
+#romanian_map {
     width:100%;
     height:100%;
     border: 5px dotted red; /*Debug*/

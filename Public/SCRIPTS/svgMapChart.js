@@ -88,6 +88,25 @@ function myfunc(API_URL, TABLE_NAME) {
                     let country_textbox = document.getElementById('countryTextbox');
                     country_textbox.style.visibility='visible';
 
+                    let country_backButton = document.getElementById('countryBackButton');
+                    country_backButton.style.visibility='visible';
+
+                };
+                let country_backButton = document.getElementById('countryBackButton');
+                country_backButton.onclick = function changeContent() {
+                    svg.style.display='block';
+                    let country_barchart = document.getElementById('countryBarChart');
+                    country_barchart.style.visibility='hidden';
+
+                    let country_piechart = document.getElementById('countryPieChart');
+                    country_piechart.style.visibility='hidden';
+
+                    let country_textbox = document.getElementById('countryTextbox');
+                    country_textbox.style.visibility='hidden';
+
+                    let country_backButton = document.getElementById('countryBackButton');
+                    country_backButton.style.visibility='hidden';
+
                 }
 
             }
