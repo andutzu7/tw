@@ -58,9 +58,28 @@ body {
     position: absolute;
     object-fit: contain;
 }
+/*
+toate chestiile din clasa country tebuiesc modificate except the visibility stuff
+*/
+.country_barChart {
+    visibility: hidden;
+    position: absolute;
+    object-fit: contain;
 
-#choropleth_map {
-    
+}
+
+.country_piechart {
+    visibility: hidden;
+    position: absolute;
+    object-fit: contain;
+}
+
+.country_textbox {
+    visibility: hidden;
+    position: absolute;
+    object-fit: contain;
+
+    color: #ffff
 }
 
 

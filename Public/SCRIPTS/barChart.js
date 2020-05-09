@@ -8,8 +8,8 @@ function generateBarMonths(months, monthsIndex) {
     return displayedLabel;
 }
 
-function createBarChart(months, values) {
-    var ctx = document.getElementById("lineBarChart");
+function createBarChart(months, values,chartNameID) {
+    var ctx = document.getElementById(chartNameID);
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -83,5 +83,7 @@ fetch(`${API_URL}/${TABLE_NAME}`)
             }
         }
         let displayedLabel = generateBarMonths(Months, MonthIndex);
-        createBarChart(displayedLabel, Values);
+        createBarChart(displayedLabel, Values,"lineBarChart");
+        createBarChart(displayedLabel, Values,"countryBarChart");
+
     });

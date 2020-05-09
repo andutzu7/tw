@@ -9,8 +9,8 @@ function generatePieMonths(months, monthsIndex) {
 }
 
 
-function createPieChart(months, values) {
-    var ctx2 = document.getElementById("pieChart");
+function createPieChart(months, values,elementID) {
+    var ctx2 = document.getElementById(elementID);
     var pieChart = new Chart(ctx2, {
         type: 'pie',
         data: {
@@ -60,5 +60,6 @@ fetch(`${api_url}/${table_name}`)
         }
 
         let displayedLabel = generatePieMonths(months, monthIndex);
-        createPieChart(displayedLabel, values);
+        createPieChart(displayedLabel, values,"pieChart");
+        createPieChart(displayedLabel, values,"countryPieChart");
     });
