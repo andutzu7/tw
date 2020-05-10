@@ -10,7 +10,7 @@ function set_county_color(county_id, color) {
 
 
 function map_value_to_color(value) {
-    console.assert(value, `invalid: value: ${value}`)
+    console.assert(value !== null, `invalid: value: ${value}`)
     max_value = 10000;
     value = Math.min(max_value, value)
     color_value = value / max_value * 255
@@ -23,7 +23,7 @@ function map_value_to_color(value) {
 
 function colorize_map_hardcoded(rows, field){
     for (let row of rows) {
-        if (row.luna === 1 && row.an === 2019) {
+        if (row.luna === 1 && row.an === 2019) {  // TODO
             set_county_color(row.id_judet, map_value_to_color(row[field]));
         }
     }
@@ -33,62 +33,29 @@ function colorize_map_hardcoded(rows, field){
 function set_hover_hardcoded(rows, field){
     let svg = document.getElementById('romanian_map');
     let tooltip = document.getElementById('tooltip');
-    for (let row of rows) {
-        //toolip and popup box
-        trigger = document.getElementById(`JUDET_SVG_${row.id_judet}`)
-        trigger.addEventListener('mouseenter', function (event) {
+    for (let row of rows){
+        if(row.luna === 1 && row.an === 2019){  // TODO
+            trigger = document.getElementById(`JUDET_SVG_${row.id_judet}`)
+            trigger.addEventListener('mouseenter', function (event) {
+                let CTM = svg.getScreenCTM();
+                let x = (event.clientX - CTM.e + 6) / CTM.a;
+                let y = (event.clientY - CTM.f + 20) / CTM.d;
 
-            let CTM = svg.getScreenCTM();
-            let x = (event.clientX - CTM.e + 6) / CTM.a;
-            let y = (event.clientY - CTM.f + 20) / CTM.d;
+                tooltip.setAttributeNS(null, "transform", "translate(" + x + " " + y + ")");
+                tooltip.setAttributeNS(null, "visibility", "visible");
+                let tooltipText = tooltip.getElementsByTagName('text')[0];
+                tooltipText.firstChild.data = `${event.target.getAttribute('title')}: ${field} ${row[field]}`;
 
-            tooltip.setAttributeNS(null, "transform", "translate(" + x + " " + y + ")");
-            tooltip.setAttributeNS(null, "visibility", "visible");
-            let tooltipText = tooltip.getElementsByTagName('text')[0];
-            tooltipText.firstChild.data = `${event.target.getAttribute('title')}: ${field} ${row[field]}`;
+                let rects = tooltip.getElementsByTagName('rect');
+                let length = tooltipText.getComputedTextLength();
 
-            let rects = tooltip.getElementsByTagName('rect');
-            let length = tooltipText.getComputedTextLength();
-
-            for (let rect of rects) {
-                rect.setAttributeNS(null, "width", length + 8);
-            }
-        }); 
-        trigger.addEventListener('mouseout', function (event) {
-            tooltip.setAttributeNS(null, "visibility", "hidden");
-        });
+                for (let rect of rects) {
+                    rect.setAttributeNS(null, "width", length + 8);
+                }
+            }); 
+            trigger.addEventListener('mouseout', function (event) {
+                tooltip.setAttributeNS(null, "visibility", "hidden");
+            });
+        }
     }
 }
-
-
-all_tables = {}
-
-function fetch_table(API_URL, TABLE_NAME, field=null){
-    fetch(`${API_URL}/${TABLE_NAME}`)
-    .then((response) => {
-        return response.json();
-    })
-    .then((data) => {
-        all_tables[TABLE_NAME] = data;
-        if(field){       
-            colorize_map_hardcoded(data, field);
-            set_hover_hardcoded(data, field)
-        }
-    })
-}
-
-function setup_hardcoded(API_URL) {
-    fetch_table(API_URL, 'rata', 'total')
-    fetch_table(API_URL, 'varste')
-    fetch_table(API_URL, 'medii')
-    fetch_table(API_URL, 'educatie')
-}
-
-
-
-url = 'https://arcane-sierra-19327.herokuapp.com'
-
-
-setup_hardcoded(url)
-
-console.log(all_tables)
