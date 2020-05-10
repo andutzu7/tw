@@ -15,19 +15,61 @@
       <div class="wrapper">
             <div class="sidemenu-container main-page-container">
                   <div class="criterii">
-                        <link rel="stylesheet" href="../CSS/butonDropdown1.css">
-                        <div class="dropdown">
-                              <button onclick="myFunction()" class="dropbtn">Criterii</button>
-                              <div id="myDropdown" class="dropdown-content">
-                                    <a href="#nivelEducatie">Nivel Educatie</a>
-                                    <a href="#varsta">Varsta</a>
-                                    <a href="#mediu">Mediu</a>
-                                    <a href="#indemnizatie">Indemnizatie</a>
-                                    <a href="#rataSomajului">Rata Somajului</a>
-                                    <a href="#total">Total</a>
-                              </div>
+                        <link rel="stylesheet" href="../CSS/hiddenDivv.css">
+                        <div class="dropdown" >
+                              <link rel="stylesheet" href="../CSS/styleList.css">
+                              <form action="#" method="post" id="frmMyform">
+                                    <select name="selMyList" class="select-css" onchange="showDiv(this)">
+                                          <option value="0">Criterii</option>
+                                          <option value="1">Nivel Educatie</option>
+                                          <option value="2">Varsta</option>
+                                          <option value="3">Mediu</option>
+                                          <option value="5">Rata Somajului</option>
+                                    </select>
+                                    <div id="hidden_div0"></div>
+                                    <div id="hidden_div1" class="button_group">
+                                          <link rel="stylesheet" href="../CSS/group_button.css">
+                                          <button type="button">Total</button>
+                                          <button type="button">Fara Studii</button>
+                                          <button type="button">Primar</button>
+                                          <button type="button">Gimnazial</button>
+                                          <button type="button">Liceal</button>
+                                          <button type="button">Postliceal</button>
+                                          <button type="button">Profesional</button>
+                                          <button type="button">Universitar</button>
+                                    </div>
+                                    <div id="hidden_div2" class="button_group">
+                                          <link rel="stylesheet" href="../CSS/group_button.css">
+                                          <button type="button">Sub 25 ani</button>
+                                          <button type="button">25-29 ani</button>
+                                          <button type="button">30-39 ani</button>
+                                          <button type="button">40-49 ani</button>
+                                          <button type="button">50-55 ani</button>
+                                          <button type="button">Peste 55 ani</button>
+                                    </div>
+                                    <div id="hidden_div3" class="button_group">
+                                          <link rel="stylesheet" href="../CSS/group_button.css">
+                                          <button type="button">Urban Femei</button>
+                                          <button type="button">Urban Barbati</button>
+                                          <button type="button">Rural Femei</button>
+                                          <button type="button">Rural Barbati</button>
+                                    </div>
+                                    <div id="hidden_div5" class="button_group">
+                                          <link rel="stylesheet" href="../CSS/group_button.css">
+                                          <button type="button">Total</button>
+                                          <button type="button">Total Femei</button>
+                                          <button type="button">Total Barbati</button>
+                                          <button type="button">Indemnizati</button>
+                                          <button type="button">Neindemnizati</button>
+                                          <button type="button">Procent Total</button>
+                                          <button type="button">Procent Femei</button>
+                                          <button type="button">Procent Barbati</button>
+                                    </div>
+                              </form>
                         </div>
+
                   </div>
+
             </div>
 
 
@@ -175,7 +217,7 @@
       <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
 
       <!--Script import-->
-      <script src="../SCRIPTS/dropDown.js"></script>
+      <script src="../SCRIPTS/showDiv.js"></script>
       <script src="../SCRIPTS/pieChart.js"></script>
       <script src="../SCRIPTS/barChart.js"></script>
       <!-- <script src="../SCRIPTS/mapChart.js"></script> -->
