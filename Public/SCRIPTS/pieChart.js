@@ -1,22 +1,11 @@
-var final = [];
-
-function generatePieMonths(months, monthsIndex) {
-    let displayedLabel = [];
-    for (let i = 0; i < monthsIndex.length; i++) {
-        displayedLabel.push(months[monthsIndex[i] - 1]);
-    }
-    return displayedLabel;
-}
-
-
-function createPieChart(months, values,elementID) {
+function createPieChart( elementID, labels, values, colors ) {
     var ctx2 = document.getElementById(elementID);
     var pieChart = new Chart(ctx2, {
         type: 'pie',
         data: {
-            labels: months,
+            labels: labels,
             datasets: [{
-                backgroundColor: ["#3e21cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#99ccff", "#99ff66", "#d65cad", "#0077b3", "#666666", "#cccc00", "#660033", "#ff0080", "#ac7339"],
+                backgroundColor: colors,
                 data: values
             }]
         },
@@ -24,42 +13,41 @@ function createPieChart(months, values,elementID) {
             responsive: true,
             maintainAspectRatio: false,
             legend: {
-                display: false
+                display: true,
+                position: "bottom",
+                fullWidth: true,
+                labels: {
+                    fontColor: "white"
+                }
             },
             title: {
-                display: true,
+                display: false,
                 text: 'https://youtu.be/QaPrQa3oMy0'
             }
         }
     });
 }
 
-var id_judet = 15;
-var months = ['Ian', 'Feb', 'Mar', 'Apr', 'Mai', 'Iun', 'Iul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-var values = [];
-var monthIndex = [];
 let api_url = 'https://arcane-sierra-19327.herokuapp.com'
-//valid_table_names = ['varste', 'medii', 'educatie', 'rata', 'judete']
+let table_name = 'medii';
 
-let table_name = 'rata';
-fetch(`${api_url}/${table_name}`)
-    .then((response) => {
-        return response.json();
-    })
-    .then((data) => {
 
-        for (let row of data) {
-            if (row['id_judet'] === id_judet) {
-                final.push(row);
-                values.push(row['total']);//this has to be implemented in the gui
-                if (row['luna'] !== 12)
-                    monthIndex.push(row['luna'] % 12);
-                else
-                    monthIndex.push(12);
+function init_piechart(rows){
+    colors = ["rgb(140,140,255)","rgb(118,0,119)"]
+    labels = []
+    values = []
+    for (let row of rows) {
+        if( row.luna == 1 && row.an == 2019){ // TODO
+            if (row['id_judet'] === 25) { //TODO
+                console.log(row)
+                values.push(row.insdemnizati)
+                labels.push('indemnizati')
+
+                values.push(row.neindemnizati)
+                labels.push('neindemnizati')
+
             }
         }
-
-        let displayedLabel = generatePieMonths(months, monthIndex);
-        createPieChart(displayedLabel, values,"pieChart");
-        createPieChart(displayedLabel, values,"countryPieChart");
-    });
+    }
+    createPieChart("pieChart", labels, values, colors)
+}

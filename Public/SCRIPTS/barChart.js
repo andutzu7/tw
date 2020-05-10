@@ -54,26 +54,15 @@ function createBarChart(chartNameID, field_text, title_text, months, values ) {
 }
 
 
-var ID_judet = 25;
-let API_URL = 'https://arcane-sierra-19327.herokuapp.com'
-let TABLE_NAME = 'rata';
-
-
-fetch(`${API_URL}/${TABLE_NAME}`)
-    .then((response) => {
-        return response.json();
-    })
-    .then((rows) => {
-        values = []
-        month_labels = []
-        for (let row of rows) {
-            if (row['id_judet'] === ID_judet) {
-                values.push(row['total']);//this has to be implemented in the gui
-                month_labels.push(row['luna']);
-            }
+function init_barchart(rows, field){
+    values = []
+    month_labels = []
+    for (let row of rows) {
+        if (row['id_judet'] === 25 ) {  // TODO
+            values.push(row[field]);  // TODO
+            month_labels.push(row['luna']);
         }
-        labels = generateBarMonthsLabels(month_labels);
-        createBarChart("lineBarChart", 'total', 'titlu', labels, values);
-        // createBarChart(displayedLabel, values,"countryBarChart");
-
-    });
+    }
+    labels = generateBarMonthsLabels(month_labels);
+    createBarChart("lineBarChart", 'total', 'titlu', labels, values);
+}
