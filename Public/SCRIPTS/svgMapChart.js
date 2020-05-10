@@ -61,15 +61,27 @@ function set_hover_hardcoded(rows, field){
 }
 
 
-function setup_hardcoded(API_URL, TABLE_NAME, field) {
+all_tables = {}
+
+function fetch_table(API_URL, TABLE_NAME, field=null){
     fetch(`${API_URL}/${TABLE_NAME}`)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        all_tables[TABLE_NAME] = data;
+        if(field){       
             colorize_map_hardcoded(data, field);
             set_hover_hardcoded(data, field)
-        })
+        }
+    })
+}
+
+function setup_hardcoded(API_URL) {
+    fetch_table(API_URL, 'rata', 'total')
+    fetch_table(API_URL, 'varste')
+    fetch_table(API_URL, 'medii')
+    fetch_table(API_URL, 'educatie')
 }
 
 
@@ -77,4 +89,6 @@ function setup_hardcoded(API_URL, TABLE_NAME, field) {
 url = 'https://arcane-sierra-19327.herokuapp.com'
 
 
-setup_hardcoded(url, 'rata', 'total')
+setup_hardcoded(url)
+
+console.log(all_tables)
