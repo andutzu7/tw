@@ -4,6 +4,11 @@
     fill-opacity: 1;
     stroke:white;
     stroke-opacity: 1;
+    stroke-width: 1px;
+}
+
+.land:hover{
+    stroke-width: 5px;
 }
 
 #romanian_map {
