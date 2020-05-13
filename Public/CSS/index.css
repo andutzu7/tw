@@ -26,6 +26,7 @@ body {
     grid-column: 1 / 2;
     grid-row: 1 / 7;
     padding: 0;
+    position: relative;
 }
 
 .map-container {
@@ -84,3 +85,23 @@ toate chestiile din clasa country tebuiesc modificate except the visibility stuf
 
 }
 
+.download-section{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.download-btn{
+    width: 100%;
+    padding: 10px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    font-size: 0.7em;
+}
+
+.download-btn:hover{
+    color: black;
+    background: rgba(255,255,255,0.8);
+    cursor: pointer;
+}

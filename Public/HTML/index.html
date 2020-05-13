@@ -20,7 +20,7 @@
                   <div class="criterii">
                         <div class="dropdown">
                               <form action="#" id="form-criterii">
-                                    <select class="select-criteriu" onchange="showDiv(this)">
+                                    <select class="select-criteriu" onchange="showDiv(this.value)">
                                           <option value="0">Nivel Educatie</option>
                                           <option value="1">Varsta</option>
                                           <option value="2">Mediu</option>
@@ -64,7 +64,14 @@
                         </div>
 
                   </div>
-                  <a href="javascript:genPDF()">Download PDF</a>
+
+                  <div class="download-section">
+                        <button class="download-btn" onclick="javascript:genPDF()">Download PDF</button>
+                        <!-- <button class="download-btn" onclick="javascript:genPDF()">Download XML</button> -->
+                        <!-- <button class="download-btn" onclick="javascript:genPDF()">Download CSV</button> -->
+                        <!-- <button class="download-btn" onclick="javascript:genPDF()">Download SVG</button> -->
+                  </div>
+                  
             </div>
 
 
