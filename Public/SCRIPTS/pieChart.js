@@ -29,25 +29,18 @@ function createPieChart( elementID, labels, values, colors ) {
 }
 
 let api_url = 'https://arcane-sierra-19327.herokuapp.com'
-let table_name = 'medii';
 
 
 function init_piechart(rows){
-    colors = ["rgb(140,140,255)","rgb(118,0,119)"]
-    labels = []
-    values = []
-    for (let row of rows) {
-        if( row.luna == 1 && row.an == 2019){ // TODO
-            if (row['id_judet'] === 25) { //TODO
-                console.log(row)
-                values.push(row.insdemnizati)
-                labels.push('indemnizati')
-
-                values.push(row.neindemnizati)
-                labels.push('neindemnizati')
-
-            }
-        }
+    colors = ["rgb(140,140,255)", "rgb(118,0,119)"]
+    labels = ['indemnizati', 'neindemnizati']
+    values = [0, 0]
+    for (var row of rows) {
+        values[0] += row.insdemnizati
+        values[1] += row.neindemnizati
     }
+    sum = values[0] + values[1]
+    values[0] = (values[0] / sum * 100).toFixed(1)
+    values[1] = (values[1] / sum * 100).toFixed(1)
     createPieChart("pieChart", labels, values, colors)
 }

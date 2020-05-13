@@ -21,41 +21,39 @@ function map_value_to_color(value) {
 }
 
 
-function colorize_map_hardcoded(rows, field){
+function colorize_map(rows, field){
+    console.assert(rows.length == 42, `length not 42: ${rows.length}`)
     for (let row of rows) {
-        if (row.luna === 1 && row.an === 2019) {  // TODO
-            set_county_color(row.id_judet, map_value_to_color(row[field]));
-        }
+        set_county_color(row.id_judet, map_value_to_color(row[field]));
     }
 }
 
 
-function set_hover_hardcoded(rows, field){
+function set_county_hover(rows, field){
+    console.assert(rows.length == 42, `length not 42: ${rows.length}`)
     let svg = document.getElementById('romanian_map');
     let tooltip = document.getElementById('tooltip');
     for (let row of rows){
-        if(row.luna === 1 && row.an === 2019){  // TODO
-            trigger = document.getElementById(`JUDET_SVG_${row.id_judet}`)
-            trigger.addEventListener('mouseenter', function (event) {
-                let CTM = svg.getScreenCTM();
-                let x = (event.clientX - CTM.e + 6) / CTM.a;
-                let y = (event.clientY - CTM.f + 20) / CTM.d;
+        trigger = document.getElementById(`JUDET_SVG_${row.id_judet}`)
+        trigger.addEventListener('mouseenter', function (event) {
+            let CTM = svg.getScreenCTM();
+            let x = (event.clientX - CTM.e + 6) / CTM.a;
+            let y = (event.clientY - CTM.f + 20) / CTM.d;
 
-                tooltip.setAttributeNS(null, "transform", "translate(" + x + " " + y + ")");
-                tooltip.setAttributeNS(null, "visibility", "visible");
-                let tooltipText = tooltip.getElementsByTagName('text')[0];
-                tooltipText.firstChild.data = `${event.target.getAttribute('title')}: ${field} ${row[field]}`;
+            tooltip.setAttributeNS(null, "transform", "translate(" + x + " " + y + ")");
+            tooltip.setAttributeNS(null, "visibility", "visible");
+            let tooltipText = tooltip.getElementsByTagName('text')[0];
+            tooltipText.firstChild.data = `${event.target.getAttribute('title')}: ${field} ${row[field]}`;
 
-                let rects = tooltip.getElementsByTagName('rect');
-                let length = tooltipText.getComputedTextLength();
+            let rects = tooltip.getElementsByTagName('rect');
+            let length = tooltipText.getComputedTextLength();
 
-                for (let rect of rects) {
-                    rect.setAttributeNS(null, "width", length + 8);
-                }
-            }); 
-            trigger.addEventListener('mouseout', function (event) {
-                tooltip.setAttributeNS(null, "visibility", "hidden");
-            });
-        }
+            for (let rect of rects) {
+                rect.setAttributeNS(null, "width", length + 8);
+            }
+        }); 
+        trigger.addEventListener('mouseout', function (event) {
+            tooltip.setAttributeNS(null, "visibility", "hidden");
+        });
     }
 }

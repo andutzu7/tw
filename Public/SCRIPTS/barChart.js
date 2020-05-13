@@ -54,13 +54,17 @@ function createBarChart(chartNameID, field_text, title_text, months, values ) {
 }
 
 
-function init_barchart(rows, field){
+function init_barchart(table, field){
     values = []
     month_labels = []
-    for (let row of rows) {
-        if (row['id_judet'] === 25 ) {  // TODO
-            values.push(row[field]);  // TODO
-            month_labels.push(row['luna']);
+    for (var year in table) {
+        for(var month in table[year]){
+            for(var row of table[year][month]){
+                if (row['id_judet'] === 25 ) {  // TODO
+                    values.push(row[field]);
+                    month_labels.push(row['luna']);
+                }
+            }
         }
     }
     labels = generateBarMonthsLabels(month_labels);
