@@ -1,7 +1,7 @@
 function createPieChart( elementID, labels, values, colors ) {
     var ctx2 = document.getElementById(elementID);
     var pieChart = new Chart(ctx2, {
-        type: 'pie',
+        type: 'doughnut',
         data: {
             labels: labels,
             datasets: [{
@@ -10,14 +10,22 @@ function createPieChart( elementID, labels, values, colors ) {
             }]
         },
         options: { 
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]
+                        return value + '%';
+                    }
+                }
+            },
             responsive: true,
             maintainAspectRatio: false,
             legend: {
                 display: true,
                 position: "bottom",
-                fullWidth: true,
                 labels: {
-                    fontColor: "white"
+                    fontColor: "white",
+                    boxWidth: 10
                 }
             },
             title: {
