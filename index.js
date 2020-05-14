@@ -9,14 +9,22 @@ data = {}
 
 connection = db.getConnection();
 
-all_tables = ['varste', 'medii', 'educatie', 'rata', 'judete']
+all_tables = ['varste', 'medii', 'educatie', 'rata']
 
 for(let table_name of all_tables){
-    connection.query(`SELECT * FROM ${table_name}`, (err, rows) => {
+    query = `SELECT * FROM ${table_name} ORDER BY AN DESC, luna desc limit 504`
+    connection.query(query, (err, rows) => {
         if (err) throw err;
         data[table_name] = JSON.parse(JSON.stringify(rows));
     });
 }
+
+all_tables.push(`judete`)
+query = `SELECT * FROM judete`
+    connection.query(query, (err, rows) => {
+        if (err) throw err;
+        data[`judete`] = JSON.parse(JSON.stringify(rows));
+    });
 connection.end()
 
 
@@ -25,7 +33,7 @@ const server = http.createServer((req, res) => {
     valid_url = false;
     res.setHeader('Access-Control-Allow-Origin', '*');
     for(let table_name of all_tables){
-        if(req.url.substring(1) == table_name){
+        if(req.url == `/${table_name}`){
             valid_url = true;
             console.log(req.url);
 
