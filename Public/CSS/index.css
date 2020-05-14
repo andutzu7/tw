@@ -1,5 +1,5 @@
 body {
-    background: #3d5af1;
+    background: #d3d1d1;
     font: small-caps bold 20px/1 sans-serif;
     text-align: center;
 }
@@ -15,7 +15,7 @@ body {
 }
 
 .main-page-container {
-    background-color: #0e153a;
+    background-color: #232d5c;
     margin: 13px;
     padding: 13px 0;
     color: #e2f3f5; /*#22d1ee*/
@@ -23,7 +23,7 @@ body {
 }
 
 .sidemenu-container {
-    grid-column: 1 / 2;
+    grid-column: 0 / 1;
     grid-row: 1 / 7;
     padding: 0;
     position: relative;
