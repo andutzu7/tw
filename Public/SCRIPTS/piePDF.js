@@ -17,7 +17,7 @@ function genPDF() {
     doc.fromHTML(document.getElementById('barChartPDF').innerHTML, 20,20,{
         'width':100});
 doc.addImage(imgData, 'JPEG', 0, 0, width,height);
-    doc.save('Test.pdf');
+    doc.save('Chart-uri Somaj.pdf');
     
 	
 }
