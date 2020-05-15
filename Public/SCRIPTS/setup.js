@@ -1,7 +1,7 @@
 all_tables = {}
 
 selected_month = 1
-selected_year = 2019
+selected_year = 2020
 selected_table = 'rata'
 
 
