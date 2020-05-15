@@ -18,3 +18,7 @@
   .button-group {
     text-align: center;
   }
+
+  .button-group button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+  }
