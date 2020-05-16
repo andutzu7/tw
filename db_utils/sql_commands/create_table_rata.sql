@@ -3,7 +3,7 @@ create table rata(
     total int,
     total_femei int,
     total_barbati int,
-    insdemnizati int,
+    indemnizati int,
     neindemnizati int,
     procent_total float,
     procent_femei float,
