@@ -205,14 +205,14 @@ def main():
 
     csv_links = get_all_csv_links()
 
-    print('checking county naming consistency')
-    assert_county_names_are_consistent(csv_links)
-    print("county names are consistent")
+    # print('checking county naming consistency')
+    # assert_county_names_are_consistent(csv_links)
+    # print("county names are consistent")
 
-    print('checking column naming consistency')
-    for categ in ['medii', 'varste', 'rata', 'educatie']:
-        assert_column_names_are_consistent(csv_links, categ)
-    print("column names are consistent")
+    # print('checking column naming consistency')
+    # for categ in ['medii', 'varste', 'rata', 'educatie']:
+    #     assert_column_names_are_consistent(csv_links, categ)
+    # print("column names are consistent")
 
     with get_cursor(host=url, user=user, passwd=password, database=database, autocommit=True) as cursor:
         update_data(cursor, csv_links)
