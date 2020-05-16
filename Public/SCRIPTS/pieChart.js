@@ -44,7 +44,7 @@ function init_piechart(rows){
     labels = ['indemnizati', 'neindemnizati']
     values = [0, 0]
     for (var row of rows) {
-        values[0] += row.insdemnizati
+        values[0] += row.indemnizati
         values[1] += row.neindemnizati
     }
     sum = values[0] + values[1]

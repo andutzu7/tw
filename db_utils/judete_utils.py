@@ -3,6 +3,50 @@ import os
 from datagov_scraper import get_all_csv_links, print_dict, read_csv
 import urllib3
 
+ids = {
+    "ALBA": 1,
+    "ARAD": 2,
+    "ARGES": 3,
+    "BACAU": 4,
+    "BIHOR": 5,
+    "BISTRITA": 6,
+    "BOTOSANI": 7,
+    "BRAILA": 8,
+    "BRASOV": 9,
+    "BUCURESTI": 10,
+    "BUZAU": 11,
+    "CALARASI": 12,
+    "CARAS-SEVERIN": 13,
+    "CLUJ": 14,
+    "CONSTANTA": 15,
+    "COVASNA": 16,
+    "DAMBOVITA": 17,
+    "DOLJ": 18,
+    "GALATI": 19,
+    "GIURGIU": 20,
+    "GORJ": 21,
+    "HARGHITA": 22,
+    "HUNEDOARA": 23,
+    "IALOMITA": 24,
+    "IASI": 25,
+    "ILFOV": 26,
+    "MARAMURES": 27,
+    "MEHEDINTI": 28,
+    "MURES": 29,
+    "NEAMT": 30,
+    "OLT": 31,
+    "PRAHOVA": 32,
+    "SALAJ": 33,
+    "SATU-MARE": 34,
+    "SIBIU": 35,
+    "SUCEAVA": 36,
+    "TELEORMAN": 37,
+    "TIMIS": 38,
+    "TULCEA": 39,
+    "VALCEA": 40,
+    "VASLUI": 41,
+    "VRANCEA": 42
+}
 
 def get_list_of_sets(all_csv_links):
     sets = []
@@ -56,12 +100,8 @@ def filter_name(name, all_csv_links):
     return filter[name.upper().replace(' ', '')]
 
 
-ids = None
 def get_judet_id(name, all_csv_links):
     global ids
-    if ids is None:
-        with open('judete.json', 'r') as fd:
-            ids = json.load(fd)
     return ids[filter_name(name, all_csv_links)]
 
 
@@ -79,8 +119,7 @@ def assert_column_names_are_consistent(all_csv_links, categ):
 
 
 def assert_county_names_are_consistent(all_csv_links):
-    with open('judete.json', 'r') as fd:
-        ids = json.load(fd)
+    global ids
     judete_expected = sorted(list(set([name.upper() for name in list(ids.keys())])))
     judete_from_csv = sorted(list(set(list(get_consistency_filter(all_csv_links).values()))))
 
