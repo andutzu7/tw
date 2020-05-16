@@ -26,80 +26,71 @@ def get_list_of_sets(all_csv_links):
     return sets
 
 
-def get_consistency_filter(force_update=False):
-    if os.path.exists('name_filter.json') and not force_update:
-        with open('name_filter.json', 'r') as fd:
-            return json.load(fd)
-    else:
-        all_csv_links = get_all_csv_links(force_update)
-        sets = get_list_of_sets(all_csv_links)
-        filter = dict()
-        for set_judet in sets:
-            versions = list(set_judet)
-            final = versions[0]
-            if len(versions) > 1:
-                if all(['BUC' in version.upper() for version in versions]):
-                    final = 'BUCURESTI'
-                elif all(['SATU' in version.upper() for version in versions]):
-                    final = 'SATU-MARE'
-                elif all(['BISTR' in version.upper() for version in versions]):
-                    final = 'BISTRITA'
-                elif all(['CARA' in version.upper() for version in versions]):
-                    final = 'CARAS-SEVERIN'
-                else:
-                    print(versions)
-            for name in versions:
-                filter[name] = final
-        with open('name_filter.json', 'w') as fd:
-            json.dump(filter, fd, indent=4)
+def get_consistency_filter(all_csv_links):
+    sets = get_list_of_sets(all_csv_links)
+    filter = dict()
+    for set_judet in sets:
+        versions = list(set_judet)
+        final = versions[0]
+        if len(versions) > 1:
+            if all(['BUC' in version.upper() for version in versions]):
+                final = 'BUCURESTI'
+            elif all(['SATU' in version.upper() for version in versions]):
+                final = 'SATU-MARE'
+            elif all(['BISTR' in version.upper() for version in versions]):
+                final = 'BISTRITA'
+            elif all(['CARA' in version.upper() for version in versions]):
+                final = 'CARAS-SEVERIN'
+            else:
+                print(versions)
+        for name in versions:
+            filter[name] = final
     return filter
 
 
 filter = None
-def filter_name(name):
+def filter_name(name, all_csv_links):
     global filter
     if filter is None:
-        filter = get_consistency_filter()
+        filter = get_consistency_filter(all_csv_links)
     return filter[name.upper().replace(' ', '')]
 
 
 ids = None
-def get_judet_id(name):
+def get_judet_id(name, all_csv_links):
     global ids
     if ids is None:
         with open('judete.json', 'r') as fd:
             ids = json.load(fd)
-    return ids[filter_name(name)]
+    return ids[filter_name(name, all_csv_links)]
 
 
-def print_column_names(all_csv_links, categ):
+def assert_column_names_are_consistent(all_csv_links, categ):
+    versions = set()
     for year in all_csv_links:
         for month in all_csv_links[year]:
             link = all_csv_links[year][month][categ]
             rows = read_csv(link)
             columns = [column.strip() for column in rows[0]]
-            print(columns)
+            if not columns[-1]:
+                columns.pop()
+            versions.add(tuple(columns))
+    assert len(versions) == 1, 'column names for "{}" files are not consistent'.format(categ)
 
 
-def check_column_names(all_csv_links):
-    print_column_names(all_csv_links, 'rata')
-    print_column_names(all_csv_links, 'varste')
-    print_column_names(all_csv_links, 'educatie')
-    print_column_names(all_csv_links, 'medii')
-
-
-def assert_county_names_are_consistent(force_update=False):
+def assert_county_names_are_consistent(all_csv_links):
     with open('judete.json', 'r') as fd:
         ids = json.load(fd)
-    judete = sorted(list(set([name.upper() for name in list(ids.keys())])))
-    judetecsv = sorted(list(set(list(get_consistency_filter(force_update).values()))))
+    judete_expected = sorted(list(set([name.upper() for name in list(ids.keys())])))
+    judete_from_csv = sorted(list(set(list(get_consistency_filter(all_csv_links).values()))))
 
-    for a, b in zip(judetecsv, judete):
+    for a, b in zip(judete_from_csv, judete_expected):
         assert a == b, str(a + " " + b)
 
-    print("names ar consistent")
 
 if __name__ == '__main__':
     urllib3.disable_warnings()
-    check_column_names(get_all_csv_links(force_update=True))
-    assert_county_names_are_consistent(force_update=True)
+    all_csv_links = get_all_csv_links()
+    for categ in ['medii', 'varste', 'rata', 'educatie']:
+        assert_column_names_are_consistent(all_csv_links, categ)
+    assert_county_names_are_consistent(all_csv_links)

@@ -1,7 +1,7 @@
 import mysql.connector
 from contextlib import contextmanager
 from datagov_scraper import get_all_csv_links, print_dict, read_csv, MONTHS
-from judete_utils import filter_name, get_judet_id, assert_county_names_are_consistent
+from judete_utils import filter_name, get_judet_id, assert_county_names_are_consistent, assert_column_names_are_consistent
 import urllib3
 import os
 import json
@@ -53,8 +53,8 @@ def add_csv_files_to_educatie(cursor, csv_links):
                 rows = read_csv(link)
                 for row in rows[1:43]:
                     judet = row[0].upper()
-                    judet = filter_name(judet)
-                    id_judet = get_judet_id(judet)
+                    judet = filter_name(judet, csv_links)
+                    id_judet = get_judet_id(judet, csv_links)
                     total = int(row[1])
                     fara_studii = int(row[2])
                     primar = int(row[3])
@@ -86,8 +86,8 @@ def add_csv_files_to_varste(cursor, csv_links):
 
                 for row in rows[1:43]:
                     judet = row[0].upper()
-                    judet = filter_name(judet)
-                    id_judet = get_judet_id(judet)
+                    judet = filter_name(judet, csv_links)
+                    id_judet = get_judet_id(judet, csv_links)
                     sub25 = int(row[2])
                     interval25_29 = int(row[3])
                     interval30_39 = int(row[4])
@@ -117,8 +117,8 @@ def add_csv_files_to_medii(cursor, csv_links):
 
                 for row in rows[1:43]:
                     judet = row[0].upper()
-                    judet = filter_name(judet)
-                    id_judet = get_judet_id(judet)
+                    judet = filter_name(judet, csv_links)
+                    id_judet = get_judet_id(judet, csv_links)
                     urban_femei = int(row[5])
                     urban_barbati = int(row[6])
                     rural_femei = int(row[8])
@@ -147,8 +147,8 @@ def add_csv_files_to_rata(cursor, csv_links):
 
                 for row in rows[1:43]:
                     judet = row[0].upper()
-                    judet = filter_name(judet)
-                    id_judet = get_judet_id(judet)
+                    judet = filter_name(judet, csv_links)
+                    id_judet = get_judet_id(judet, csv_links)
                     total = int(row[1].replace(',', ''))
                     total_femei = int(row[2].replace(',', ''))
                     total_barbati = int(row[3].replace(',', ''))
@@ -203,12 +203,19 @@ def main():
     password = "0aa128f5"
     user = "b4ce0916cecd87"
 
-    assert_county_names_are_consistent(force_update=True)
+    csv_links = get_all_csv_links()
+
+    print('checking county naming consistency')
+    assert_county_names_are_consistent(csv_links)
+    print("county names are consistent")
+
+    print('checking column naming consistency')
+    for categ in ['medii', 'varste', 'rata', 'educatie']:
+        assert_column_names_are_consistent(csv_links, categ)
+    print("column names are consistent")
 
     with get_cursor(host=url, user=user, passwd=password, database=database, autocommit=True) as cursor:
-        csv_links = get_all_csv_links()
         update_data(cursor, csv_links)
-
 
 
 if __name__ == '__main__':
