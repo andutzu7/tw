@@ -1,49 +1,54 @@
 const http = require('http');
-const url = require('url');
-const database = require('./scripts/database');
+const mysql = require('mysql');
 
 
-db = new database.Database('eu-cdbr-west-03.cleardb.net', 'b4ce0916cecd87', '0aa128f5', 'heroku_79d4353e46b22ee');
+pool = mysql.createPool({
+    connectionLimit : 10,
+    host: 'eu-cdbr-west-03.cleardb.net',
+    user: 'b4ce0916cecd87',
+    password: '0aa128f5',
+    database: 'heroku_79d4353e46b22ee'
+});
+
 
 data = {}
+all_tables = ['varste', 'medii', 'educatie', 'rata', 'judete']
 
-connection = db.getConnection();
+function update_data(){
+    for(let index = 0; index < all_tables.length - 1; index++){
+        let table_name = all_tables[index]
+        let query = `SELECT * FROM ${table_name} ORDER BY AN DESC, luna desc limit 504`
+        pool.query(query, (err, rows) => {
+            if (err) throw err;
+            data[table_name] = JSON.parse(JSON.stringify(rows));
+        });
+    }
 
-all_tables = ['varste', 'medii', 'educatie', 'rata']
-
-for(let table_name of all_tables){
-    query = `SELECT * FROM ${table_name} ORDER BY AN DESC, luna desc limit 504`
-    connection.query(query, (err, rows) => {
-        if (err) throw err;
-        data[table_name] = JSON.parse(JSON.stringify(rows));
-    });
-}
-
-all_tables.push(`judete`)
-query = `SELECT * FROM judete`
-    connection.query(query, (err, rows) => {
+    let query = `SELECT * FROM judete`
+    pool.query(query, (err, rows) => {
         if (err) throw err;
         data[`judete`] = JSON.parse(JSON.stringify(rows));
     });
-connection.end()
+}
 
 
+update_data(); 
 const port = process.env.PORT || 3000;
 const server = http.createServer((req, res) => {
-    valid_url = false;
     res.setHeader('Access-Control-Allow-Origin', '*');
-    for(let table_name of all_tables){
-        if(req.url == `/${table_name}`){
-            valid_url = true;
-            console.log(req.url);
-
-            res.end(JSON.stringify(data[table_name]))
-            break;
+    if(req.method == 'POST'){
+        if(req.url == '/dev/reload_db'){
+            update_data();
         }
     }
-    if(!valid_url){
-        console.log("INVALID URL: " + req.url);
-        res.end('INVALID URL')
+
+    if(req.method == 'GET'){
+        for(let table_name of all_tables){
+            if(req.url == `/${table_name}`){
+                res.end(JSON.stringify(data[table_name]))
+                break;
+            }
+        }
     }
 });
 
