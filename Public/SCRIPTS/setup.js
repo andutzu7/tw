@@ -57,6 +57,6 @@ function xmlExp(){
 }
 
 function csvExp(){
-    const csvStringData = generateCSV(all_tables);
-    downloadxml("export_statistici.csv",csvStringData);
+    const csvStringData = generateCSV(all_tables["educatie"]); //hardcoded
+    downloadcsv("export_statistici.csv",csvStringData);
 }
