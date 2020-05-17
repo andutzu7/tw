@@ -5,6 +5,8 @@ from judete_utils import filter_name, get_judet_id, assert_county_names_are_cons
 import urllib3
 import os
 import json
+import time
+import requests
 
 
 @contextmanager
@@ -205,17 +207,28 @@ def main():
 
     csv_links = get_all_csv_links()
 
-    # print('checking county naming consistency')
-    # assert_county_names_are_consistent(csv_links)
-    # print("county names are consistent")
+    print('checking county naming consistency')
+    assert_county_names_are_consistent(csv_links)
+    print("county names are consistent")
 
-    # print('checking column naming consistency')
-    # for categ in ['medii', 'varste', 'rata', 'educatie']:
-    #     assert_column_names_are_consistent(csv_links, categ)
-    # print("column names are consistent")
+    print('checking column naming consistency')
+    for categ in ['medii', 'varste', 'rata', 'educatie']:
+        assert_column_names_are_consistent(csv_links, categ)
+    print("column names are consistent")
 
     with get_cursor(host=url, user=user, passwd=password, database=database, autocommit=True) as cursor:
         update_data(cursor, csv_links)
+
+    print('sleeping for 60 seconds')
+    time.sleep(60)
+
+    print('requesting the api to reload the data')
+    api_url = 'https://arcane-sierra-19327.herokuapp.com'
+    r = requests.post('{}/dev/reload_db'.format(api_url))
+    if r.ok:
+        print('api response: {}'.format(r.text))
+    else:
+        print('something went wrong')
 
 
 if __name__ == '__main__':

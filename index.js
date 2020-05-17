@@ -29,16 +29,18 @@ function update_data(){
         if (err) throw err;
         data[`judete`] = JSON.parse(JSON.stringify(rows));
     });
+    console.log('server reloaded data')
 }
 
 
-update_data(); 
+//update_data(); 
 const port = process.env.PORT || 3000;
 const server = http.createServer((req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     if(req.method == 'POST'){
         if(req.url == '/dev/reload_db'){
             update_data();
+            res.end('SUCCESS')
         }
     }
 

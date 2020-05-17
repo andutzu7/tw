@@ -95,7 +95,18 @@ def get_all_csv_links():
     return all_csv_links
 
 
+csv_cache = dict()
 def read_csv(url):
+    global csv_cache
+    if '/' in url:
+        url_to_log = url.split('/')[-1]
+    else:
+        url_to_log = url
+
+    if url in csv_cache:
+        return csv_cache[url]
+
+    print('reading {} from data.gov'.format(url_to_log))
     page = requests.get(url, verify=False)  # I get a SSL exception without the verify kwarg
     if not page.ok:
         print('request failed {}'.format)
@@ -103,12 +114,13 @@ def read_csv(url):
 
     lines = page.text.splitlines()
     reader = csv.reader(lines)
-    return list(reader)
+    rows_as_list = list(reader)
+    csv_cache[url] = rows_as_list
+    return rows_as_list
 
 
 def main():
-    a = get_all_csv_links()
-    print_dict(a)
+    print_dict(get_all_csv_links())
 
 
 if __name__ == '__main__':
