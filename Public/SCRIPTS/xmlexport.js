@@ -6,7 +6,7 @@ function generateXML(allTables) {
     xmldata += "<data>\n";
     //console.log(allTables[category][year][3][0][x]);
     for (let category in allTables) {
-        xmldata += `\t<Category id=` + '"' + `${category}` +'"' + `> \n`;
+        xmldata += `\t<Category id=` + '"' + `${category}` + '"' + `> \n`;
         for (let year in allTables[category]) {
             xmldata += `\t\t<Year id=` + '"' + `${year}` + '"' + '> \n ';
             for (let month in allTables[category][year]) {

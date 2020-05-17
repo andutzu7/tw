@@ -55,3 +55,8 @@ function xmlExp(){
     const xmlStringData =generateXML(all_tables);
    downloadxml("export_statistici.xml",xmlStringData);
 }
+
+function csvExp(){
+    const csvStringData = generateCSV(all_tables);
+    downloadxml("export_statistici.csv",csvStringData);
+}
