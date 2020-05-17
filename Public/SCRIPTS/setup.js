@@ -53,3 +53,9 @@ function setup_hardcoded(api_url) {
 
 url = 'https://arcane-sierra-19327.herokuapp.com'
 setup_hardcoded(url)
+
+function xmlExp(){
+    const xmlStringData =generateXML(all_tables);
+    console.log(xmlStringData);
+    downloadxml("hell-o",xmlStringData);
+}
