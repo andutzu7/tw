@@ -56,6 +56,5 @@ setup_hardcoded(url)
 
 function xmlExp(){
     const xmlStringData =generateXML(all_tables);
-    console.log(xmlStringData);
-    downloadxml("hell-o",xmlStringData);
+    downloadxml("export_statistici.xml",xmlStringData);
 }
