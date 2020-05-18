@@ -50,7 +50,6 @@ function generateTable(allTables) {
     tbl.setAttribute("border", "2");
 
     let th = document.getElementsByTagName('th');
-    console.log(th.length);
 
     for (let c = 0; c < th.length; c++) {
 
@@ -70,7 +69,6 @@ for (let c = 0; c < th.length; c++) {
 function item(c) {
 
     return function () {
-        console.log(c)
         sortTable(c)
     }
 }

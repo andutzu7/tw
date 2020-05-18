@@ -6,6 +6,8 @@ https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/
 https://www.chartjs.org/docs/latest/
 http://www.petercollingridge.co.uk/tutorials/svg/interactive/tooltip/
 https://developer.mozilla.org/en-US/ !!!! most important 
+https://www.youtube.com/watch?v=QxbJ9b-mpoA
+https://www.w3schools.com/howto/howto_js_sort_table.asp
 
 svg source
 https://www.amcharts.com/svg-maps/?map=romania
