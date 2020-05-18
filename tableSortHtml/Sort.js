@@ -17,18 +17,24 @@ function generateTable(allTables) {
                     for (let id_judet in allTables[category][year][month]) {
                         let row = document.createElement("tr");
                         for (let key in allTables[category][year][month][id_judet]) {
-                            if (key !== "luna" && key !== "an" && key !== "id_judet") {
+                            if (key !== "luna" && key !== "an" ) {
                                 if (tableHeader === "") {
+                                    let head = document.createElement("tr");
                                     for (const headerName in allTables[category][year][month][id_judet]) {
-                                        if (headerName !== "luna" && headerName !== "an" && headerName !== "id_judet") {
+                                        if (headerName !== "luna" && headerName !== "an") {
                                             let cell = document.createElement("td");
                                             let cellText = document.createTextNode(headerName);
                                             tableHeader += headerName;
                                             cell.appendChild(cellText);
-                                            row.appendChild(cell);
+                                            head.appendChild(cell);
+                                            tblBody.appendChild(head);
                                         }
                                     }
                                 }
+                                let cell = document.createElement("td");
+                                let cellText = document.createTextNode( allTables[category][year][month][id_judet][key]);
+                                cell.appendChild(cellText);
+                                row.appendChild(cell);
                             }
                         }
                         tblBody.appendChild(row);
