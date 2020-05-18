@@ -4,12 +4,12 @@ function generate_table() {
 
 function generateTable(allTables) {
 
-    var body = document.getElementById("myTable");
+    var table = document.getElementById("Table");
     var tbl = document.createElement("table");
+    tbl.setAttribute("id","myTable");
     var tblBody = document.createElement("tbody");
 
     let tableHeader = "";
-    let tableRow = "";
     for (let category in allTables) {
         if (category === "rata") {
             for (let year in allTables[category]) {
@@ -45,17 +45,22 @@ function generateTable(allTables) {
             }
         }
     }
-
     tbl.appendChild(tblBody);
-    body.appendChild(tbl);
+    table.appendChild(tbl);
     tbl.setAttribute("border", "2");
 
-    th = document.getElementsByTagName('tr');
+    let th = document.getElementsByTagName('th');
     console.log(th.length);
+
+    for (let c = 0; c < th.length; c++) {
+
+        th[c].addEventListener('click', item(c))
+    }
 }
 
-th = document.getElementsByTagName('tb');
-console.log(th.length);
+
+th = document.getElementsByTagName('th');
+
 for (let c = 0; c < th.length; c++) {
 
     th[c].addEventListener('click', item(c))
