@@ -2,6 +2,31 @@ body{
     background-color: white;
 }
 
+
+/* map */
+.header{
+    padding: 10px;
+    display: grid;
+    grid-template-areas: "headerinfo harta";
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 100%;
+}
+
+.header-info{
+    grid-area: headerinfo;
+    border:5px dotted white;
+}
+
+.map-container{
+    position: relative;
+    grid-area: harta;
+    border: 6px dotted magenta;
+    display: flex;
+}
+
+
+/* /map */
+
 .wrapper{
     border: 1px solid black;
     width: min(1200px, 100%);
@@ -13,7 +38,7 @@ body{
                          "f e e e";
     grid-template-columns: 300px 1fr 1fr 300px;
     grid-template-rows: auto;
-    grid-gap: 10px;
+    grid-gap: 5px;
 }
 
 .element{
@@ -51,6 +76,24 @@ body{
     background-color: orange;
 }
 
+.land
+{
+    fill: rgb(120,140,255);
+    fill-opacity: 1;
+    stroke:white;
+    stroke-opacity: 1;
+    stroke-width: 1px;
+}
+
+.land:hover{
+    stroke-width: 4px;
+}
+
+#romanian_map{
+    border: 10px dotted black;
+    margin: auto;
+}
+
 
 
 @media only screen and (max-width: 800px) {
@@ -81,4 +124,19 @@ body{
         height: min(50vw, 300px);
     }
 
+
+    .header{
+        padding: 10px;
+        display: grid;
+        grid-template-areas: 
+        "headerinfo" 
+        "harta";
+        grid-template-columns: 100%;
+        grid-template-rows: 50% 50%;
+    }
+
+
+    #romanian_map { 
+        height: min(100%, 55vw);
+    }
   }
