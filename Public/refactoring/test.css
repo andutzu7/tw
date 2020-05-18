@@ -53,3 +53,32 @@ body{
 
 
 
+@media only screen and (max-width: 800px) {
+    body {
+      background-color: black;
+    }
+    .wrapper{
+        grid-template-areas: "a"
+                             "b"
+                             "x"
+                             "c"
+                             "d"
+                             "f"
+                             "e";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .harta{
+        height: min(95vh, 200vw);
+    }
+
+    .pie{
+        height: min(95vh, 100vw);
+    }
+
+    .bar{
+        height: min(50vw, 300px);
+    }
+
+  }
