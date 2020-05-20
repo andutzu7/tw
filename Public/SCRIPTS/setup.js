@@ -83,7 +83,7 @@ function create_link_from_criteria(criteria) {
         page_link += ',';
     }
     page_link = page_link.slice(0, -1);
-    console.log(page_link);
+    return page_link;
 }
 
 const criteria = parse_link_param();
