@@ -34,6 +34,7 @@ body{
 
 
 /* PIEEEEE */
+/* piechart */
 .b{
     position: relative;
     border: 5px dotted black;
@@ -46,6 +47,18 @@ body{
 
 
 /* /map */
+/* barchart */
+.c{
+    position: relative;
+    border: 5px dotted white;
+}
+
+#lineBarChart{
+    position: absolute;
+}
+
+
+
 
 .wrapper{
     width: min(1200px, 100%);
@@ -143,6 +156,7 @@ body{
         "headerinfo" 
         "harta";
         grid-template-columns: 100%;
+        grid-template-columns: 100vw;
         grid-template-rows: 20% 80%;
     }
 
