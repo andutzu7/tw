@@ -54,7 +54,7 @@ const server = http.createServer((req, res) => {
             }
         }
 
-        if (req.url === '/view') { //to access the index.html
+        if (req.url.startsWith('/view')) {
 
             const path = "./tw/Public/HTML/";
             fs.readFile(path + 'index.html', function (err, html) {
