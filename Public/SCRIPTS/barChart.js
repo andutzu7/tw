@@ -28,6 +28,12 @@ function createBarChart(chartNameID, field_text, title_text, months, values ) {
             ]
         },
         options: {
+            tooltips: {
+                titleFontSize: 20,
+                bodyFontSize: 20,
+                titleFontFamily: "Comic Sans MS",
+                bodyFontFamily:"Comic Sans MS",
+            },
             responsive: true,
             maintainAspectRatio: false,
             legend: {
@@ -35,7 +41,10 @@ function createBarChart(chartNameID, field_text, title_text, months, values ) {
             },
             title: {
                 display: true,
-                text: title_text
+                text: title_text,
+                fontFamily: "Comic Sans MS",
+                fontSize:20
+
             }, scales: {
                 xAxes: [{
                     ticks: {
@@ -43,11 +52,23 @@ function createBarChart(chartNameID, field_text, title_text, months, values ) {
                             return value;
                         }
                     }, scaleLabel: {
+                        fontFamily: "Comic Sans MS",
+                        fontSize:20,
                         display: true,
                         labelString: 'Datele pentru August 2019 nu sunt disponibile pe site-ul guvernului.'
+                    },
+                    ticks: {
+                        fontFamily: "Comic Sans MS",
+                        fontSize:20
                     }
                 }
-                ]
+                ],
+                yAxes: [{
+                    ticks: {
+                        fontFamily: "Comic Sans MS",
+                        fontSize:20
+                    }
+                }]
             }
         }
     });
