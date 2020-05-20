@@ -48,6 +48,7 @@ function setup_hardcoded(api_url) {
 }
 
 
+
 url = 'https://arcane-sierra-19327.herokuapp.com'
 setup_hardcoded(url)
 
@@ -60,3 +61,15 @@ function csvExp(){
     const csvStringData = generateCSV(all_tables["educatie"]); //hardcoded
     downloadcsv("export_statistici.csv",csvStringData);
 }
+
+function parse_link_param(){
+    const current_link = window.location.href;
+    //separam din link stringul cu criterii, apoi il transformam in array
+    const criteria = current_link.split("?")[1].split(",");
+    let selected_criteria = {};
+    criteria.forEach(function(entry){
+        selected_criteria[entry.split("=")[0]] =entry.split("=")[1];
+    });
+    console.log(selected_criteria);
+}
+parse_link_param();
