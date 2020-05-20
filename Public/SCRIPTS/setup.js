@@ -94,7 +94,17 @@ function create_link_from_criteria(criteria) {
 
 function update_charts() { //in the future thiss will hav a parameter
     let sel_table = 'rata';
-    removeData(all_charts['barchart' + sel_table]);
+    //removeData(all_charts['barchart' + sel_table]);
+    //removeData(all_charts['piechart'+sel_table]);
+    let testmonth = 11;
+    let testyear = 2019;
+    let testtable = 'varste';
+    all_charts['barchart' + testtable] = init_barchart(all_tables[testtable]);
+    all_charts['piechart' + testtable] = init_piechart(all_tables[testtable][testyear][testmonth]);
+    all_charts['barchart' + testtable].update();
+    all_charts['piechart' + testtable].update();
+
+
 }
 
 

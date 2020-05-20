@@ -9,7 +9,7 @@ function createPieChart( elementID, labels, values, colors ) {
                 data: values
             }]
         },
-        options: { 
+        options: {
             tooltips: {
                 callbacks: {
                     label: function(tooltipItem, data) {
