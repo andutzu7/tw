@@ -144,7 +144,7 @@ body{
     }
 
     .pie{
-        height: min(95vh, 100vw);
+        height: min(95vh, 70vw);
     }
 
     .bar{
