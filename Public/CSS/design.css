@@ -1,10 +1,23 @@
-table { 
-    border-spacing: 0; 
-    width: 30%; 
-    border: 1px solid #dddd; 
-} 
+.tabel{
+    width: 100%;
+    height: 64vh;
+    overflow: auto
 
-th, 
+}
+
+table {
+    border-spacing: 0; 
+    width: 50%;
+    border: 1px solid #dddd;
+}
+
+
+th{
+    position: sticky;
+    top: 0;
+    text-align: left;
+    padding: 15px;
+}
 td { 
     text-align: left; 
     padding: 15px; 

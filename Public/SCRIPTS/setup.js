@@ -10,6 +10,7 @@ function select_table(table_name, init_field) {
     set_county_hover(all_tables[table_name][selected_year][selected_month], init_field, selected_year, selected_month);
     all_charts['barchart_total'] = init_barchart_total(all_tables[table_name], init_field);
     all_charts['piechart_indemnizatie'] = init_piechart_indemnizatie(all_tables[table_name][selected_year][selected_month]);
+    generate_table();
 }
 
 
