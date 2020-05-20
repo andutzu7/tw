@@ -1,9 +1,9 @@
-body{
+body {
     background-color: white;
 }
 
 /* map */
-.header{
+.header {
     /* padding: 10px; */
     display: grid;
     grid-template-areas: "headerinfo harta";
@@ -12,158 +12,183 @@ body{
 }
 
 
-.element{
+.element {
     height: 300px;
     opacity: 90%;
 }
 
-.header-info{
+.header-info {
     border: 1px solid white; /*debug*/
     grid-area: headerinfo;
     overflow: hidden; /*todo*/
 }
 
-.map-container{
+.map-container {
     grid-area: harta;
     display: flex;
 }
 
-#romanian_map{
+#romanian_map {
     width: 100%;
 }
 
-.chart-container{
+.chart-container {
     position: relative;
     border: 2px dotted pink;
 }
 
 
-.chart{
+.chart {
     position: absolute;
 }
-
 
 
 /* barchart */
-.c{
+.c {
     position: relative;
 }
 
-#lineBarChart{
+#lineBarChart {
     position: absolute;
 }
 
 
-
-
-.wrapper{
+.wrapper {
     width: min(1200px, 100%);
     margin: auto;
     display: grid;
-    grid-template-areas: "a a a a"
-                         "b b x x"
-                         "c c c d"
-                         "f e e e";
+    grid-template-areas: "a a a a" "b b x x" "c c c d" "f e e e";
     grid-template-columns: 300px 1fr 1fr 300px;
     grid-template-rows: auto;
     /* grid-gap: 5px; */
 }
 
-.a{
+.a {
     height: min(500px, 95vh);
     grid-area: a;
     background-color: red;
 }
-.b{
+
+.b {
     grid-area: b;
     background-color: green;
 }
-.c{
+
+.c {
     grid-area: c;
     background-color: black;
 }
-.d{
+
+.d {
     grid-area: d;
     background-color: purple;
 }
-.e{
+
+.e {
     grid-area: e;
     background-color: yellow;
 }
-.f{
+
+.f {
     grid-area: f;
     background-color: gray;
 }
 
-.x{
+.x {
     grid-area: x;
     background-color: orange;
 }
 
-.land
-{
-    fill: rgb(120,140,255);
+.land {
+    fill: rgb(120, 140, 255);
     fill-opacity: 1;
-    stroke:white;
+    stroke: white;
     stroke-opacity: 1;
     stroke-width: 1px;
 }
 
-.land:hover{
+.land:hover {
     stroke-width: 4px;
 }
 
 
-
 @media only screen and (max-width: 800px) {
     body {
-      background-color: black;
+        background-color: black;
     }
-    .wrapper{
-        grid-template-areas: "a"
-                             "b"
-                             "x"
-                             "c"
-                             "d"
-                             "f"
-                             "e";
+
+    .wrapper {
+        grid-template-areas: "a" "b" "x" "c" "d" "f" "e";
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         grid-gap: 0;
     }
 
-    .element{
-        width:100vw;
+    .element {
+        width: 100vw;
         padding-bottom: 30px;
         padding-top: 30px;
-        margin:auto;
+        margin: auto;
     }
 
-    .harta{
+    .harta {
         height: min(95vh, 200vw);
     }
 
-    .pie{
+    .pie {
         height: min(95vh, 100vw);
     }
 
-    .bar{
+    .bar {
         height: min(50vw, 300px);
     }
 
 
-    .header{
+    .header {
         padding: 0;
         display: grid;
-        grid-template-areas: 
-        "headerinfo" 
-        "harta";
+        grid-template-areas: "headerinfo" "harta";
         grid-template-columns: 100vw;
         grid-template-rows: 20% 80%;
     }
 
 
-    #romanian_map { 
+    #romanian_map {
         height: min(100%, 90vw);
     }
-  }
+}
+
+
+.styled {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    background-image: linear-gradient(to top left,
+    rgba(0, 0, 0, .2),
+    rgba(0, 0, 0, .2) 30%,
+    rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+    inset -2px -2px 3px rgba(0, 0, 0, .6);
+
+}
+
+.styled:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+.styled:active {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+    inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
