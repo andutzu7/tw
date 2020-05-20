@@ -9,7 +9,7 @@ function generateBarMonthsLabels(monthsIndex) {
 
 function createBarChart(chartNameID, field_text, title_text, months, values ) {
     var ctx = document.getElementById(chartNameID);
-    var myChart = new Chart(ctx, {
+    return new Chart(ctx, {
         type: 'bar',
         data: {
             labels: months,
@@ -68,6 +68,7 @@ function init_barchart(table, field){
         }
     }
     labels = generateBarMonthsLabels(month_labels);
-    createBarChart("lineBarChart0", 'total', 'titlu', labels, values);
-    createBarChart("lineBarChart1", 'total', 'titlu', labels, values);
+//     createBarChart("lineBarChart0", 'total', 'titlu', labels, values);
+//     createBarChart("lineBarChart1", 'total', 'titlu', labels, values);
+    return createBarChart("lineBarChart", 'total', 'titlu', labels, values);
 }
