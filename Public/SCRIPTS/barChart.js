@@ -54,7 +54,15 @@ function createBarChart(chartNameID, field_text, title_text, months, values ) {
 }
 
 
-function init_barchart(table, field){
+function update_barchart(chart, values){
+    for(let i=0; i < chart.data.datasets.length; i++){
+        chart.data.datasets[i].data = values;
+    }
+    chart.update()
+}
+
+
+function init_barchart_total(table, field){
     values = []
     month_labels = []
     for (var year in table) {
@@ -68,7 +76,5 @@ function init_barchart(table, field){
         }
     }
     labels = generateBarMonthsLabels(month_labels);
-    createBarChart("lineBarChart0", 'total', 'titlu', labels, values);
-    createBarChart("lineBarChart1", 'total', 'titlu', labels, values);
-    //return createBarChart("lineBarChart", 'total', 'titlu', labels, values);
+    return createBarChart("barchart_total", 'total', 'titlu', labels, values);
 }

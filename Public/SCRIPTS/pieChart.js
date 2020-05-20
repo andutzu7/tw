@@ -36,10 +36,14 @@ function createPieChart( elementID, labels, values, colors ) {
     });
 }
 
-let api_url = 'https://arcane-sierra-19327.herokuapp.com'
+
+function update_piechart(chart, values){
+    chart.data.datasets[0].data = values;
+    chart.update();
+}
 
 
-function init_piechart(rows){
+function init_piechart_indemnizatie(rows){
     colors = ["rgb(140,140,255)", "rgb(118,0,119)"]
     labels = ['indemnizati', 'neindemnizati']
     values = [0, 0]
@@ -50,9 +54,5 @@ function init_piechart(rows){
     sum = values[0] + values[1]
     values[0] = (values[0] / sum * 100).toFixed(1)
     values[1] = (values[1] / sum * 100).toFixed(1)
-    createPieChart("piechart0", labels, values, colors)
-    createPieChart("piechart1", labels, values, colors)
-    createPieChart("piechart2", labels, values, colors)
-    createPieChart("piechart3", labels, values, colors)
-    // return createPieChart("pieChart", labels, values, colors)
+    return createPieChart("piechart_indemnizatie", labels, values, colors)
 }

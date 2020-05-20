@@ -8,8 +8,14 @@ selected_table = 'rata';
 function select_table(table_name, init_field) {
     colorize_map(all_tables[table_name][selected_year][selected_month], init_field, selected_year, selected_month);
     set_county_hover(all_tables[table_name][selected_year][selected_month], init_field, selected_year, selected_month);
-    all_charts['barchart' + table_name] = init_barchart(all_tables[table_name], init_field);
-    all_charts['piechart' + table_name] = init_piechart(all_tables[table_name][selected_year][selected_month]);
+    all_charts['barchart_total'] = init_barchart_total(all_tables[table_name], init_field);
+    all_charts['piechart_indemnizatie'] = init_piechart_indemnizatie(all_tables[table_name][selected_year][selected_month]);
+}
+
+
+function myupdate(){
+    update_piechart(all_charts['piechart_indemnizatie'], [20,1])
+    update_barchart(all_charts['barchart_total'], [0, 0, 1, 1, 0.2, 5, 4.5, 0.2, 1, 1, 0, 0])
 }
 
 function store_table(table_name, rows) {
