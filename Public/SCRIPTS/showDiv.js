@@ -4,7 +4,6 @@ function showDiv(value) {
     }
     //unhide the selected div
     document.getElementById('hidden_div'+value).style.display = 'block';
-    console.log(value);
 }
  
 window.onload=function() {

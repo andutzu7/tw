@@ -1,15 +1,15 @@
-all_tables = {}
-
-selected_month = 1
-selected_year = 2020
-selected_table = 'rata'
+all_tables = {};
+all_charts = {};
+selected_month = 1;
+selected_year = 2020;
+selected_table = 'rata';
 
 
 function select_table(table_name, init_field) {
     colorize_map(all_tables[table_name][selected_year][selected_month], init_field, selected_year, selected_month);
     set_county_hover(all_tables[table_name][selected_year][selected_month], init_field, selected_year, selected_month);
-    init_barchart(all_tables[table_name], init_field);
-    init_piechart(all_tables['rata'][selected_year][selected_month]);
+    all_charts['barchart' + table_name] = init_barchart(all_tables[table_name], init_field);
+    all_charts['piechart' + table_name] = init_piechart(all_tables[table_name][selected_year][selected_month]);
 }
 
 function store_table(table_name, rows) {
@@ -78,10 +78,36 @@ function create_link_from_criteria(criteria) {
     page_link += '?'; //needed
     for (const [key, value] of Object.entries(criteria)) {
         page_link += key;
-        page_link +='=';
+        page_link += '=';
         page_link += value;
         page_link += '&';
     }
     page_link = page_link.slice(0, -1);
     return page_link;
+}
+
+function update_charts() { //in the future thiss will hav a parameter
+    let sel_table = 'rata';
+    removeData(all_charts['barchart' + sel_table]);
+}
+
+
+function addData(chart, label, data) {
+    chart.data.labels.push(label);
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
+    });
+    chart.update();
+}
+
+function removeData(chart) {
+    chart.data.labels.pop();
+    chart.data.datasets.forEach((dataset) => {
+        while (dataset.data.length > 0) {
+            dataset.data.pop();
+        }
+    });
+
+    chart.update();
+
 }
