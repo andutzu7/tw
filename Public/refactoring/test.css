@@ -14,7 +14,7 @@ body{
 
 .element{
     height: 300px;
-    opacity: 50%;
+    opacity: 90%;
 }
 
 .header-info{
@@ -71,7 +71,7 @@ body{
 }
 .c{
     grid-area: c;
-    background-color: blue;
+    background-color: black;
 }
 .d{
     grid-area: d;

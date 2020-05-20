@@ -8,7 +8,7 @@ selected_table = 'rata'
 function select_table(table_name, init_field){
     colorize_map(all_tables[table_name][selected_year][selected_month], init_field, selected_year, selected_month);
     set_county_hover(all_tables[table_name][selected_year][selected_month], init_field, selected_year, selected_month);
-    //init_barchart(all_tables[table_name], init_field);
+    init_barchart(all_tables[table_name], init_field);
     init_piechart(all_tables['rata'][selected_year][selected_month]);
 }
 
