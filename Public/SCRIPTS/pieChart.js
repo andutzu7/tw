@@ -53,5 +53,5 @@ function init_piechart(rows){
     createPieChart("piechart0", labels, values, colors)
     createPieChart("piechart1", labels, values, colors)
     createPieChart("piechart2", labels, values, colors)
-    // createPieChart("piechart3", labels, values, colors)
+    createPieChart("piechart3", labels, values, colors)
 }

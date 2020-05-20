@@ -69,5 +69,5 @@ function init_barchart(table, field){
     }
     labels = generateBarMonthsLabels(month_labels);
     createBarChart("lineBarChart0", 'total', 'titlu', labels, values);
-    // createBarChart("lineBarChart1", 'total', 'titlu', labels, values);
+    createBarChart("lineBarChart1", 'total', 'titlu', labels, values);
 }
