@@ -50,5 +50,8 @@ function init_piechart(rows){
     sum = values[0] + values[1]
     values[0] = (values[0] / sum * 100).toFixed(1)
     values[1] = (values[1] / sum * 100).toFixed(1)
-    createPieChart("piechart", labels, values, colors)
+    createPieChart("piechart0", labels, values, colors)
+    createPieChart("piechart1", labels, values, colors)
+    createPieChart("piechart2", labels, values, colors)
+    // createPieChart("piechart3", labels, values, colors)
 }

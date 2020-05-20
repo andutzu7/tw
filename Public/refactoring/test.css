@@ -4,7 +4,7 @@ body{
 
 /* map */
 .header{
-    padding: 10px;
+    /* padding: 10px; */
     display: grid;
     grid-template-areas: "headerinfo harta";
     grid-template-columns: 40% 60%;
@@ -32,14 +32,13 @@ body{
     width: 100%;
 }
 
-
-/* piechart */
-.b{
+.chart-container{
     position: relative;
-    border: 5px dotted black;
+    border: 2px dotted pink;
 }
 
-#piechart{
+
+.chart{
     position: absolute;
 }
 
@@ -48,7 +47,6 @@ body{
 /* barchart */
 .c{
     position: relative;
-    border: 5px dotted white;
 }
 
 #lineBarChart{
@@ -68,7 +66,7 @@ body{
                          "f e e e";
     grid-template-columns: 300px 1fr 1fr 300px;
     grid-template-rows: auto;
-    grid-gap: 5px;
+    /* grid-gap: 5px; */
 }
 
 .a{
@@ -132,6 +130,14 @@ body{
                              "e";
         grid-template-columns: 1fr;
         grid-template-rows: auto;
+        grid-gap: 0;
+    }
+
+    .element{
+        width:100vw;
+        padding-bottom: 30px;
+        padding-top: 30px;
+        margin:auto;
     }
 
     .harta{
