@@ -33,7 +33,6 @@ body{
 }
 
 
-/* PIEEEEE */
 /* piechart */
 .b{
     position: relative;
@@ -46,7 +45,6 @@ body{
 
 
 
-/* /map */
 /* barchart */
 .c{
     position: relative;
@@ -155,7 +153,6 @@ body{
         grid-template-areas: 
         "headerinfo" 
         "harta";
-        grid-template-columns: 100%;
         grid-template-columns: 100vw;
         grid-template-rows: 20% 80%;
     }
