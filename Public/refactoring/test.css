@@ -1,9 +1,11 @@
 body {
     background-color: rgb(33, 62, 71);
 }
-h2,h1,h3{
+
+h2, h1, h3 {
     color: white;
 }
+
 /* map */
 .header {
     /* padding: 10px; */
@@ -103,6 +105,7 @@ h2,h1,h3{
     grid-area: tabel;
     background-color: rgb(136, 112, 112);
 }
+
 .land {
     fill: rgb(236, 139, 139);
     fill-opacity: 1;
@@ -139,7 +142,7 @@ h2,h1,h3{
         height: min(95vh, 200vw);
     }
 
-    .pie{
+    .pie {
         height: min(95vh, 70vw);
     }
 
@@ -162,9 +165,8 @@ h2,h1,h3{
     }
 
 
-
-
 }
+
 .barchart_button {
     position: absolute;
     top: 5%;
@@ -201,19 +203,39 @@ h2,h1,h3{
     inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
 
-#barchart_button1{
-    right: 10%;
+#barchart_button1 {
+    right: 15%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 
 }
-#barchart_button2{
+
+#barchart_button2 {
     right: 5%;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 
 }
+#barchart_button01 {
+    right: 35%;
+}
+#barchart_button02 {
+    right: 25%;
+}
+#barchart_button03 {
+    right: 15%;
+}
+#barchart_button04 {
+    right: 5%;
+}
 
-#tooltipText{
+
+#tooltipText {
     fill: white;
+}
+
+#barchart_varste_educatie {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
