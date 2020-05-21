@@ -3,7 +3,7 @@ all_charts = {};
 selected_month = 1;
 selected_year = 2020;
 selected_table = 'rata';
-
+MONTHS_STR = []
 
 function store_table(table_name, rows) {
     dict = {}
@@ -40,6 +40,13 @@ function init_rata() {
     all_charts['barchart_total'] = init_barchart_total(all_tables['rata'], 'total');
     all_charts['piechart_indemnizatie'] = init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month]);
     generate_table();
+
+    
+    for (var year in all_tables['rata']) {
+        for(var month in all_tables['rata'][year]){
+            MONTHS_STR.push(`${year}-${MONTHS[month - 1]}`)
+        }
+    }
 }
 
 
