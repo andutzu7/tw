@@ -49,8 +49,5 @@ function setup_hardcoded(api_url) {
 
 
 
-
-
 url = 'https://arcane-sierra-19327.herokuapp.com'
 setup_hardcoded(url)
-

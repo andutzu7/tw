@@ -168,3 +168,15 @@ function update2(){
     // update_piechart(all_charts['piechart_indemnizatie'], [20,1])
     // update_barchart(all_charts['barchart_total'], [0, 0, 1, 1, 0.2, 5, 4.5, 0.2, 1, 1, 0, 0])
 }
+
+
+function parse_date(date){
+    const split = date.split('-');
+    let result = {};
+    result['Year']= split[0];
+    result['Month'] = split[1];
+    console.log(result);
+    return result;
+}
+
+parse_date("2020-AUG");
