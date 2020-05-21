@@ -58,7 +58,7 @@ body {
     width: min(1200px, 100%);
     margin: auto;
     display: grid;
-    grid-template-areas: "a a a a" "b b x x" "c c c d" "f e e e" "tabel tabel tabel tabel";
+    grid-template-areas: "a a a a" "b b x x" "c c c c" "f e e e" "tabel tabel tabel tabel";
     grid-template-columns: 300px 1fr 1fr 300px;
     grid-template-rows: auto;
     /* grid-gap: 5px; */
@@ -80,11 +80,6 @@ body {
     background-color: black;
 }
 
-.d {
-    grid-area: d;
-    background-color: purple;
-}
-
 .e {
     grid-area: e;
     background-color: yellow;
@@ -103,10 +98,6 @@ body {
 .tabel {
     grid-area: tabel;
     background-color: white;
-}
-.tableSide{
-    width: 349%;
-    margin-left: 26%;
 }
 
 .land {
@@ -128,7 +119,7 @@ body {
     }
 
     .wrapper {
-        grid-template-areas: "a" "b" "x" "c" "d" "f" "e" "tabel";
+        grid-template-areas: "a" "b" "x" "c" "f" "e" "tabel";
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         grid-gap: 0;

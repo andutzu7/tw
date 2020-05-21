@@ -47,3 +47,7 @@ tr:nth-child(even) {
 .headerSortUp{
     padding-left: 20px;
 }
+
+#myTable{
+    width: 100%;
+}
