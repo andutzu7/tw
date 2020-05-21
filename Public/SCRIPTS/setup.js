@@ -131,7 +131,7 @@ function removeData(chart) {
 }
 
 
-function 2ndupdate(){
+function update2(){
     // update_piechart(all_charts['piechart_indemnizatie'], [20,1])
     // update_barchart(all_charts['barchart_total'], [0, 0, 1, 1, 0.2, 5, 4.5, 0.2, 1, 1, 0, 0])
 }
