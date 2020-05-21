@@ -19,6 +19,7 @@
 	position: absolute;
 	display:block;
 	overflow: auto;
+	left:25%;
 }
 .criterii{
 	position: relative;
