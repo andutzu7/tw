@@ -108,7 +108,7 @@ function init_barchart_total(table, field){
 }
 
 
-function init_barchart_varste_educatie(table, year, month, id_judet = null){
+function init_barchart_varste(table, year, month, id_judet = null){
     values = []
     labels = []
     if(id_judet){

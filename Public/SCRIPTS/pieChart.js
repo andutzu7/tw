@@ -1,5 +1,6 @@
 function createPieChart( elementID, labels, values, colors ) {
     var ctx2 = document.getElementById(elementID);
+    console.log(colors)
     return new Chart(ctx2, {
         type: 'doughnut',
         data: {
@@ -80,4 +81,37 @@ function init_piechart_gender_medii(rows){
     }
     values = normalize_values(values)
     return createPieChart("piechart_gender_medii", labels, values, colors)
+}
+
+function init_piechart_varste(rows, id_judet){
+    let colors = ["red", "green", "blue", "purple", "yellow", "orange"]  //todo
+    labels = []
+    values = []
+    dict = {}
+    for(var row of rows){
+        for(var key in row){
+            if (['an', 'luna', 'id_judet'].indexOf(key) < 0) {  
+                if(key in dict){
+                    dict[key] += row[key]
+                }
+                else{
+                    dict[key] = row[key]
+                }
+            }
+        }
+    }
+    values.push(dict['sub25'])
+    labels.push('sub 25');
+    values.push(dict['interval25_29'])
+    labels.push('25-29');
+    values.push(dict['interval30_39'])
+    labels.push('30-39');
+    values.push(dict['interval40_49'])
+    labels.push('40-49');
+    values.push(dict['interval50_55'])
+    labels.push('50-55');
+    values.push(dict['peste55'])
+    labels.push('peste 55');
+    values = normalize_values(values)
+    return createPieChart("piechart_varste_educatie", labels, values, colors)
 }
