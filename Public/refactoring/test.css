@@ -103,6 +103,10 @@ body {
     grid-area: tabel;
     background-color: white;
 }
+.tableSide{
+    width: 349%;
+    margin-left: 26%;
+}
 
 .land {
     fill: rgb(120, 140, 255);
