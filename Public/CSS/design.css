@@ -6,7 +6,7 @@
 }
 
 table {
-    border-spacing: 0; 
+    border-spacing: 0;
     width: 50%;
     border: 1px solid #dddd;
 }
@@ -18,16 +18,16 @@ th{
     text-align: left;
     padding: 15px;
 }
-td { 
-    text-align: left; 
-    padding: 15px; 
-} 
-th,td:nth-child(0){
-    background-color: #eb901a 
+td {
+    text-align: left;
+    padding: 15px;
 }
-tr:nth-child(even) { 
-    background-color: #c4c3c3 
-} 
+th,td:nth-child(0){
+    background-color: #eb901a
+}
+tr:nth-child(even) {
+    background-color: #c4c3c3
+}
 .headerSortDown:after,
 .headerSortUp:after{
     content: ' ';
