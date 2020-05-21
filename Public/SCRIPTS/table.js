@@ -6,10 +6,10 @@ function generateTable(allTables) {
     month = 3
     year = 2020
 
-    var table = document.getElementById("Table");
-    var tbl = document.createElement("table");
-    tbl.setAttribute("id","myTable");
-    var tblBody = document.createElement("tbody");
+    let table = document.getElementById("Table");
+    let tbl = document.createElement("table");
+    tbl.setAttribute("id", "myTable");
+    let tblBody = document.createElement("tbody");
 
     let tableHeader = "";
     for (let category in allTables) {
@@ -70,9 +70,10 @@ function item(c) {
     }
 }
 
-
+let up = false; //ordinea -> true:crescator, false:descrescator
 function sortTable(c) {
-    var table, rows, switching, i, x, y, shouldSwitch;
+    up = !up;
+    let table, rows, switching, i, x, y, shouldSwitch;
     table = document.getElementById("myTable");
     switching = true;
     /*Make a loop that will continue until
@@ -92,12 +93,18 @@ function sortTable(c) {
             y = rows[i + 1].getElementsByTagName("TD")[c];
 
 
-
-            //check if the two rows should switch place:
-            if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
-                //if so, mark as a switch and break the loop:
-                shouldSwitch = true;
-                break;
+            if (up) {//check if the two rows should switch place:
+                if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
+                    //if so, mark as a switch and break the loop:
+                    shouldSwitch = true;
+                    break;
+                }
+            } else {
+                if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
+                    //if so, mark as a switch and break the loop:
+                    shouldSwitch = true;
+                    break;
+                }
             }
         }
         if (shouldSwitch) {
