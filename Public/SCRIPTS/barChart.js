@@ -97,21 +97,31 @@ function update_barchart(chart, values){
 }
 
 
-function init_barchart_total(table, field){
+function init_barchart_total(table, field, id_judet=null){
     values = []
     month_labels = []
     for (var year in table) {
         for(var month in table[year]){
-            for(var row of table[year][month]){
-                if (row['id_judet'] === 25 ) {  // TODO
-                    values.push(row[field]);
-                    month_labels.push(row['luna']);
+            if(id_judet){
+                for(var row of table[year][month]){
+                    if (row['id_judet'] === id_judet ) {  
+                        values.push(row[field]);
+                        month_labels.push(row['luna']);
+                    }
                 }
+            }
+            else{
+                sum = 0;
+                for(var row of table[year][month]){
+                    sum += row[field];
+                }
+                values.push(sum);
+                month_labels.push(row['luna']);
             }
         }
     }
     labels = generateBarMonthsLabels(month_labels);
-    return createBarChart("barchart_total", 'total', 'titlu', labels, values, null, add_line=true);
+    return createBarChart("barchart_total", 'total', 'Numarul somerilor in ultimele 12 luni', labels, values, null, add_line=true);
 }
 
 
