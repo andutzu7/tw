@@ -217,15 +217,23 @@ h2, h1, h3 {
 }
 #barchart_button01 {
     right: 20%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
 }
 #barchart_button02 {
     right: 15%;
+
 }
 #barchart_button03 {
     right: 10%;
+
 }
 #barchart_button04 {
     right: 5%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
 }
 
 
