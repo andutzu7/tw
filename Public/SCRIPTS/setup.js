@@ -41,7 +41,7 @@ function init_rata() {
     all_charts['piechart_indemnizatie'] = init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month]);
     generate_table();
 
-    
+
     for (var year in all_tables['rata']) {
         for(var month in all_tables['rata'][year]){
             MONTHS_STR.push(`${year}-${MONTHS[month - 1]}`)
@@ -171,12 +171,26 @@ function update2(){
 
 
 function parse_date(date){
+    let months = {
+        'Ian' : '1',
+        'Feb' : '2',
+        'Mar' : '3',
+        'Apr' : '4',
+        'Mai' : '5',
+        'Iun' : '6',
+        'Iul' : '7',
+        'Aug' : '8',
+        'Sep' : '9',
+        'Oct' : '10',
+        'Nov' : '11',
+        'Dec' : '12'
+    };
     const split = date.split('-');
     let result = {};
-    result['Year']= split[0];
-    result['Month'] = split[1];
+    result['Year']= parseInt(split[0]);
+    result['Month'] = parseInt(months[split[1]]);
     console.log(result);
     return result;
 }
 
-parse_date("2020-AUG");
+parse_date("2020-Mar");
