@@ -57,7 +57,7 @@ function normalize_values(values){
 
 
 function init_piechart_indemnizatie(rows){
-    colors = ["rgb(140,140,255)", "rgb(118,0,119)"]
+    colors = ["#ffc2e5", "#3399ff"]
     labels = ['indemnizati', 'neindemnizati']
     values = [0, 0]
     for (var row of rows) {
@@ -69,7 +69,7 @@ function init_piechart_indemnizatie(rows){
 }
 
 function init_piechart_gender_medii(rows){
-    colors = ["rgb(118,0,119)", "rgb(70,0,79)", "rgb(140,140,255)", "rgb(100,100,200)"]
+    colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654"]
     labels = ['rural_femei', 'rural_barbati', 'urban_barbati', 'urban_femei']
     values = [0, 0, 0, 0]
     for (var row of rows) {

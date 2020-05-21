@@ -13,7 +13,7 @@ function createBarChart(chartNameID, field_text, title_text, months, values, add
     datasets = [{
         label: field_text,
         type: "bar",
-        backgroundColor: "rgba(255, 0, 255 , 0.15)",
+        backgroundColor: "rgba(219, 0, 0, 0.25)",
         data: values,
     }
     ]
@@ -22,7 +22,7 @@ function createBarChart(chartNameID, field_text, title_text, months, values, add
         datasets.push({
             label: field_text,
             type: "line",
-            borderColor: "#ae8ee2",
+            borderColor: "#f38654",
             data: values,
             fill: false
         })
