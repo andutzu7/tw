@@ -47,6 +47,7 @@ function init_rata() {
             MONTHS_STR.push(`${year}-${MONTHS[month - 1]}`)
         }
     }
+    append_options_to_dropdown(MONTHS_STR);
 }
 
 
@@ -137,7 +138,24 @@ function removeData(chart) {
 
 }
 
+function append_options_to_dropdown(months) {
 
+    let dropdown = document.querySelector(".select-criteriu");
+    console.log(dropdown);
+    months.forEach(function (element){
+        let option = document.createElement("option");
+        let text = document.createTextNode(element);
+        option.appendChild(text);
+        dropdown.appendChild(option);
+    });
+
+}
+
+function dropdownOnClick(){
+    let elem = document.getElementById("delete_me");
+
+    elem.parentNode.removeChild(elem);
+}
 function update2(){
     // update_piechart(all_charts['piechart_indemnizatie'], [20,1])
     // update_barchart(all_charts['barchart_total'], [0, 0, 1, 1, 0.2, 5, 4.5, 0.2, 1, 1, 0, 0])
