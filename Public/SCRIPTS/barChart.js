@@ -7,16 +7,24 @@ function generateBarMonthsLabels(monthsIndex) {
     return displayedLabel;
 }
 
-function createBarChart(chartNameID, field_text, title_text, months, values, add_line=false) {
+function createBarChart(chartNameID, field_text, title_text, months, values, colors, add_line=false) {
     var ctx = document.getElementById(chartNameID);
-
+    if(colors){
+        console.log('aaaaa')
+        colors = ["red", "green", "blue", "purple", "yellow", "orange"];
+    }
+    else{
+        colors = "rgba(219, 0, 0, 0.3)"
+    }
     datasets = [{
         label: field_text,
         type: "bar",
-        backgroundColor: "rgba(219, 0, 0, 0.25)",
+        backgroundColor: colors,
         data: values,
     }
     ]
+
+    console.log(datasets)
 
     if(add_line){
         datasets.push({
@@ -36,6 +44,7 @@ function createBarChart(chartNameID, field_text, title_text, months, values, add
         },
         options: {
             tooltips: {
+                fontColor: "white",
                 titleFontSize: 20,
                 bodyFontSize: 20,
                 titleFontFamily: "Comic Sans MS",
@@ -47,10 +56,11 @@ function createBarChart(chartNameID, field_text, title_text, months, values, add
                 display:false
             },
             title: {
+                fontColor: "white",
                 display: true,
                 text: title_text,
                 fontFamily: "Comic Sans MS",
-                fontSize:20
+                fontSize: 20
 
             }, scales: {
                 xAxes: [{
@@ -58,20 +68,17 @@ function createBarChart(chartNameID, field_text, title_text, months, values, add
                         callback: function (value, index, values) {
                             return value;
                         }
-                    }, scaleLabel: {
-                        fontFamily: "Comic Sans MS",
-                        fontSize:20,
-                        display: true,
-                        labelString: 'Datele pentru August 2019 nu sunt disponibile pe site-ul guvernului.'
                     },
                     ticks: {
                         fontFamily: "Comic Sans MS",
-                        fontSize:20
+                        fontSize: 20,
+                        fontColor: "white"
                     }
                 }
                 ],
                 yAxes: [{
                     ticks: {
+                        fontColor: "white",
                         fontFamily: "Comic Sans MS",
                         fontSize:20
                     }
@@ -104,13 +111,14 @@ function init_barchart_total(table, field){
         }
     }
     labels = generateBarMonthsLabels(month_labels);
-    return createBarChart("barchart_total", 'total', 'titlu', labels, values, add_line=true);
+    return createBarChart("barchart_total", 'total', 'titlu', labels, values, null, add_line=true);
 }
 
 
 function init_barchart_varste(table, year, month, id_judet = null){
     values = []
     labels = []
+    colors = ["red", "green", "blue", "purple", "yellow", "orange"] 
     if(id_judet){
         for(var row of table[year][month]){
             if (row['id_judet'] === id_judet) {  // TODO
@@ -146,5 +154,5 @@ function init_barchart_varste(table, year, month, id_judet = null){
         values.push(dict['peste55'])
         labels.push('peste 55');
     }
-    return createBarChart("barchart_varste_educatie", 'total', 'titlu', labels, values);
+    return createBarChart("barchart_varste_educatie", '', 'Distributie per varste', labels, values, colors);
 }
