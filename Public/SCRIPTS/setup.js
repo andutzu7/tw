@@ -57,7 +57,8 @@ function init_medii(){
 
 
 function init_varste(){
-    all_charts['barchart_varste_educatie'] = init_barchart_varste_educatie(all_tables['varste'], selected_year, selected_month);
+    all_charts['barchart_varste_educatie'] = init_barchart_varste(all_tables['varste'], selected_year, selected_month);
+    all_charts['piechart_varste_educatie'] = init_piechart_varste(all_tables['varste'][selected_year][selected_month]);
 }
 
 
