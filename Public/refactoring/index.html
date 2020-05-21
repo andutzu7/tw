@@ -17,6 +17,9 @@
             <div class="a header">
                   <div class="header-info">
                         <button class="download-btn" onclick="javascript:genPDF()">Download PDF</button>
+                        <button class="download-btn" onclick="javascript:xmlExp()">Download XML</button>
+                        <button class="download-btn" onclick="javascript:download()">Download SVG</button>
+                        <button class="download-btn" onclick="javascript:csvExp()">Download CSV</button>
                         <h2>Date despre somajul din</h2>
                         <h1>ROMANIA</h1>
                         <h3>314124 someri</h3>
@@ -164,7 +167,7 @@
                   </div>
             </div>
 
-            <div id="piechart_varste_educatie_PDF"class="f element pie chart-container">
+            <div id="piechart_varste_educatie_PDF" class="f element pie chart-container">
                   <canvas id="piechart_varste_educatie" class="chart"></canvas>
             </div>
 
@@ -182,6 +185,9 @@
       <script src="../SCRIPTS/barChart.js"></script>
       <script src="../SCRIPTS/svgMapChart.js"></script>
       <script src="../SCRIPTS/table.js"></script>
+      <script src="../SCRIPTS/SVGconv.js"></script>
+      <script src="../SCRIPTS/csvexport.js"></script>
+      <script src="../SCRIPTS/xmlexport.js"></script>
       <script src="../SCRIPTS/setup.js"></script>
       <script src="../SCRIPTS/PDF.js"></script>
       <script src="../../OLD/showDiv.js"></script>

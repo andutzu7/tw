@@ -224,3 +224,18 @@ h4{
     flex-direction: column;
     justify-content: center;
 }
+
+.download-btn{
+    width: 20%;
+    padding: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid ;
+    color: white;
+    font-size: 0.7em;
+}
+
+.download-btn:hover{
+    color: black;
+    background: rgba(255,255,255,0.8);
+    cursor: pointer;
+    border-color: rgb(17, 33, 37);
