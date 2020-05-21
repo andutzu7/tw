@@ -204,7 +204,7 @@ h2, h1, h3 {
 }
 
 #barchart_button1 {
-    right: 15%;
+    right: 10%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 
@@ -217,13 +217,13 @@ h2, h1, h3 {
 
 }
 #barchart_button01 {
-    right: 35%;
+    right: 20%;
 }
 #barchart_button02 {
-    right: 25%;
+    right: 15%;
 }
 #barchart_button03 {
-    right: 15%;
+    right: 10%;
 }
 #barchart_button04 {
     right: 5%;
