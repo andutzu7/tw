@@ -55,11 +55,21 @@ function init_medii(){
 }
 
 
+function init_varste(){
+    all_charts['barchart_varste_educatie'] = init_barchart_varste_educatie(all_tables['varste'], selected_year, selected_month);
+}
+
+
+function init_educatie(){
+    //pass
+}
+
+
 function setup_hardcoded(api_url) {
     fetch_table(api_url, 'rata', init_rata);
-    fetch_table(api_url, 'varste');
+    fetch_table(api_url, 'varste', init_varste);
     fetch_table(api_url, 'medii', init_medii);
-    fetch_table(api_url, 'educatie');
+    fetch_table(api_url, 'educatie', init_educatie);
 }
 
 
