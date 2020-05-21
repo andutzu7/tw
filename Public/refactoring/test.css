@@ -166,25 +166,25 @@ h2, h1, h3 {
 
 }
 
-.barchart_button {
+.btn-group{
     position: absolute;
+    display: flex;
+    padding: 0 2px;
+    height: 25px;
+    right: 2%;
     top: 5%;
+    /* background-color: pink; */
+}
+
+.barchart_button {
+    position: relative;
     border: 0;
-    line-height: 2.5;
-    padding: 0 20px;
     font-size: 1rem;
     text-align: center;
     color: #fff;
     text-shadow: 1px 1px 1px #000;
     background-color: rgba(220, 0, 0, 1);
-    background-image: linear-gradient(to top left,
-    rgba(0, 0, 0, .2),
-    rgba(0, 0, 0, .2) 30%,
-    rgba(0, 0, 0, 0));
-    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
-    inset -2px -2px 3px rgba(0, 0, 0, .6);
-    width: 5%;
-    height: 7%;
+    border: 1px solid black;
 }
 
 .barchart_button:hover {
@@ -192,50 +192,23 @@ h2, h1, h3 {
 }
 
 .barchart_button:active {
-
     width: 5%;
     height: 7%;
-    position: absolute;
     top: 5%;
     right: 5%;
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
     inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
 
-#barchart_button1 {
-    right: 10%;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-
-}
-
-#barchart_button2 {
-    right: 5%;
+.right-rounded {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 
 }
-#barchart_button01 {
-    right: 20%;
+.left-rounded {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-
 }
-#barchart_button02 {
-    right: 15%;
-
-}
-#barchart_button03 {
-    right: 10%;
-
-}
-#barchart_button04 {
-    right: 5%;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-
-}
-
 
 #tooltipText {
     fill: white;
