@@ -84,7 +84,7 @@ function init_piechart_gender_medii(rows){
 }
 
 function init_piechart_varste(rows, id_judet){
-    let colors = ["red", "green", "blue", "purple", "yellow", "orange"]  //todo
+    let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]  //todo
     labels = []
     values = []
     dict = {}
