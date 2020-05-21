@@ -34,9 +34,6 @@ h4{
 }
 
 .header-info {
-    border-left: 1px solid white; /*debug*/
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
     grid-area: headerinfo;
     overflow: hidden; /*todo*/
     text-align: center;

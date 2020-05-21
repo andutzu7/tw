@@ -11,7 +11,7 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
     var ctx = document.getElementById(chartNameID);
     if(colors){
         console.log('aaaaa')
-        colors = ["red", "green", "blue", "purple", "yellow", "orange"];
+        colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"] 
     }
     else{
         colors = "rgba(219, 0, 0, 0.3)"
@@ -128,7 +128,7 @@ function init_barchart_total(table, field, id_judet=null){
 function init_barchart_varste(table, year, month, id_judet = null){
     values = []
     labels = []
-    colors = ["red", "green", "blue", "purple", "yellow", "orange"] 
+    colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"] 
     if(id_judet){
         for(var row of table[year][month]){
             if (row['id_judet'] === id_judet) {  // TODO
