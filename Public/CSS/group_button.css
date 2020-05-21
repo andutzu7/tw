@@ -1,24 +1,30 @@
 .button-group button {
     background-color: #2b376e;
-    border: 1px solid #1e214d; 
-    color: white; 
+    border: 1px solid #1e214d;
+    font-family: "Comic Sans MS";
+    color: white;
     padding: 15px;
     cursor: pointer;
-    display: block;
-    top:150px;
-    width: 100%;
+    top: 150px;
+    width: 50%;
     font-size: 1em;
-  }
+    display: none;
+    overflow: auto;
+    height: 20%;
+
+}
 
 
-  .button-group button:hover {
+.button-group button:hover {
     background-color: #3941b3;
-  }
+}
 
-  .button-group {
+.button-group {
     text-align: center;
-  }
 
-  .button-group button:not(:last-child) {
+    overflow: auto;
+}
+
+.button-group button:not(:last-child) {
     border-bottom: none; /* Prevent double borders */
-  }
+}

@@ -23,13 +23,15 @@
             <div class="criterii">
                 <div class="dropdown">
                     <div id="form-criterii">
-                        <select class="select-criteriu" onchange="showDiv(this.value)">
-                            <option value="0">Nivel Educatie</option>
-                            <option value="1">Varsta</option>
-                            <option value="2">Mediu</option>
-                            <option value="3" selected>Rata Somajului</option>
-                        </select>
-                        <div id="hidden_div0" class="button-group">
+                        <label>
+                            <select class="select-criteriu" onchange="showDiv(this.value)">
+                                <option value="0">Nivel Educatie</option>
+                                <option value="1">Varsta</option>
+                                <option value="2">Mediu</option>
+                                <option value="3" selected>Rata Somajului</option>
+                            </select>
+                        </label>
+                        <div id="hidden_div0" class="button-group" onclick="hideButtons()">
                             <button>Total</button>
                             <button>Fara Studii</button>
                             <button>Primar</button>
@@ -39,7 +41,7 @@
                             <button>Profesional</button>
                             <button>Universitar</button>
                         </div>
-                        <div id="hidden_div1" class="button-group">
+                        <div id="hidden_div1" class="button-group" onclick="hideButtons()">
                             <button>Sub 25 ani</button>
                             <button>25-29 ani</button>
                             <button>30-39 ani</button>
@@ -47,13 +49,13 @@
                             <button>50-55 ani</button>
                             <button>Peste 55 ani</button>
                         </div>
-                        <div id="hidden_div2" class="button-group">
+                        <div id="hidden_div2" class="button-group" onclick="hideButtons()">
                             <button>Urban Femei</button>
                             <button>Urban Barbati</button>
                             <button>Rural Femei</button>
                             <button>Rural Barbati</button>
                         </div>
-                        <div id="hidden_div3" class="button-group">
+                        <div id="hidden_div3" class="button-group" onclick="hideButtons()">
                             <button>Total</button>
                             <button>Total Femei</button>
                             <button>Total Barbati</button>

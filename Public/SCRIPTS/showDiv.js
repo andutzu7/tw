@@ -1,13 +1,30 @@
 function showDiv(value) {
-    for(var i=0; i < divsO.length; i++) {
+    for (var i = 0; i < divsO.length; i++) {
         divsO[i].style.display = 'none';
     }
     //unhide the selected div
-    document.getElementById('hidden_div'+value).style.display = 'block';
+    showButtons();
+    document.getElementById('hidden_div' + value).style.display = 'block';
 }
- 
-window.onload=function() {
+function showButtons() {
+    let buttons = document.querySelectorAll('.button-group button');
+    buttons.forEach(function (button) {
+        button.style.display = 'block';
+    });
+//.button-group button
+}
+
+function hideButtons(){
+    let buttons = document.querySelectorAll('.button-group button');
+    buttons.forEach(function (button) {
+        button.style.display = 'none';
+    });
+//.button-group button
+}
+
+window.onload = function () {
     //get the divs to show/hide
     divsO = document.getElementById("form-criterii").getElementsByTagName('div');
-    this.showDiv(3);
+
 }
+
