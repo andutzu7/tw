@@ -141,20 +141,17 @@ function removeData(chart) {
 function append_options_to_dropdown(months) {
 
     let dropdown = document.querySelector(".select-criteriu");
-    console.log(dropdown);
     months.forEach(function (element){
         let option = document.createElement("option");
         let text = document.createTextNode(element);
         option.appendChild(text);
-        dropdown.appendChild(option);
+        dropdown.appendChild(option); //de adaugat selected
     });
-
+    dropdown.lastChild.selected=true;
 }
 
 function dropdownOnClick(){
-    let elem = document.getElementById("delete_me");
 
-    elem.parentNode.removeChild(elem);
 }
 function update2(){
     // update_piechart(all_charts['piechart_indemnizatie'], [20,1])
