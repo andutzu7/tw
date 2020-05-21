@@ -52,10 +52,7 @@ function update_piechart(chart, values){
 
 function normalize_values(values){
     sum = values.reduce((a, b) => a + b, 0)
-    for(var i in values){
-        values[i] = (values[i] / sum * 100).toFixed(1)
-    }
-    return values
+    return values.map((a) => (a / sum * 100).toFixed(1))
 }
 
 

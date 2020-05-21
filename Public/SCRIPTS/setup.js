@@ -5,21 +5,6 @@ selected_year = 2020;
 selected_table = 'rata';
 
 
-function select_table(table_name, init_field) {
-    colorize_map(all_tables[table_name][selected_year][selected_month], init_field, selected_year, selected_month);
-    set_county_hover(all_tables[table_name][selected_year][selected_month], init_field, selected_year, selected_month);
-    all_charts['barchart_total'] = init_barchart_total(all_tables[table_name], init_field);
-    all_charts['piechart_indemnizatie'] = init_piechart_indemnizatie(all_tables[table_name][selected_year][selected_month]);
-    generate_table();
-}
-
-
-function myupdate(){
-    // update_piechart(all_charts['piechart_indemnizatie'], [20,1])
-    // update_barchart(all_charts['barchart_total'], [0, 0, 1, 1, 0.2, 5, 4.5, 0.2, 1, 1, 0, 0])
-    all_charts['piechart_gender_medii'] = init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month]);
-}
-
 function store_table(table_name, rows) {
     dict = {}
     for (let row of rows) {
@@ -34,7 +19,7 @@ function store_table(table_name, rows) {
     all_tables[table_name] = dict;
 }
 
-function fetch_table(api_url, table_name, init_with_field = null) {
+function fetch_table(api_url, table_name, use_data = null) {
     fetch(`${api_url}/${table_name}`)
         .then((response) => {
             return response.json();
@@ -42,16 +27,31 @@ function fetch_table(api_url, table_name, init_with_field = null) {
         .then((data) => {
             all_tables[table_name] = data;
             store_table(table_name, data);
-            if (init_with_field) {
-                select_table(table_name, init_with_field);
+            if (use_data) {
+                use_data(data)
             }
         })
 }
 
+
+function init_rata() {
+    colorize_map(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
+    set_county_hover(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
+    all_charts['barchart_total'] = init_barchart_total(all_tables['rata'], 'total');
+    all_charts['piechart_indemnizatie'] = init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month]);
+    generate_table();
+}
+
+
+function init_medii(){
+    all_charts['piechart_gender_medii'] = init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month]);
+}
+
+
 function setup_hardcoded(api_url) {
-    fetch_table(api_url, 'rata', 'total');
+    fetch_table(api_url, 'rata', init_rata);
     fetch_table(api_url, 'varste');
-    fetch_table(api_url, 'medii');
+    fetch_table(api_url, 'medii', init_medii);
     fetch_table(api_url, 'educatie');
 }
 
@@ -128,4 +128,10 @@ function removeData(chart) {
 
     chart.update();
 
+}
+
+
+function 2ndupdate(){
+    // update_piechart(all_charts['piechart_indemnizatie'], [20,1])
+    // update_barchart(all_charts['barchart_total'], [0, 0, 1, 1, 0.2, 5, 4.5, 0.2, 1, 1, 0, 0])
 }
