@@ -21,6 +21,7 @@ body {
     border: 1px solid white; /*debug*/
     grid-area: headerinfo;
     overflow: hidden; /*todo*/
+    text-align: center;
 }
 
 .map-container {
