@@ -2,8 +2,21 @@ body {
     background-color: rgb(33, 62, 71);
 }
 
-h2, h1, h3 {
+h2, h1, h3, h4 {
     color: white;
+}
+
+h1{
+   font-size: 50px;
+   line-height: 30px;
+}
+h3{
+    font-size: 40px;
+    line-height: 10 px;
+}
+h4{
+    font-size: 90px;
+    line-height: 0px;
 }
 
 /* map */
