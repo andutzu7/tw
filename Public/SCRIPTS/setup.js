@@ -15,8 +15,9 @@ function select_table(table_name, init_field) {
 
 
 function myupdate(){
-    update_piechart(all_charts['piechart_indemnizatie'], [20,1])
-    update_barchart(all_charts['barchart_total'], [0, 0, 1, 1, 0.2, 5, 4.5, 0.2, 1, 1, 0, 0])
+    // update_piechart(all_charts['piechart_indemnizatie'], [20,1])
+    // update_barchart(all_charts['barchart_total'], [0, 0, 1, 1, 0.2, 5, 4.5, 0.2, 1, 1, 0, 0])
+    all_charts['piechart_gender_medii'] = init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month]);
 }
 
 function store_table(table_name, rows) {

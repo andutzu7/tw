@@ -50,6 +50,14 @@ function update_piechart(chart, values){
     chart.update();
 }
 
+function normalize_values(values){
+    sum = values.reduce((a, b) => a + b, 0)
+    for(var i in values){
+        values[i] = (values[i] / sum * 100).toFixed(1)
+    }
+    return values
+}
+
 
 function init_piechart_indemnizatie(rows){
     colors = ["rgb(140,140,255)", "rgb(118,0,119)"]
@@ -59,8 +67,20 @@ function init_piechart_indemnizatie(rows){
         values[0] += row.indemnizati
         values[1] += row.neindemnizati
     }
-    sum = values[0] + values[1]
-    values[0] = (values[0] / sum * 100).toFixed(1)
-    values[1] = (values[1] / sum * 100).toFixed(1)
+    values = normalize_values(values)
     return createPieChart("piechart_indemnizatie", labels, values, colors)
+}
+
+function init_piechart_gender_medii(rows){
+    colors = ["rgb(118,0,119)", "rgb(70,0,79)", "rgb(140,140,255)", "rgb(100,100,200)"]
+    labels = ['rural_femei', 'rural_barbati', 'urban_barbati', 'urban_femei']
+    values = [0, 0, 0, 0]
+    for (var row of rows) {
+        values[0] += row.rural_femei
+        values[1] += row.rural_barbati
+        values[2] += row.urban_barbati
+        values[3] += row.urban_femei
+    }
+    values = normalize_values(values)
+    return createPieChart("piechart_gender_medii", labels, values, colors)
 }
