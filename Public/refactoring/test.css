@@ -188,8 +188,15 @@ h4{
 
     .header-info,.criterii,.map-container{
         /* border: 5px dotted white; */
-        border-radius: 30px;
+        /* border-radius: 30px; */
         height: 100%;
+    }
+}
+
+
+@media only screen and (max-width: 800px) and (min-aspect-ratio: 3/5){ 
+    .a{
+        background-color: black;
     }
 
     .header-info{
@@ -223,6 +230,7 @@ h4{
     }
 
 }
+
 
 .btn-group{
     position: absolute;
