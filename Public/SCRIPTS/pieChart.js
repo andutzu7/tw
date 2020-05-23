@@ -56,27 +56,32 @@ function normalize_values(values){
 }
 
 
-function init_piechart_indemnizatie(rows){
+function init_piechart_indemnizatie(rows, id_judet=null){
     colors = ["#ffc2e5", "#3399ff"]
     labels = ['indemnizati', 'neindemnizati']
     values = [0, 0]
     for (var row of rows) {
-        values[0] += row.indemnizati
-        values[1] += row.neindemnizati
+        if(id_judet == null || id_judet == row['id_judet'])
+        {
+            values[0] += row.indemnizati
+            values[1] += row.neindemnizati
+        }
     }
     values = normalize_values(values)
     return createPieChart("piechart_indemnizatie", labels, values, colors)
 }
 
-function init_piechart_gender_medii(rows){
+function init_piechart_gender_medii(rows, id_judet=null){
     colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654"]
     labels = ['rural_femei', 'rural_barbati', 'urban_barbati', 'urban_femei']
     values = [0, 0, 0, 0]
     for (var row of rows) {
-        values[0] += row.rural_femei
-        values[1] += row.rural_barbati
-        values[2] += row.urban_barbati
-        values[3] += row.urban_femei
+        if(id_judet == null || id_judet == row['id_judet']){
+            values[0] += row.rural_femei
+            values[1] += row.rural_barbati
+            values[2] += row.urban_barbati
+            values[3] += row.urban_femei
+        }
     }
     values = normalize_values(values)
     return createPieChart("piechart_gender_medii", labels, values, colors)
@@ -113,7 +118,7 @@ function init_piechart_varste(rows, id_judet=null){
     labels.push('50-55');
     values.push(dict['peste55'])
     labels.push('peste 55');
-    // values = normalize_values(values)
+    values = normalize_values(values)
     return createPieChart("piechart_all", labels, values, colors)
 }
 

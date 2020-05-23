@@ -6,13 +6,6 @@ selected_table = 'rata';
 MONTHS_STR = []
 
 
-field_to_display = {
-    'peste55': 'Peste 55',
-    'interval25_30': '25-30',
-    'primar': 'primar'
-}
-
-
 function store_table(table_name, rows) {
     dict = {}
     for (let row of rows) {
@@ -75,8 +68,8 @@ function init_medii(){
 
 function init_varste(){
     //to comment
-    all_charts['barchart_all'] = init_barchart_varste(all_tables['varste'], selected_year, selected_month,25);
-    all_charts['piechart_all'] = init_piechart_varste(all_tables['varste'][selected_year][selected_month],25);
+    all_charts['barchart_all'] = init_barchart_varste(all_tables['varste'], selected_year, selected_month);
+    all_charts['piechart_all'] = init_piechart_varste(all_tables['varste'][selected_year][selected_month]);
 }
 
 

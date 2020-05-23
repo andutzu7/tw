@@ -98,7 +98,7 @@ function init_barchart_total(table, field, id_judet=null){
         for(var month in table[year]){
             if(id_judet){
                 for(var row of table[year][month]){
-                    if (row['id_judet'] === id_judet ) {  
+                    if (row['id_judet'] == id_judet ) {  
                         values.push(row[field]);
                         month_labels.push(row['luna']);
                     }
