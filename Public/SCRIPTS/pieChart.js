@@ -83,19 +83,21 @@ function init_piechart_gender_medii(rows){
     return createPieChart("piechart_gender_medii", labels, values, colors)
 }
 
-function init_piechart_varste(rows, id_judet){
-    let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]  //todo
+function init_piechart_varste(rows, id_judet=null){
+    let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
     labels = []
     values = []
     dict = {}
     for(var row of rows){
-        for(var key in row){
-            if (['an', 'luna', 'id_judet'].indexOf(key) < 0) {  
-                if(key in dict){
-                    dict[key] += row[key]
-                }
-                else{
-                    dict[key] = row[key]
+        if(id_judet == null || row.id_judet == id_judet){
+            for(var key in row){
+                if (['an', 'luna', 'id_judet'].indexOf(key) < 0) {  
+                    if(key in dict){
+                        dict[key] += row[key]
+                    }
+                    else{
+                        dict[key] = row[key]
+                    }
                 }
             }
         }
@@ -112,6 +114,16 @@ function init_piechart_varste(rows, id_judet){
     labels.push('50-55');
     values.push(dict['peste55'])
     labels.push('peste 55');
-    values = normalize_values(values)
-    return createPieChart("piechart_varste_educatie", labels, values, colors)
+    // values = normalize_values(values)
+    return createPieChart("piechart_all", labels, values, colors)
+}
+
+
+function init_piechart_rata(rows){
+}
+
+function init_piechart_educatie(rows){
+}
+
+function init_piechart_medii(rows){
 }

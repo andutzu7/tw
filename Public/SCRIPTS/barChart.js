@@ -9,11 +9,7 @@ function generateBarMonthsLabels(monthsIndex) {
 
 function createBarChart(chartNameID, field_text, title_text, months, values, colors, add_line=false) {
     var ctx = document.getElementById(chartNameID);
-    if(colors){
-        console.log('aaaaa')
-        colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"] 
-    }
-    else{
+    if(colors == null){
         colors = "rgba(219, 0, 0, 0.3)"
     }
     datasets = [{
@@ -128,18 +124,10 @@ function init_barchart_total(table, field, id_judet=null){
 function init_barchart_varste(table, year, month, id_judet = null){
     values = []
     labels = []
-    colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"] 
-    if(id_judet){
-        for(var row of table[year][month]){
-            if (row['id_judet'] === id_judet) {  // TODO
-                values.push(row[field]);
-                month_labels.push(row['luna']);
-            }
-        }
-    }
-    else{
-        dict = {}
-        for(var row of table[year][month]){
+    let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
+    dict = {}
+    for(var row of table[year][month]){
+        if(id_judet == null || row.id_judet == id_judet){
             for(var key in row){
                 if (['an', 'luna', 'id_judet'].indexOf(key) < 0) {  
                     if(key in dict){
@@ -151,18 +139,31 @@ function init_barchart_varste(table, year, month, id_judet = null){
                 }
             }
         }
-        values.push(dict['sub25'])
-        labels.push('sub 25');
-        values.push(dict['interval25_29'])
-        labels.push('25-29');
-        values.push(dict['interval30_39'])
-        labels.push('30-39');
-        values.push(dict['interval40_49'])
-        labels.push('40-49');
-        values.push(dict['interval50_55'])
-        labels.push('50-55');
-        values.push(dict['peste55'])
-        labels.push('peste 55');
     }
-    return createBarChart("barchart_varste_educatie", '', 'Distributie per varste', labels, values, colors);
+    values.push(dict['sub25'])
+    labels.push('sub 25');
+    values.push(dict['interval25_29'])
+    labels.push('25-29');
+    values.push(dict['interval30_39'])
+    labels.push('30-39');
+    values.push(dict['interval40_49'])
+    labels.push('40-49');
+    values.push(dict['interval50_55'])
+    labels.push('50-55');
+    values.push(dict['peste55'])
+    labels.push('peste 55');
+    return createBarChart("barchart_all", '', 'Distributie per varste', labels, values, colors);
+}
+
+
+
+
+
+function init_barchart_rata(rows){
+}
+
+function init_barchart_educatie(rows){
+}
+
+function init_barchart_medii(rows){
 }
