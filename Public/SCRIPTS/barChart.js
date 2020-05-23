@@ -20,8 +20,6 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
     }
     ]
 
-    console.log(datasets)
-
     if(add_line){
         datasets.push({
             label: field_text,

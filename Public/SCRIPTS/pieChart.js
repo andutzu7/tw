@@ -1,6 +1,5 @@
 function createPieChart( elementID, labels, values, colors ) {
     var ctx2 = document.getElementById(elementID);
-    console.log(colors)
     return new Chart(ctx2, {
         type: 'doughnut',
         data: {

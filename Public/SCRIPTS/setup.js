@@ -5,6 +5,14 @@ selected_year = 2020;
 selected_table = 'rata';
 MONTHS_STR = []
 
+
+field_to_display = {
+    'peste55': 'Peste 55',
+    'interval25_30': '25-30',
+    'primar': 'primar'
+}
+
+
 function store_table(table_name, rows) {
     dict = {}
     for (let row of rows) {
@@ -199,10 +207,7 @@ function parse_date(date){
     };
     const split = date.split('-');
     let result = {};
-    result['Year']= parseInt(split[0]);
+    result['Year'] = parseInt(split[0]);
     result['Month'] = parseInt(months[split[1]]);
-    console.log(result);
     return result;
 }
-
-parse_date("2020-Mar");
