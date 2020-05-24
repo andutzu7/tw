@@ -32,6 +32,21 @@ function update_data() {
     console.log('server reloaded data')
 }
 
+function parse_url(url) {
+    // format xml sau csv
+    // luni 1..12
+    // an
+    // categorie
+    // judete
+    var url1 = require('url');
+    adr = url;
+    var q = url1.parse(adr, true);
+    console.log(q.query['format']);
+    var dict = {
+    }
+
+    return q.query;
+}
 
 update_data();
 const port = process.env.PORT || 3000;
@@ -46,15 +61,25 @@ const server = http.createServer((req, res) => {
     }
 
     if (req.method == 'GET') {
+        if (req.url.startsWith('/export')){
+            args = parse_url(req.url)
+            a = 'dasa';
+
+
+
+            res.end(a);
+            return;
+        }
+
 
         for (let table_name of all_tables) {
             if (req.url == `/${table_name}`) {
                 res.end(JSON.stringify(data[table_name]))
-                break;
+                return;
             }
         }
 
-        if (req.url.startsWith('/view')) {
+        /*if (req.url.startsWith('/view')) {
 
             const path = "./tw/Public/HTML/";
             fs.readFile(path + 'index.html', function (err, html) {
@@ -84,7 +109,7 @@ const server = http.createServer((req, res) => {
                 }
                 res.end(data);
             });
-        }
+        }*/
     }
 });
 

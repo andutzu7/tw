@@ -1,30 +1,16 @@
 function parse_url(url){
-    // format xml sau csv
-    // luni 1..12
-    // an
-    // categorie
-    // judete
-
-
-    dict = {}
-
-    // parse arguemnts
-
-    return dict
+var url1 = require('url');
+adr = url;
+var q = url1.parse(adr, true);
+console.log(q.query['format']);
+  var  dict = {
+  }
+    return q.query;
 }
-
 
 
 exmaple_url = '/export?format=csv,xml&an=2020&categorii=rata,educatie&judete=alba,iasi'
-expected = {
-    'format': ['csv', 'xml'],
-    'categorii': ['rata', 'educatie'],
-    'judete': ['alba', 'iasi'],
-    'an' : [2020]
-}
 
 
-console.log('output:')
+//console.log('output:')
 console.log(parse_url(exmaple_url))
-console.log('expected output:')
-console.log(expected)
