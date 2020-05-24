@@ -2,6 +2,10 @@ function changeContent(e) {
     id = e.target.id.split('_')[2]
     console.log(id)
 
+    document.getElementById("header-location-name").innerText = COUNTY_DICT[id]
+    document.getElementById("header-total-value").innerText = `${id}${id} someri`  // TODO
+    document.getElementById("header-procent-value").innerText = `${id}%`  // TODO
+
     // TODO: update existing charts instead of generating them every time
     all_charts['piechart_gender_medii'] = init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month], id);
     all_charts['piechart_indemnizatie'] = init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month], id);

@@ -4,6 +4,7 @@ selected_month = 1;
 selected_year = 2020;
 selected_table = 'rata';
 MONTHS_STR = []
+COUNTY_DICT = {}
 
 
 function store_table(table_name, rows) {
@@ -80,7 +81,21 @@ function init_educatie(){
 }
 
 
+function fetch_judete(api_url){
+    fetch(`${api_url}/judete`)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            for(let row of data){
+                COUNTY_DICT[row['id']] = row['nume']
+            }
+        })
+}
+
+
 function setup_hardcoded(api_url) {
+    fetch_judete(api_url)
     fetch_table(api_url, 'rata', init_rata);
     fetch_table(api_url, 'varste', init_varste);
     fetch_table(api_url, 'medii', init_medii);
