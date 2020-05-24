@@ -4,6 +4,8 @@ selected_month = 1;
 selected_year = 2020;
 selected_table = 'rata';
 MONTHS_STR = []
+COUNTY_DICT = {}
+
 
 function store_table(table_name, rows) {
     dict = {}
@@ -40,7 +42,7 @@ function init_rata() {
     all_charts['barchart_total'] = init_barchart_total(all_tables['rata'], 'total');
     all_charts['piechart_indemnizatie'] = init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month]);
     generate_table();
-
+    
 
     for (var year in all_tables['rata']) {
         for(var month in all_tables['rata'][year]){
@@ -48,26 +50,52 @@ function init_rata() {
         }
     }
     append_options_to_dropdown(MONTHS_STR);
+
+
+    //to comment
+    // all_charts['barchart_all'] = init_barchart_rata(all_tables['medii'], selected_year, selected_month);
+    // all_charts['piechart_all'] = init_piechart_rata(all_tables['medii'][selected_year][selected_month]);
 }
 
 
 function init_medii(){
     all_charts['piechart_gender_medii'] = init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month]);
+
+    //to comment
+    // all_charts['barchart_all'] = init_barchart_medii(all_tables['medii'], selected_year, selected_month);
+    // all_charts['piechart_all'] = init_piechart_medii(all_tables['medii'][selected_year][selected_month]);
 }
 
 
 function init_varste(){
-    all_charts['barchart_varste_educatie'] = init_barchart_varste(all_tables['varste'], selected_year, selected_month);
-    all_charts['piechart_varste_educatie'] = init_piechart_varste(all_tables['varste'][selected_year][selected_month]);
+    //to comment
+    all_charts['barchart_all'] = init_barchart_varste(all_tables['varste'], selected_year, selected_month);
+    all_charts['piechart_all'] = init_piechart_varste(all_tables['varste'][selected_year][selected_month]);
 }
 
 
 function init_educatie(){
-    //pass
+    //to comment
+    // all_charts['barchart_all'] = init_barchart_educatie(all_tables['educatie'], selected_year, selected_month);
+    // all_charts['piechart_all'] = init_piechart_educatie(all_tables['educatie'][selected_year][selected_month]);
+}
+
+
+function fetch_judete(api_url){
+    fetch(`${api_url}/judete`)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            for(let row of data){
+                COUNTY_DICT[row['id']] = row['nume']
+            }
+        })
 }
 
 
 function setup_hardcoded(api_url) {
+    fetch_judete(api_url)
     fetch_table(api_url, 'rata', init_rata);
     fetch_table(api_url, 'varste', init_varste);
     fetch_table(api_url, 'medii', init_medii);
@@ -187,8 +215,7 @@ function parse_date(date){
     };
     const split = date.split('-');
     let result = {};
-    result['Year']= parseInt(split[0]);
+    result['Year'] = parseInt(split[0]);
     result['Month'] = parseInt(months[split[1]]);
-    console.log(result);
     return result;
 }

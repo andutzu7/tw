@@ -43,7 +43,7 @@ function set_county_hover(rows, field){
             tooltip.setAttributeNS(null, "transform", "translate(" + x + " " + y + ")");
             tooltip.setAttributeNS(null, "visibility", "visible");
             let tooltipText = tooltip.getElementsByTagName('text')[0];
-            tooltipText.firstChild.data = `${event.target.getAttribute('title')}: ${field} ${row[field]}`;
+            tooltipText.firstChild.data = `${COUNTY_DICT[row['id_judet']]}: ${field} ${row[field]}`;
 
             let rects = tooltip.getElementsByTagName('rect');
             let length = tooltipText.getComputedTextLength();

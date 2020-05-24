@@ -4,18 +4,23 @@ body {
 
 h2, h1, h3, h4 {
     color: white;
+    padding-top: 3vmin;
+}
+
+h2{
+    font-size: min(65px,4vmin);
 }
 
 h1{
-   font-size: 50px;
-   line-height: 30px;
+    font-size: min(65px,6vmin);
+    line-height: 0px;
 }
 h3{
-    font-size: 40px;
-    line-height: 10 px;
+    font-size: min(65px,5vmin);
+    line-height: 0px;
 }
 h4{
-    font-size: 90px;
+    font-size: min(65px,10vmin);
     line-height: 0px;
 }
 
@@ -23,9 +28,16 @@ h4{
 .header {
     /* padding: 10px; */
     display: grid;
-    grid-template-areas: "headerinfo harta";
+    grid-template-areas: 
+    "headerinfo harta" 
+    "criterii harta";
     grid-template-columns: 40% 60%;
-    grid-template-rows: 100%;
+    grid-template-rows: auto 50px;
+}
+
+.criterii{
+    grid-area: criterii;
+    color: white;
 }
 
 
@@ -35,7 +47,6 @@ h4{
 
 .header-info {
     grid-area: headerinfo;
-    overflow: hidden; /*todo*/
     text-align: center;
 }
 
@@ -44,9 +55,6 @@ h4{
     display: flex;
 }
 
-#romanian_map {
-    width: 100%;
-}
 
 .chart-container {
     position: relative;
@@ -76,11 +84,10 @@ h4{
     grid-template-areas: "a a a a" "b b x x" "c c c c" "f e e e" "tabel tabel tabel tabel";
     grid-template-columns: 300px 1fr 1fr 300px;
     grid-template-rows: auto;
-    /* grid-gap: 5px; */
 }
 
 .a {
-    height: min(500px, 95vh);
+    height: 600px;
     grid-area: a;
     background-color: rgb(47, 66, 71);
 }
@@ -143,7 +150,6 @@ h4{
     .element {
         width: 100vw;
         padding-bottom: 30px;
-        padding-top: 30px;
         margin: auto;
     }
 
@@ -163,18 +169,68 @@ h4{
     .header {
         padding: 0;
         display: grid;
-        grid-template-areas: "headerinfo" "harta";
+        grid-template-areas: "headerinfo" "harta" "criterii";
         grid-template-columns: 100vw;
-        grid-template-rows: 20% 80%;
+        grid-template-rows: 20% auto 10%;
+        height: 95vh;
     }
 
 
-    #romanian_map {
+    .map-container {
+        grid-area: harta;
         height: min(100%, 90vw);
+        /* border: 5px dotted black; */
     }
 
+    .criterii{
+        /* margin: 50px; */
+    }
+
+    .header-info,.criterii,.map-container{
+        /* border: 5px dotted white; */
+        /* border-radius: 30px; */
+        height: 100%;
+    }
+}
+
+
+@media only screen and (max-width: 800px) and (min-aspect-ratio: 3/5){ 
+    .a{
+        background-color: black;
+    }
+
+    .header-info{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .header-gr-1, h4{
+        display: flex;
+        flex-direction: column;
+        /* border: 3px dotted cyan; */
+        width: 40%;
+        height: 100%;
+    }
+
+    .header-gr-1{
+        flex: 3;
+        text-align: left;
+        padding-left: 10%;
+    }
+
+    h2, h1, h3, h4 {
+        margin: 1vmin;
+    }
+
+    h4{
+        flex: 1;
+        text-align: right;
+        padding-right: 10%;
+        padding-top: 10%;
+    }
 
 }
+
 
 .btn-group{
     position: absolute;
@@ -223,4 +279,20 @@ h4{
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.download-btn{
+    width: 20%;
+    padding: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid ;
+    color: white;
+    font-size: 0.7em;
+}
+
+.download-btn:hover{
+    color: black;
+    background: rgba(255,255,255,0.8);
+    cursor: pointer;
+    border-color: rgb(17, 33, 37);
 }
