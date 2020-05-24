@@ -1,7 +1,7 @@
 import mysql.connector
 from contextlib import contextmanager
 from datagov_scraper import get_all_csv_links, print_dict, read_csv, MONTHS
-from judete_utils import filter_name, get_judet_id, assert_county_names_are_consistent, assert_column_names_are_consistent
+from judete_utils import filter_name, get_judet_id, assert_county_names_are_consistent, assert_column_names_are_consistent, ids
 import urllib3
 import os
 import json
@@ -20,12 +20,11 @@ def get_cursor(*args, **kwargs):
         db.close()
 
 
-def add_csv_files_to_judete(cursor):
-    with open('judete.json', 'r') as fd:
-        judete = json.load(fd)
-        entries = [(judete[name], name) for name in judete]
-        query = "insert into judete(id, nume) values(%s, %s)"
-        cursor.executemany(query, entries)
+def init_judete(cursor):
+    judete = ids
+    entries = [(judete[name], name) for name in judete]
+    query = "insert into judete(id, nume) values(%s, %s)"
+    cursor.executemany(query, entries)
 
     print('tabel "judete" initializat')
 
@@ -164,7 +163,6 @@ def add_csv_files_to_rata(cursor, csv_links):
                     entries.append(e)
                 print('added {}-{} records to "{}" table'.format(year, month, 'rata'))
 
-
     if entries:
         query = "insert into rata(id_judet, total, total_femei, total_barbati, indemnizati, neindemnizati, procent_total, procent_femei, procent_barbati, an, luna) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
         cursor.executemany(query, entries)
@@ -191,7 +189,7 @@ def update_data(cursor, csv_links, rebuild=False):
     if rebuild:
         setup(cursor)
         create_tables(cursor)
-        add_csv_files_to_judete(cursor)
+        init_judete(cursor)
     add_csv_files_to_educatie(cursor, csv_links)
     add_csv_files_to_varste(cursor, csv_links)
     add_csv_files_to_medii(cursor, csv_links)
