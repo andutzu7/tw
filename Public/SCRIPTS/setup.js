@@ -42,10 +42,10 @@ function init_rata() {
     all_charts['barchart_total'] = init_barchart_total(all_tables['rata'], 'total');
     all_charts['piechart_indemnizatie'] = init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month]);
     generate_table();
-    
+
 
     for (var year in all_tables['rata']) {
-        for(var month in all_tables['rata'][year]){
+        for (var month in all_tables['rata'][year]) {
             MONTHS_STR.push(`${year}-${MONTHS[month - 1]}`)
         }
     }
@@ -53,41 +53,40 @@ function init_rata() {
 
 
     //to comment
-    // all_charts['barchart_all'] = init_barchart_rata(all_tables['medii'], selected_year, selected_month);
-    // all_charts['piechart_all'] = init_piechart_rata(all_tables['medii'][selected_year][selected_month]);
+    all_charts['barchart_all'] = init_barchart_rata(all_tables['medii'], selected_year, selected_month);
+    all_charts['piechart_all'] = init_piechart_rata(all_tables['medii'][selected_year][selected_month]);
 }
 
-
-function init_medii(){
+function init_medii() {
     all_charts['piechart_gender_medii'] = init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month]);
 
     //to comment
-    // all_charts['barchart_all'] = init_barchart_medii(all_tables['medii'], selected_year, selected_month);
-    // all_charts['piechart_all'] = init_piechart_medii(all_tables['medii'][selected_year][selected_month]);
+    all_charts['barchart_all'] = init_barchart_medii(all_tables['medii'], selected_year, selected_month);
+    all_charts['piechart_all'] = init_piechart_medii(all_tables['medii'][selected_year][selected_month]);
 }
 
 
-function init_varste(){
+function init_varste() {
     //to comment
     all_charts['barchart_all'] = init_barchart_varste(all_tables['varste'], selected_year, selected_month);
     all_charts['piechart_all'] = init_piechart_varste(all_tables['varste'][selected_year][selected_month]);
 }
 
 
-function init_educatie(){
+function init_educatie() {
     //to comment
-    // all_charts['barchart_all'] = init_barchart_educatie(all_tables['educatie'], selected_year, selected_month);
-    // all_charts['piechart_all'] = init_piechart_educatie(all_tables['educatie'][selected_year][selected_month]);
+    all_charts['barchart_all'] = init_barchart_educatie(all_tables['educatie'], selected_year, selected_month);
+    all_charts['piechart_all'] = init_piechart_educatie(all_tables['educatie'][selected_year][selected_month]);
 }
 
 
-function fetch_judete(api_url){
+function fetch_judete(api_url) {
     fetch(`${api_url}/judete`)
         .then((response) => {
             return response.json();
         })
         .then((data) => {
-            for(let row of data){
+            for (let row of data) {
                 COUNTY_DICT[row['id']] = row['nume']
             }
         })
@@ -180,42 +179,102 @@ function removeData(chart) {
 function append_options_to_dropdown(months) {
 
     let dropdown = document.querySelector(".select-criteriu");
-    months.forEach(function (element){
+    months.forEach(function (element) {
         let option = document.createElement("option");
         let text = document.createTextNode(element);
         option.appendChild(text);
         dropdown.appendChild(option); //de adaugat selected
     });
-    dropdown.lastChild.selected=true;
+    dropdown.lastChild.selected = true;
 }
 
-function dropdownOnClick(){
+function dropdownOnClick() {
 
 }
-function update2(){
+
+function update2() {
     // update_piechart(all_charts['piechart_indemnizatie'], [20,1])
     // update_barchart(all_charts['barchart_total'], [0, 0, 1, 1, 0.2, 5, 4.5, 0.2, 1, 1, 0, 0])
 }
 
 
-function parse_date(date){
+function parse_date(date) {
     let months = {
-        'Ian' : '1',
-        'Feb' : '2',
-        'Mar' : '3',
-        'Apr' : '4',
-        'Mai' : '5',
-        'Iun' : '6',
-        'Iul' : '7',
-        'Aug' : '8',
-        'Sep' : '9',
-        'Oct' : '10',
-        'Nov' : '11',
-        'Dec' : '12'
+        'Ian': '1',
+        'Feb': '2',
+        'Mar': '3',
+        'Apr': '4',
+        'Mai': '5',
+        'Iun': '6',
+        'Iul': '7',
+        'Aug': '8',
+        'Sep': '9',
+        'Oct': '10',
+        'Nov': '11',
+        'Dec': '12'
     };
     const split = date.split('-');
     let result = {};
     result['Year'] = parseInt(split[0]);
     result['Month'] = parseInt(months[split[1]]);
     return result;
+}
+
+function generate_lables_data(dict) {   //ia ca si parametru un dictionar  cu datele initiale si returneaza un dict cu labels si values
+
+    let result = {};
+
+    for (let key in dict) {
+        result[key] = {};
+        let str = key;
+        str = str.replace('_', '-');
+        let match = str.match(/(\d+)/);
+        if (match != null) {
+            let index = str.indexOf(match[0]);
+            str = str.substring(index, str.length);
+        }
+        if (str === '25')
+            str = "sub 25";
+        if (str === '55')
+            str = "peste 55";
+        result[key]['label'] = str;
+        result[key]['value'] = dict[key];
+    }
+    return result;
+}
+
+function generate_data_dict(table, year, month, id_judet = null) {
+    let dict = {}
+    for (let row of table[year][month]) {
+        if (id_judet == null || row.id_judet === id_judet) {
+            for (let key in row) {
+                if (['an', 'luna', 'id_judet'].indexOf(key) < 0) {
+                    if (key in dict) {
+                        dict[key] += row[key]
+                    } else {
+                        dict[key] = row[key]
+                    }
+                }
+            }
+        }
+    }
+    return dict;
+}
+
+function generate_data_dict_by_rows(rows, id_judet = null) {
+    let dict = {}
+    for (let row of rows) {
+        if (id_judet == null || row.id_judet === id_judet) {
+            for (let key in row) {
+                if (['an', 'luna', 'id_judet'].indexOf(key) < 0) {
+                    if (key in dict) {
+                        dict[key] += row[key]
+                    } else {
+                        dict[key] = row[key]
+                    }
+                }
+            }
+        }
+    }
+    return dict;
 }

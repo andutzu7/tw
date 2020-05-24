@@ -87,47 +87,42 @@ function init_piechart_gender_medii(rows, id_judet=null){
     return createPieChart("piechart_gender_medii", labels, values, colors)
 }
 
-function init_piechart_varste(rows, id_judet=null){
-    let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
-    labels = []
-    values = []
-    dict = {}
-    for(var row of rows){
-        if(id_judet == null || row.id_judet == id_judet){
-            for(var key in row){
-                if (['an', 'luna', 'id_judet'].indexOf(key) < 0) {  
-                    if(key in dict){
-                        dict[key] += row[key]
-                    }
-                    else{
-                        dict[key] = row[key]
-                    }
-                }
-            }
-        }
+
+function init_piechart(rows,id_judet = null,colors){
+    let labels = [];
+    let values = [];
+    const dict = generate_data_dict_by_rows(rows,id_judet);
+    const result = generate_lables_data(dict);
+    for(const key in dict){
+        labels.push(result[key]['label']);
+        values.push(result[key]['value']);
     }
-    values.push(dict['sub25'])
-    labels.push('sub 25');
-    values.push(dict['interval25_29'])
-    labels.push('25-29');
-    values.push(dict['interval30_39'])
-    labels.push('30-39');
-    values.push(dict['interval40_49'])
-    labels.push('40-49');
-    values.push(dict['interval50_55'])
-    labels.push('50-55');
-    values.push(dict['peste55'])
-    labels.push('peste 55');
-    values = normalize_values(values)
+    values = normalize_values(values);
+
     return createPieChart("piechart_all", labels, values, colors)
 }
 
+function init_piechart_varste(rows, id_judet=null){
+    let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
 
-function init_piechart_rata(rows){
+    return init_piechart(rows,id_judet,colors);
 }
 
-function init_piechart_educatie(rows){
+
+function init_piechart_rata(rows, id_judet=null){
+    let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
+
+    return init_piechart(rows,id_judet,colors);
 }
 
-function init_piechart_medii(rows){
+function init_piechart_educatie(rows, id_judet=null){
+    let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
+
+    return init_piechart(rows,id_judet,colors);
+}
+
+function init_piechart_medii(rows, id_judet=null){
+    let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
+
+    return init_piechart(rows,id_judet,colors);
 }
