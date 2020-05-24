@@ -192,5 +192,3 @@ function parse_date(date){
     console.log(result);
     return result;
 }
-
-parse_date("2020-Mar");
