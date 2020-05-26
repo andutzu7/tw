@@ -22,6 +22,10 @@ function generateCSV(data) {
     return csvString;
 
 }
+function csvExp() {
+    const csvStringData = generateCSV(all_tables["educatie"]); //hardcoded
+    downloadcsv("export_statistici.csv", csvStringData);
+}
 
 function downloadcsv(filename, csvStringContent) {
     let element = document.createElement('a');

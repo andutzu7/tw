@@ -38,6 +38,10 @@ function generateXML(allTables) {
 
 }
 
+function xmlExp() {
+    const xmlStringData = generateXML(all_tables);
+    downloadxml("export_statistici.xml", xmlStringData);
+}
 
 function downloadxml(filename, xmlStringContent) {
     var element = document.createElement('a');

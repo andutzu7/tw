@@ -44,13 +44,12 @@ function init_rata() {
     generate_table();
 
 
-    for (var year in all_tables['rata']) {
-        for (var month in all_tables['rata'][year]) {
+    for (let year in all_tables['rata']) {
+        for (let month in all_tables['rata'][year]) {
             MONTHS_STR.push(`${year}-${MONTHS[month - 1]}`)
         }
     }
     append_options_to_dropdown(MONTHS_STR);
-
 
     //to comment
     all_charts['barchart_all'] = init_barchart_rata(all_tables['medii'], selected_year, selected_month);
@@ -105,43 +104,8 @@ function setup_hardcoded(api_url) {
 url = 'https://arcane-sierra-19327.herokuapp.com'
 setup_hardcoded(url)
 
-function xmlExp() {
-    const xmlStringData = generateXML(all_tables);
-    downloadxml("export_statistici.xml", xmlStringData);
-}
-
-function csvExp() {
-    const csvStringData = generateCSV(all_tables["educatie"]); //hardcoded
-    downloadcsv("export_statistici.csv", csvStringData);
-}
-
-function parse_link_param() {
-    const current_link = window.location.href;
-    //separam din link stringul cu criterii, apoi il transformam in array
-    const criteria = current_link.split("?")[1].split(",");
-    let selected_criteria = {};
-    criteria.forEach(function (entry) {
-        selected_criteria[entry.split("=")[0]] = entry.split("=")[1];
-    });
-    return selected_criteria;
-}
-
-function create_link_from_criteria(criteria) {
-    const current_link = window.location.href;
-    let page_link = current_link.split("?")[0].split(",");
-    page_link += '?'; //needed
-    for (const [key, value] of Object.entries(criteria)) {
-        page_link += key;
-        page_link += '=';
-        page_link += value;
-        page_link += '&';
-    }
-    page_link = page_link.slice(0, -1);
-    return page_link;
-}
 
 function update_charts() { //in the future thiss will hav a parameter
-    let sel_table = 'rata';
     //removeData(all_charts['barchart' + sel_table]);
     //removeData(all_charts['piechart'+sel_table]);
     let testmonth = 11;
@@ -176,105 +140,8 @@ function removeData(chart) {
 
 }
 
-function append_options_to_dropdown(months) {
-
-    let dropdown = document.querySelector(".select-criteriu");
-    months.forEach(function (element) {
-        let option = document.createElement("option");
-        let text = document.createTextNode(element);
-        option.appendChild(text);
-        dropdown.appendChild(option); //de adaugat selected
-    });
-    dropdown.lastChild.selected = true;
-}
-
-function dropdownOnClick() {
-
-}
-
 function update2() {
     // update_piechart(all_charts['piechart_indemnizatie'], [20,1])
     // update_barchart(all_charts['barchart_total'], [0, 0, 1, 1, 0.2, 5, 4.5, 0.2, 1, 1, 0, 0])
 }
 
-
-function parse_date(date) {
-    let months = {
-        'Ian': '1',
-        'Feb': '2',
-        'Mar': '3',
-        'Apr': '4',
-        'Mai': '5',
-        'Iun': '6',
-        'Iul': '7',
-        'Aug': '8',
-        'Sep': '9',
-        'Oct': '10',
-        'Nov': '11',
-        'Dec': '12'
-    };
-    const split = date.split('-');
-    let result = {};
-    result['Year'] = parseInt(split[0]);
-    result['Month'] = parseInt(months[split[1]]);
-    return result;
-}
-
-function generate_lables_data(dict) {   //ia ca si parametru un dictionar  cu datele initiale si returneaza un dict cu labels si values
-
-    let result = {};
-
-    for (let key in dict) {
-        result[key] = {};
-        let str = key;
-        str = str.replace('_', '-');
-        let match = str.match(/(\d+)/);
-        if (match != null) {
-            let index = str.indexOf(match[0]);
-            str = str.substring(index, str.length);
-        }
-        if (str === '25')
-            str = "sub 25";
-        if (str === '55')
-            str = "peste 55";
-        result[key]['label'] = str;
-        result[key]['value'] = dict[key];
-    }
-    return result;
-}
-
-function generate_data_dict(table, year, month, id_judet = null) {
-    let dict = {}
-    for (let row of table[year][month]) {
-        if (id_judet == null || row.id_judet === id_judet) {
-            for (let key in row) {
-                if (['an', 'luna', 'id_judet'].indexOf(key) < 0) {
-                    if (key in dict) {
-                        dict[key] += row[key]
-                    } else {
-                        dict[key] = row[key]
-                    }
-                }
-            }
-        }
-    }
-    return dict;
-}
-
-function generate_data_dict_by_rows(rows, id_judet = null) {
-    let dict = {}
-    for (let row of rows) {
-        if (id_judet == null || row.id_judet === id_judet) {
-            for (let key in row) {
-                if (['an', 'luna', 'id_judet'].indexOf(key) < 0) {
-                    if (key in dict) {
-                        dict[key] += row[key]
-                    } else {
-                        dict[key] = row[key]
-                    }
-                }
-            }
-        }
-    }
-    return dict;
-}
