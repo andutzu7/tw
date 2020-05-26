@@ -1,21 +1,40 @@
-.land
-{
-    fill: #8e5ea2;
+/* map */
+.header {
+    /* padding: 10px; */
+    display: grid;
+    grid-template-areas: "headerinfo harta" "criterii harta";
+    grid-template-columns: 40% 60%;
+    grid-template-rows: auto 50px;
+}
+
+.criterii {
+    grid-area: criterii;
+    color: white;
+}
+
+
+.element {
+    height: 300px;
+}
+
+.header-info {
+    grid-area: headerinfo;
+    text-align: center;
+}
+
+.land {
+    fill: rgb(236, 139, 139);
     fill-opacity: 1;
-    stroke:white;
+    stroke: white;
     stroke-opacity: 1;
     stroke-width: 1px;
 }
 
-.land:hover{
+.land:hover {
     stroke-width: 4px;
 }
 
-#romanian_map {
-    width:100%;
-    height:100%;
-    border: 4px dotted red; /*Debug*/
-    overflow: visible;
-    stroke-width: 1px;
-}
 
+#tooltipText {
+    fill: white;
+}

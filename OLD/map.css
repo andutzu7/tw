@@ -1,0 +1,21 @@
+.land
+{
+    fill: #8e5ea2;
+    fill-opacity: 1;
+    stroke:white;
+    stroke-opacity: 1;
+    stroke-width: 1px;
+}
+
+.land:hover{
+    stroke-width: 4px;
+}
+
+#romanian_map {
+    width:100%;
+    height:100%;
+    border: 4px dotted red; /*Debug*/
+    overflow: visible;
+    stroke-width: 1px;
+}
+

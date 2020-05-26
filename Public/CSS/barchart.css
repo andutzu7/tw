@@ -1,0 +1,8 @@
+#lineBarChart {
+    position: absolute;
+}
+#barchart_varste_educatie {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

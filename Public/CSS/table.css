@@ -2,6 +2,8 @@
     width: 100%;
     height: 64vh;
     overflow: auto;
+    grid-area: tabel;
+    background-color: rgb(136, 112, 112);
 
 }
 
