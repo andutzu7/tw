@@ -29,7 +29,7 @@ function genPDF() {
     doc.addImage(imgData, 'JPEG', 0, 160, width, height);
 
     width = 150;
-    canvas3 = document.getElementById('piechart_varste_educatie');
+    canvas3 = document.getElementById('piechart_all');
     imgData = canvas3.toDataURL("image/jpeg", 1.0);
     doc.fromHTML(document.getElementById('piechart_varste_educatie_PDF').innerHTML, 20, 20, {
         'width': 80
@@ -37,7 +37,7 @@ function genPDF() {
     doc.addImage(imgData, 'JPEG', 0, 330, width, height)
 
     width = doc.internal.pageSize.getWidth() - 130;
-    canvas4 = document.getElementById('barchart_varste_educatie');
+    canvas4 = document.getElementById('barchart_all');
     imgData = canvas4.toDataURL("image/jpeg", 1.0);
     doc.fromHTML(document.getElementById('barchart_varste_educatie_PDF').innerHTML, 20, 20, {
         'width': 80
