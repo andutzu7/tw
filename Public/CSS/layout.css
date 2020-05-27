@@ -9,7 +9,7 @@ body {
     display: grid;
     grid-template-areas: 
     "head head head head" 
-    "b b x x" 
+    "pie1 pie1 pie2 pie2" 
     "c c c c" 
     "f e e e" 
     "tabel tabel tabel tabel";
@@ -40,8 +40,13 @@ body {
     background-color: rgb(47, 66, 71);
 }
 
-.b {
-    grid-area: b;
+.pie1 {
+    grid-area: pie1;
+    background-color: rgb(96, 131, 139);
+}
+
+.pie2 {
+    grid-area: pie2;
     background-color: rgb(96, 131, 139);
 }
 
@@ -58,10 +63,5 @@ body {
 
 .f {
     grid-area: f;
-    background-color: rgb(96, 131, 139);
-}
-
-.x {
-    grid-area: x;
     background-color: rgb(96, 131, 139);
 }
