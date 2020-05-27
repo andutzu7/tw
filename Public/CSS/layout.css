@@ -7,7 +7,12 @@ body {
     width: min(1200px, 100%);
     margin: auto;
     display: grid;
-    grid-template-areas: "a a a a" "b b x x" "c c c c" "f e e e" "tabel tabel tabel tabel";
+    grid-template-areas: 
+    "head head head head" 
+    "b b x x" 
+    "c c c c" 
+    "f e e e" 
+    "tabel tabel tabel tabel";
     grid-template-columns: 300px 1fr 1fr 300px;
     grid-template-rows: auto;
 }
@@ -23,16 +28,15 @@ body {
 
 .chart-container {
     position: relative;
-    /* border: 2px dotted pink; */
 }
 
 .chart {
     position: absolute;
 }
 
-.a {
+.header-container {
     height: 600px;
-    grid-area: a;
+    grid-area: head;
     background-color: rgb(47, 66, 71);
 }
 

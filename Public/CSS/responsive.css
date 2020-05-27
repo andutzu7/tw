@@ -1,7 +1,7 @@
 @media only screen and (max-width: 800px) {
 
     .wrapper {
-        grid-template-areas: "a" "b" "x" "c" "f" "e" "tabel";
+        grid-template-areas: "head" "b" "x" "c" "f" "e" "tabel";
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         grid-gap: 0;
@@ -48,6 +48,7 @@
 }
 
 @media only screen and (max-width: 800px) and (min-aspect-ratio: 3/5) {
+
     .header-info {
         display: flex;
         justify-content: space-around;
@@ -66,4 +67,6 @@
         text-align: left;
         padding-left: 10%;
     }
+
 }
+
