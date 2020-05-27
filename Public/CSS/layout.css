@@ -11,7 +11,7 @@ body {
     "head head head head" 
     "pie1 pie1 pie2 pie2" 
     "c c c c" 
-    "f e e e" 
+    "pie3 e e e" 
     "tabel tabel tabel tabel";
     grid-template-columns: 300px 1fr 1fr 300px;
     grid-template-rows: auto;
@@ -61,7 +61,7 @@ body {
     background-color: rgb(96, 131, 139);
 }
 
-.f {
-    grid-area: f;
+.pie3 {
+    grid-area: pie3;
     background-color: rgb(96, 131, 139);
 }
