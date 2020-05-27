@@ -1,41 +1,63 @@
+
 body {
     background-color: rgb(33, 62, 71);
 }
 
-h2, h1, h3, h4 {
-    color: white;
-    padding-top: 3vmin;
+.wrapper {
+    width: min(1200px, 100%);
+    margin: auto;
+    display: grid;
+    grid-template-areas: "a a a a" "b b x x" "c c c c" "f e e e" "tabel tabel tabel tabel";
+    grid-template-columns: 300px 1fr 1fr 300px;
+    grid-template-rows: auto;
 }
 
-h2{
-    font-size: min(65px,4vmin);
+.element {
+    height: 300px;
 }
 
-h1{
-    font-size: min(65px,6vmin);
-    line-height: 0px;
-}
-h3{
-    font-size: min(65px,5vmin);
-    line-height: 0px;
-}
-h4{
-    font-size: min(65px,10vmin);
-    line-height: 0px;
+.map-container {
+    grid-area: harta;
+    display: flex;
 }
 
+.chart-container {
+    position: relative;
+    /* border: 2px dotted pink; */
+}
 
-@media only screen and (max-width: 800px) and (min-aspect-ratio: 3/5) {
+.chart {
+    position: absolute;
+}
 
-    h2, h1, h3, h4 {
-        margin: 1vmin;
-    }
+.a {
+    height: 600px;
+    grid-area: a;
+    background-color: rgb(47, 66, 71);
+}
 
-    h4 {
-        flex: 1;
-        text-align: right;
-        padding-right: 10%;
-        padding-top: 10%;
-    }
+.b {
+    grid-area: b;
+    background-color: rgb(96, 131, 139);
+}
 
+.c {
+    grid-area: c;
+    background-color: rgb(47, 66, 71);
+    position: relative;
+}
+
+.e {
+    grid-area: e;
+    background-color: rgb(96, 131, 139);
+}
+
+.f {
+    grid-area: f;
+    background-color: rgb(96, 131, 139);
+}
+
+.x {
+    grid-area: x;
+    background-color: rgb(96, 131, 139);
 }

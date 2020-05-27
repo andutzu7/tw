@@ -1,27 +1,3 @@
-/* map */
-.header {
-    /* padding: 10px; */
-    display: grid;
-    grid-template-areas: "headerinfo harta" "criterii harta";
-    grid-template-columns: 40% 60%;
-    grid-template-rows: auto 50px;
-}
-
-.criterii {
-    grid-area: criterii;
-    color: white;
-}
-
-
-.element {
-    height: 300px;
-}
-
-.header-info {
-    grid-area: headerinfo;
-    text-align: center;
-}
-
 .land {
     fill: rgb(236, 139, 139);
     fill-opacity: 1;
@@ -33,7 +9,6 @@
 .land:hover {
     stroke-width: 4px;
 }
-
 
 #tooltipText {
     fill: white;

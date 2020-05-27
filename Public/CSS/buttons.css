@@ -6,7 +6,6 @@
     height: 25px;
     right: 2%;
     top: 5%;
-    /* background-color: pink; */
 }
 
 .barchart_button {
@@ -38,7 +37,6 @@
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
-
 
 .download-btn {
     width: 20%;
