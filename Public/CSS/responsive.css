@@ -47,6 +47,9 @@
     }
 }
 
+
+
+/* responsive header */
 @media only screen and (max-width: 800px) and (min-aspect-ratio: 3/5) {
 
     .header-info {
@@ -54,7 +57,7 @@
         justify-content: space-around;
     }
 
-    .header-gr-1, h4 {
+    .header-gr-1, #header-procent-value {
         display: flex;
         flex-direction: column;
         /* border: 3px dotted cyan; */

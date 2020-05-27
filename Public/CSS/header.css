@@ -16,24 +16,24 @@
     text-align: center;
 }
 
-h2, h1, h3, h4 {
+.header-text {
     color: white;
     padding-top: 3vmin;
 }
 
-h2{
+#header-const-text{
     font-size: min(65px,4vmin);
 }
 
-h1{
+#header-location-name{
     font-size: min(65px,6vmin);
     line-height: 0px;
 }
-h3{
+#header-total-value{
     font-size: min(65px,5vmin);
     line-height: 0px;
 }
-h4{
+#header-procent-value{
     font-size: min(65px,10vmin);
     line-height: 0px;
 }
@@ -55,11 +55,11 @@ h4{
 
 @media only screen and (max-width: 800px) and (min-aspect-ratio: 3/5) {
 
-    h2, h1, h3, h4 {
+    .header-text {
         margin: 1vmin;
     }
 
-    h4 {
+    #header-procent-value {
         flex: 1;
         text-align: right;
         padding-right: 10%;
