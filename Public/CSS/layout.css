@@ -10,8 +10,8 @@ body {
     grid-template-areas: 
     "head head head head" 
     "pie1 pie1 pie2 pie2" 
-    "c c c c" 
-    "pie3 e e e" 
+    "bar1 bar1 bar1 bar1" 
+    "pie3 bar2 bar2 bar2" 
     "tabel tabel tabel tabel";
     grid-template-columns: 300px 1fr 1fr 300px;
     grid-template-rows: auto;
@@ -50,14 +50,14 @@ body {
     background-color: rgb(96, 131, 139);
 }
 
-.c {
-    grid-area: c;
+.bar1 {
+    grid-area: bar1;
     background-color: rgb(47, 66, 71);
     position: relative;
 }
 
-.e {
-    grid-area: e;
+.bar2 {
+    grid-area: bar2;
     background-color: rgb(96, 131, 139);
 }
 
