@@ -11,7 +11,8 @@ function parse_date(date) {
     return result;
 }
 
-function generate_lables_data(dict) {   //ia ca si parametru un dictionar  cu datele initiale si returneaza un dict cu labels si values
+//ia ca si parametru un dictionar  cu datele initiale si returneaza un dict cu labels si values
+function generate_lables_data(dict) {   
 
     let result = {};
     for (let key in dict) {
@@ -113,6 +114,3 @@ function back_button_on_click(){
         country_backButton.style.visibility='hidden';
     }
 }
-
-
-// back_button_on_click();

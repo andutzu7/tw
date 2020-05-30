@@ -67,6 +67,7 @@ function set_county_on_click_events(){
         country.addEventListener("click", changeContent);
     }
 }
+
 function changeContent(e) {
     id = e.target.id.split('_')[2]
     console.log(id)
@@ -78,7 +79,8 @@ function changeContent(e) {
     // TODO: update existing charts instead of generating them every time
     all_charts['piechart_gender_medii'] = init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month], id);
     all_charts['piechart_indemnizatie'] = init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month], id);
-    all_charts['barchart_total'] = init_barchart_total(all_tables['rata'], 'total', id);
+    
+    init_barchart_total(all_tables['rata'], 'total', parseInt(id));
 
     // TODO: update #piechart_all and #barchart_all based on selected_category
     // all_charts['barchart_all'] = init_barchart_varste(all_tables['varste'], selected_year, selected_month,id);

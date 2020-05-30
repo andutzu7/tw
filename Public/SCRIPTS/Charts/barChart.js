@@ -9,6 +9,15 @@ function generateBarMonthsLabels(monthsIndex) {
 }
 
 function createBarChart(chartNameID, field_text, title_text, months, values, colors, add_line = false) {
+    if(all_charts[chartNameID]){
+        for (let i = 0; i < all_charts[chartNameID].data.datasets.length; i++) {
+            all_charts[chartNameID].data.datasets[i].data = values;
+        }
+        all_charts[chartNameID].data.labels = months;
+        all_charts[chartNameID].update()
+        return;
+    }
+
     var ctx = document.getElementById(chartNameID);
     if (colors == null) {
         colors = "rgba(219, 0, 0, 0.3)"
@@ -31,7 +40,7 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
         })
     }
 
-    return new Chart(ctx, {
+    all_charts[chartNameID] = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: months,
@@ -83,15 +92,6 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
     });
 }
 
-
-function update_barchart(chart, values) {
-    for (let i = 0; i < chart.data.datasets.length; i++) {
-        chart.data.datasets[i].data = values;
-    }
-    chart.update()
-}
-
-
 function init_barchart_total(table, field, id_judet = null) {
     values = []
     month_labels = []
@@ -115,45 +115,43 @@ function init_barchart_total(table, field, id_judet = null) {
         }
     }
     labels = generateBarMonthsLabels(month_labels);
-    return createBarChart("barchart_total", 'total', 'Numarul somerilor in ultimele 12 luni', labels, values, null, add_line = true);
+    createBarChart("barchart_total", 'total', 'Numarul somerilor in ultimele 12 luni', labels, values, null, add_line = true);
 }
 
 function init_barchart(table, year, month, id_judet = null,colors,chart_title){
     let labels = [];
     let values = [];
-    const dict = generate_data_dict(table,year,month,id_judet);
+    const dict = generate_data_dict(table, year, month, id_judet);
     const result = generate_lables_data(dict);
     for(const key in dict){
         labels.push(result[key]['label']);
         values.push(result[key]['value']);
     }
-    return createBarChart("barchart_all", '', chart_title, labels, values, colors);
+    createBarChart("barchart_all", '', chart_title, labels, values, colors);
 }
 function init_barchart_varste(table, year, month, id_judet = null) {
     const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
     const chart_title= "Distributia per varste";
-    return init_barchart(table,year,month,id_judet,colors,chart_title);
+    init_barchart(table,year,month,id_judet,colors,chart_title);
 }
 
 
 function init_barchart_rata(table, year, month, id_judet = null) {
     const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
     const chart_title= "Rata somajului";
-    return init_barchart(table,year,month,id_judet,colors,chart_title);
+    init_barchart(table,year,month,id_judet,colors,chart_title);
 
 }
-
 
 function init_barchart_educatie(table, year, month, id_judet = null) {
     const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
     const chart_title= "Distributia pe nivele de educatie";
-    return init_barchart(table,year,month,id_judet,colors,chart_title);
+    init_barchart(table,year,month,id_judet,colors,chart_title);
 
 }
 
 function init_barchart_medii(table, year, month, id_judet = null) {
     const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
     const chart_title= "Media somajului";
-    return init_barchart(table,year,month,id_judet,colors,chart_title);
-
+    init_barchart(table,year,month,id_judet,colors,chart_title);
 }
