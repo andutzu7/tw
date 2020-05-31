@@ -75,15 +75,14 @@ function changeContent(e) {
     document.getElementById("header-total-value").innerText = `${id}${id} someri`  // TODO
     document.getElementById("header-procent-value").innerText = `${id}%`  // TODO
 
-    // TODO: update existing charts instead of generating them every time
+
     init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month], id);
     init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month], id);
 
     init_barchart_total(all_tables['rata'], 'total', id);
 
-    // TODO: update #piechart_all and #barchart_all based on selected_category
-    init_barchart_varste(all_tables[selected_criteria], selected_year, selected_month,id);
-    init_piechart_varste(all_tables[selected_criteria][selected_year][selected_month],id);
+    init_barchart_category(selected_criteria, selected_year, selected_month, id);
+    init_piechart_cateogory(all_tables[selected_criteria][selected_year][selected_month], id);
 };
 
 set_county_on_click_events();

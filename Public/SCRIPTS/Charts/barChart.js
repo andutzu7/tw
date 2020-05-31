@@ -129,29 +129,18 @@ function init_barchart(table, year, month, id_judet = null,colors,chart_title){
     }
     createBarChart("barchart_all", '', chart_title, labels, values, colors);
 }
-function init_barchart_varste(table, year, month, id_judet = null) {
-    const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
-    const chart_title= "Distributia per varste";
-    init_barchart(table,year,month,id_judet,colors,chart_title);
+
+
+titles_per_category = {
+    'varste': 'Distributia per varste',
+    'rata': 'Rata somajului',
+    'educatie': 'Distributia pe nivele de educatie',
+    'medii': 'Media somajului'
 }
 
 
-function init_barchart_rata(table, year, month, id_judet = null) {
-    const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
-    const chart_title= "Rata somajului";
-    init_barchart(table,year,month,id_judet,colors,chart_title);
-
-}
-
-function init_barchart_educatie(table, year, month, id_judet = null) {
-    const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
-    const chart_title= "Distributia pe nivele de educatie";
-    init_barchart(table,year,month,id_judet,colors,chart_title);
-
-}
-
-function init_barchart_medii(table, year, month, id_judet = null) {
-    const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
-    const chart_title= "Media somajului";
-    init_barchart(table,year,month,id_judet,colors,chart_title);
+function init_barchart_category(category, year, month, id_judet=null){
+    const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange", 'black', 'white']
+    const chart_title= titles_per_category[category]
+    init_barchart(all_tables[category], year, month, id_judet, colors, chart_title);
 }

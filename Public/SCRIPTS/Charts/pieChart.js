@@ -94,7 +94,8 @@ function init_piechart_gender_medii(rows, id_judet=null){
 }
 
 
-function init_piechart(rows,id_judet = null,colors){
+function init_piechart_cateogory(rows,id_judet = null){
+    const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange", 'black', 'white']
     let labels = [];
     let values = [];
     const dict = generate_data_dict_by_rows(rows,id_judet);
@@ -106,29 +107,4 @@ function init_piechart(rows,id_judet = null,colors){
     values = normalize_values(values);
 
     createPieChart("piechart_all", labels, values, colors)
-}
-
-function init_piechart_varste(rows, id_judet=null){
-    let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
-
-    init_piechart(rows,id_judet,colors);
-}
-
-
-function init_piechart_rata(rows, id_judet=null){
-    let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
-
-    init_piechart(rows,id_judet,colors);
-}
-
-function init_piechart_educatie(rows, id_judet=null){
-    let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
-
-    init_piechart(rows,id_judet,colors);
-}
-
-function init_piechart_medii(rows, id_judet=null){
-    let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
-
-    init_piechart(rows,id_judet,colors);
 }
