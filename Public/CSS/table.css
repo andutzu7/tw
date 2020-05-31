@@ -20,8 +20,21 @@ th,td:nth-child(0){
     background-color: #eb901a
 }
 
+th,td:nth-child(0):hover{
+    background-color: #eb901a;
+    cursor: pointer
+}
+
 tr:nth-child(even) {
     background-color: #c4c3c3
+}
+
+tr:nth-child(odd):hover{
+    background-color: #6b3838
+}
+
+tr:nth-child(even):hover{
+    background-color: #979595
 }
 
 .headerSortDown:after,
