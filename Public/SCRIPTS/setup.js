@@ -51,33 +51,30 @@ function select_year_month(year, month){
 
     init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month]);
 
-    select_category(selected_criteria)
+    select_county(selected_county)
 }
 
 function select_county(id){
     id = parseInt(id)
-
     selected_county = id
 
     document.getElementById("header-location-name").innerText = COUNTY_DICT[id]
     document.getElementById("header-total-value").innerText = `${id}${id} someri`  // TODO
     document.getElementById("header-procent-value").innerText = `${id}%`  // TODO
 
-
     init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month], id);
     init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month], id);
-
     init_barchart_total(all_tables['rata'], 'total', id);
 
-    init_barchart_category(selected_criteria, selected_year, selected_month, id);
-    init_piechart_cateogory(all_tables[selected_criteria][selected_year][selected_month], id);
+    select_category(selected_criteria, selected_county)
 }
 
 
 function select_category(category){
     selected_criteria = category
-    init_barchart_category(category, selected_year, selected_month);
-    init_piechart_cateogory(all_tables[category][selected_year][selected_month]);
+    
+    init_barchart_category(category, selected_year, selected_month, selected_county);
+    init_piechart_cateogory(all_tables[category][selected_year][selected_month], selected_county);
     //change_table(category)  // TODO
 }
 
