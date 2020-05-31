@@ -3,6 +3,7 @@ all_charts = {};
 selected_month = 3;
 selected_year = 2020;
 selected_criteria = null;
+selected_county = null;
 
 MONTHS_STR = []
 COUNTY_DICT = {}
@@ -36,6 +37,42 @@ function fetch_table(api_url, table_name, use_data = null) {
             }
         })
 }
+
+
+function select_year_month(year, month){
+    selected_year = year
+    selected_month = month
+
+    colorize_map(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
+    set_county_hover(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
+
+    init_barchart_total(all_tables['rata'], 'total');
+    init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month]);
+
+    init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month]);
+
+    select_category(selected_criteria)
+}
+
+function select_county(id){
+    id = parseInt(id)
+
+    selected_county = id
+
+    document.getElementById("header-location-name").innerText = COUNTY_DICT[id]
+    document.getElementById("header-total-value").innerText = `${id}${id} someri`  // TODO
+    document.getElementById("header-procent-value").innerText = `${id}%`  // TODO
+
+
+    init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month], id);
+    init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month], id);
+
+    init_barchart_total(all_tables['rata'], 'total', id);
+
+    init_barchart_category(selected_criteria, selected_year, selected_month, id);
+    init_piechart_cateogory(all_tables[selected_criteria][selected_year][selected_month], id);
+}
+
 
 function select_category(category){
     selected_criteria = category
@@ -80,8 +117,6 @@ function init_educatie() {
 }
 
 
-
-
 function fetch_judete(api_url) {
     fetch(`${api_url}/judete`)
         .then((response) => {
@@ -106,43 +141,3 @@ function setup_hardcoded(api_url) {
 
 url = 'https://arcane-sierra-19327.herokuapp.com'
 setup_hardcoded(url)
-
-
-// function update_charts() { //in the future thiss will hav a parameter
-//     //removeData(all_charts['barchart' + sel_table]);
-//     //removeData(all_charts['piechart'+sel_table]);
-//     let testmonth = 11;
-//     let testyear = 2019;
-//     let testtable = 'varste';
-//     all_charts['barchart' + testtable] = init_barchart(all_tables[testtable]);
-//     all_charts['piechart' + testtable] = init_piechart(all_tables[testtable][testyear][testmonth]);
-//     all_charts['barchart' + testtable].update();
-//     all_charts['piechart' + testtable].update();
-// }
-
-
-function addData(chart, label, data) {
-    chart.data.labels.push(label);
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(data);
-    });
-    chart.update();
-}
-
-function removeData(chart) {
-    chart.data.labels.pop();
-    chart.data.datasets.forEach((dataset) => {
-        while (dataset.data.length > 0) {
-            dataset.data.pop();
-        }
-    });
-
-    chart.update();
-
-}
-
-function update2() {
-    // update_piechart(all_charts['piechart_indemnizatie'], [20,1])
-    // update_barchart(all_charts['barchart_total'], [0, 0, 1, 1, 0.2, 5, 4.5, 0.2, 1, 1, 0, 0])
-}
-

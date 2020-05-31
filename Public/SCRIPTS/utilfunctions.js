@@ -6,8 +6,8 @@ function parse_date(date) {
     };
     const split = date.split('-');
     let result = {};
-    result['Year'] = parseInt(split[0]);
-    result['Month'] = parseInt(months[split[1]]);
+    result['year'] = parseInt(split[0]);
+    result['month'] = parseInt(months[split[1]]);
     return result;
 }
 

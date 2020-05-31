@@ -68,21 +68,11 @@ function set_county_on_click_events(){
     }
 }
 
+
 function changeContent(e) {
     id = parseInt(e.target.id.split('_')[2])
-
-    document.getElementById("header-location-name").innerText = COUNTY_DICT[id]
-    document.getElementById("header-total-value").innerText = `${id}${id} someri`  // TODO
-    document.getElementById("header-procent-value").innerText = `${id}%`  // TODO
-
-
-    init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month], id);
-    init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month], id);
-
-    init_barchart_total(all_tables['rata'], 'total', id);
-
-    init_barchart_category(selected_criteria, selected_year, selected_month, id);
-    init_piechart_cateogory(all_tables[selected_criteria][selected_year][selected_month], id);
+    select_county(id)
 };
+
 
 set_county_on_click_events();
