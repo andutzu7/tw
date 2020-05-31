@@ -69,8 +69,7 @@ function set_county_on_click_events(){
 }
 
 function changeContent(e) {
-    id = e.target.id.split('_')[2]
-    console.log(id)
+    id = parseInt(e.target.id.split('_')[2])
 
     document.getElementById("header-location-name").innerText = COUNTY_DICT[id]
     document.getElementById("header-total-value").innerText = `${id}${id} someri`  // TODO
@@ -80,11 +79,11 @@ function changeContent(e) {
     init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month], id);
     init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month], id);
 
-    init_barchart_total(all_tables['rata'], 'total', parseInt(id));
+    init_barchart_total(all_tables['rata'], 'total', id);
 
     // TODO: update #piechart_all and #barchart_all based on selected_category
-    // all_charts['barchart_all'] = init_barchart_varste(all_tables['varste'], selected_year, selected_month,id);
-    // all_charts['piechart_all'] = init_piechart_varste(all_tables['varste'][selected_year][selected_month],id);
+    init_barchart_varste(all_tables[selected_criteria], selected_year, selected_month,id);
+    init_piechart_varste(all_tables[selected_criteria][selected_year][selected_month],id);
 };
 
 set_county_on_click_events();

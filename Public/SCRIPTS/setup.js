@@ -2,9 +2,11 @@ all_tables = {};
 all_charts = {};
 selected_month = 3;
 selected_year = 2020;
-selected_table = 'rata';
+selected_criteria = 'varste';
+
 MONTHS_STR = []
 COUNTY_DICT = {}
+
 
 
 function store_table(table_name, rows) {
