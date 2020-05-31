@@ -77,9 +77,9 @@ function changeContent(e) {
     document.getElementById("header-procent-value").innerText = `${id}%`  // TODO
 
     // TODO: update existing charts instead of generating them every time
-    all_charts['piechart_gender_medii'] = init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month], id);
-    all_charts['piechart_indemnizatie'] = init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month], id);
-    
+    init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month], id);
+    init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month], id);
+
     init_barchart_total(all_tables['rata'], 'total', parseInt(id));
 
     // TODO: update #piechart_all and #barchart_all based on selected_category

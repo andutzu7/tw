@@ -40,7 +40,7 @@ function init_rata() {
     colorize_map(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
     set_county_hover(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
     init_barchart_total(all_tables['rata'], 'total');
-    all_charts['piechart_indemnizatie'] = init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month]);
+    init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month]);
     generate_table();
 
 
@@ -52,30 +52,30 @@ function init_rata() {
     append_options_to_dropdown(MONTHS_STR);
 
     //to comment
-    init_barchart_rata(all_tables['rata'], selected_year, selected_month);
-    all_charts['piechart_all'] = init_piechart_rata(all_tables['rata'][selected_year][selected_month]);
+    // init_barchart_rata(all_tables['rata'], selected_year, selected_month);
+    // init_piechart_rata(all_tables['rata'][selected_year][selected_month]);
 }
 
 function init_medii() {
-    all_charts['piechart_gender_medii'] = init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month]);
+    init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month]);
 
     //to comment
-    // all_charts['barchart_all'] = init_barchart_medii(all_tables['medii'], selected_year, selected_month);
-    // all_charts['piechart_all'] = init_piechart_medii(all_tables['medii'][selected_year][selected_month]);
+    // init_barchart_medii(all_tables['medii'], selected_year, selected_month);
+    // init_piechart_medii(all_tables['medii'][selected_year][selected_month]);
 }
 
 
 function init_varste() {
     //to comment
-    // all_charts['barchart_all'] = init_barchart_varste(all_tables['varste'], selected_year, selected_month);
-    // all_charts['piechart_all'] = init_piechart_varste(all_tables['varste'][selected_year][selected_month]);
+    init_barchart_varste(all_tables['varste'], selected_year, selected_month);
+    init_piechart_varste(all_tables['varste'][selected_year][selected_month]);
 }
 
 
 function init_educatie() {
     //to comment
-    // all_charts['barchart_all'] = init_barchart_educatie(all_tables['educatie'], selected_year, selected_month);
-    // all_charts['piechart_all'] = init_piechart_educatie(all_tables['educatie'][selected_year][selected_month]);
+    // init_barchart_educatie(all_tables['educatie'], selected_year, selected_month);
+    // init_piechart_educatie(all_tables['educatie'][selected_year][selected_month]);
 }
 
 

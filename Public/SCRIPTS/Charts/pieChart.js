@@ -1,6 +1,12 @@
 function createPieChart( elementID, labels, values, colors ) {
+    if(all_charts[elementID]){
+        all_charts[elementID].data.datasets[0].data = values;
+        all_charts[elementID].data.labels = labels;
+        all_charts[elementID].update()
+        return
+    }
     var ctx2 = document.getElementById(elementID);
-    return new Chart(ctx2, {
+    all_charts[elementID] = new Chart(ctx2, {
         type: 'doughnut',
         data: {
             labels: labels,
@@ -68,7 +74,7 @@ function init_piechart_indemnizatie(rows, id_judet=null){
         }
     }
     values = normalize_values(values)
-    return createPieChart("piechart_indemnizatie", labels, values, colors)
+    createPieChart("piechart_indemnizatie", labels, values, colors)
 }
 
 function init_piechart_gender_medii(rows, id_judet=null){
@@ -84,7 +90,7 @@ function init_piechart_gender_medii(rows, id_judet=null){
         }
     }
     values = normalize_values(values)
-    return createPieChart("piechart_gender_medii", labels, values, colors)
+    createPieChart("piechart_gender_medii", labels, values, colors)
 }
 
 
@@ -99,30 +105,30 @@ function init_piechart(rows,id_judet = null,colors){
     }
     values = normalize_values(values);
 
-    return createPieChart("piechart_all", labels, values, colors)
+    createPieChart("piechart_all", labels, values, colors)
 }
 
 function init_piechart_varste(rows, id_judet=null){
     let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
 
-    return init_piechart(rows,id_judet,colors);
+    init_piechart(rows,id_judet,colors);
 }
 
 
 function init_piechart_rata(rows, id_judet=null){
     let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
 
-    return init_piechart(rows,id_judet,colors);
+    init_piechart(rows,id_judet,colors);
 }
 
 function init_piechart_educatie(rows, id_judet=null){
     let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
 
-    return init_piechart(rows,id_judet,colors);
+    init_piechart(rows,id_judet,colors);
 }
 
 function init_piechart_medii(rows, id_judet=null){
     let colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange"]
 
-    return init_piechart(rows,id_judet,colors);
+    init_piechart(rows,id_judet,colors);
 }
