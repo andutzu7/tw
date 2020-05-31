@@ -2,7 +2,7 @@ all_tables = {};
 all_charts = {};
 selected_month = 3;
 selected_year = 2020;
-selected_criteria = 'varste';
+selected_criteria = null;
 
 MONTHS_STR = []
 COUNTY_DICT = {}
@@ -38,6 +38,7 @@ function fetch_table(api_url, table_name, use_data = null) {
 }
 
 function select_category(category){
+    selected_criteria = category
     init_barchart_category(category, selected_year, selected_month);
     init_piechart_cateogory(all_tables[category][selected_year][selected_month]);
     //change_table(category)  // TODO
