@@ -16,7 +16,7 @@ ids = {
     "BUCURESTI": 10,
     "BUZAU": 11,
     "CALARASI": 12,
-    "CARAS-SEVERIN": 13,
+    "SEVERIN": 13,
     "CLUJ": 14,
     "CONSTANTA": 15,
     "COVASNA": 16,
@@ -84,11 +84,12 @@ def get_consistency_filter(all_csv_links):
             elif all(['BISTR' in version.upper() for version in versions]):
                 final = 'BISTRITA'
             elif all(['CARA' in version.upper() for version in versions]):
-                final = 'CARAS-SEVERIN'
+                final = 'SEVERIN'
             else:
                 print(versions)
         for name in versions:
             filter[name] = final
+    filter['SEVERIN'] = 'SEVERIN'
     return filter
 
 
