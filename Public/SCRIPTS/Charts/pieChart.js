@@ -95,7 +95,7 @@ function init_piechart_gender_medii(rows, id_judet=null){
 
 
 function init_piechart_cateogory(rows,id_judet = null){
-    const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange", '#9ACD32', ' 	#20B2AA']
+    const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange", '#9ACD32', '#20B2AA']
     let labels = [];
     let values = [];
     const dict = generate_data_dict_by_rows(rows,id_judet);

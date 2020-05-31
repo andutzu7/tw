@@ -140,7 +140,7 @@ titles_per_category = {
 
 
 function init_barchart_category(category, year, month, id_judet=null){
-    const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange", 'black', 'white']
+    const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange", '#9ACD32', '#20B2AA']
     const chart_title= titles_per_category[category]
     init_barchart(all_tables[category], year, month, id_judet, colors, chart_title);
 }
