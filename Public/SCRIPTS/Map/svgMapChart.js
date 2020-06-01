@@ -75,4 +75,37 @@ function changeContent(e) {
 };
 
 
+
+function set_header_info(id_judet=null){
+    result = {};
+    if(id_judet){
+        for(var row of all_tables['rata'][selected_year][selected_month]){
+            if(row['id_judet']==id_judet){
+                result['total'] = row['total']
+                result['procent'] = row['procent_total']
+            }
+        }
+        document.getElementById("header-location-name").innerText = COUNTY_DICT[id]
+    }
+    else{
+        let someri = 0
+        let populatie = 0
+
+        for(var row of all_tables['rata'][selected_year][selected_month]){
+            someri += row['total']
+            populatie += row['total'] * 100 / row['procent_total']
+        }
+
+        result['total'] = someri
+        result['procent'] = (someri / populatie * 100).toFixed(2)
+        document.getElementById("header-location-name").innerText = 'ROMANIA'
+    }
+
+    document.getElementById("header-total-value").innerText = `${result['total']} someri`  // TODO
+    document.getElementById("header-procent-value").innerText = `${result['procent']}%`  // TODO
+}
+
+
 set_county_on_click_events();
+
+
