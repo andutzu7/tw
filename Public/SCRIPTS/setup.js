@@ -55,7 +55,11 @@ function select_year_month(year, month){
 }
 
 function select_county(id){
-    id = parseInt(id)
+    if(id){
+        //if id is null we are on country view
+        id = parseInt(id) 
+    }
+
     selected_county = id
 
     init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month], id);
