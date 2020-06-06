@@ -84,7 +84,7 @@ function select_category(category){
 function init_rata() {
     colorize_map(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
     set_county_hover(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
-    init_barchart_total(all_tables['rata'], 'total');
+    init_barchart_total(all_tables['rata'], 'procent_total');
     init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month]);
     generate_table();
 

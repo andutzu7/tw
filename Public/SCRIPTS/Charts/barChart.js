@@ -105,12 +105,18 @@ function init_barchart_total(table, field, id_judet = null) {
                     }
                 }
             } else {
-                sum = 0;
-                for (var row of table[year][month]) {
-                    sum += row[field];
+                if(field == 'procent_total'){
+                    values.push(get_procent_romania(year, month));
+                    month_labels.push(month);
                 }
-                values.push(sum);
-                month_labels.push(row['luna']);
+                else{
+                    sum = 0;
+                    for (var row of table[year][month]) {
+                        sum += row[field];
+                    }
+                    values.push(sum);
+                    month_labels.push(month);
+                }
             }
         }
     }
