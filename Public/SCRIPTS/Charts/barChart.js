@@ -93,6 +93,7 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
 }
 
 function init_barchart_total(table, field, id_judet = null) {
+    selected_total = field
     values = []
     month_labels = []
     for (var year in table) {

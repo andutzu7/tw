@@ -153,8 +153,10 @@
                   <canvas id="barchart_total" class="chart"></canvas>
 
                   <div class="btn-group">
-                        <button class="barchart_button left-rounded" type="button" id="barchart_button1">TOTAL</button>
-                        <button class="barchart_button right-rounded" type="button" id="barchart_button2">PROCENT</button>
+                        <button class="barchart_button left-rounded" type="button" id="barchart_button1"
+                        onclick="init_barchart_total(all_tables['rata'], 'total', selected_county)">TOTAL</button>
+                        <button class="barchart_button right-rounded" type="button" id="barchart_button2"
+                        onclick="init_barchart_total(all_tables['rata'], 'procent_total', selected_county)">PROCENT</button>
                   </div>
             </div>
 

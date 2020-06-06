@@ -1,9 +1,11 @@
 all_tables = {};
 all_charts = {};
-selected_month = 3;
+selected_month = 4; // TODO: call select_month_year with latest month on init
 selected_year = 2020;
 selected_criteria = null;
 selected_county = null;
+
+selected_total = 'total' // or "total_procent"
 
 MONTHS_STR = []
 COUNTY_DICT = {}
@@ -46,7 +48,7 @@ function select_year_month(year, month){
     colorize_map(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
     set_county_hover(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
 
-    init_barchart_total(all_tables['rata'], 'total');
+    init_barchart_total(all_tables['rata'], selected_total);
     init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month]);
 
     init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month]);
@@ -64,7 +66,7 @@ function select_county(id){
 
     init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month], id);
     init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month], id);
-    init_barchart_total(all_tables['rata'], 'total', id);
+    init_barchart_total(all_tables['rata'], selected_total, id);
 
     select_category(selected_criteria, selected_county)
 
@@ -84,7 +86,7 @@ function select_category(category){
 function init_rata() {
     colorize_map(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
     set_county_hover(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
-    init_barchart_total(all_tables['rata'], 'procent_total');
+    init_barchart_total(all_tables['rata'], selected_total);
     init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month]);
     generate_table();
 
