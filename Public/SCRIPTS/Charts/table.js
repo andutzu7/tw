@@ -3,17 +3,18 @@ function generate_table() {
 }
 
 function generateTable(allTables) {
-    month = 3
+    month = 1
     year = 2020
-
+    sel_category = 'varste'
     let table = document.getElementById("Table");
     let tbl = document.createElement("table");
     tbl.setAttribute("id", "myTable");
     let tblBody = document.createElement("tbody");
-
     let tableHeader = "";
+    let rowsNr = 0;
+    let counter = 0;
     for (let category in allTables) {
-        if (category === "rata") {
+        if (category === sel_category) {
             for (let id_judet in allTables[category][year][month]) {
                 let row = document.createElement("tr");
                 for (let key in allTables[category][year][month][id_judet]) {
@@ -24,19 +25,33 @@ function generateTable(allTables) {
                             for (const headerName in allTables[category][year][month][id_judet]) {
                                 if (headerName !== "luna" && headerName !== "an") {
                                     let cell = document.createElement("th");
-                                    let cellText = document.createTextNode(headerName);
+                                    let cellText = null;
+                                    if (rowsNr === 0)
+                                        cellText = document.createTextNode('Judet');
+                                    else
+                                        cellText = document.createTextNode(headerName.charAt(0).toUpperCase() + headerName.slice(1));
                                     tableHeader += headerName;
                                     cell.appendChild(cellText);
                                     headrow.appendChild(cell);
                                     the_header.appendChild(headrow);
+                                    rowsNr++;
                                 }
                             }
                             tbl.appendChild(the_header);
                         }
                         let cell = document.createElement("td");
-                        let cellText = document.createTextNode(allTables[category][year][month][id_judet][key]);
+                        let cellText = null;
+                        if (counter % rowsNr === 0) {
+                            cellText = document.createTextNode(COUNTY_DICT[parseInt(id_judet)+1]);
+                            counter = 0
+                        } else {
+                            cellText = document.createTextNode(allTables[category][year][month][id_judet][key]);
+                        }
+
                         cell.appendChild(cellText);
                         row.appendChild(cell);
+
+                        counter++;
                     }
                 }
                 tblBody.appendChild(row);

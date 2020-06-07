@@ -5,6 +5,7 @@ selected_year = 2020;
 selected_criteria = null;
 selected_county = null;
 
+
 selected_total = 'total' // or "total_procent"
 
 MONTHS_STR = []
@@ -75,8 +76,7 @@ function select_county(id){
 
 
 function select_category(category){
-    selected_criteria = category
-    
+
     init_barchart_category(category, selected_year, selected_month, selected_county);
     init_piechart_cateogory(all_tables[category][selected_year][selected_month], selected_county);
     //change_table(category)  // TODO

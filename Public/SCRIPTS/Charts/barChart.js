@@ -20,7 +20,7 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
 
     var ctx = document.getElementById(chartNameID);
     if (colors == null) {
-        colors = "rgba(219, 0, 0, 0.3)"
+        colors = "rgba(219,0,0,0.3)"
     }
     datasets = [{
         label: field_text,
@@ -131,15 +131,14 @@ function init_barchart(table, year, month, id_judet = null, colors, chart_title)
     const result = generate_lables_data(dict);
     for (const key in dict) {
         if (key === 'procent_total' || key === 'procent_femei' || key === 'procent_barbati')
-           continue;
-        if(chart_title === 'Distributia pe nivele de educatie'){
-            if(key === 'total')
-                continue;
-        }
-        labels.push(result[key]['label']);
-        values.push(result[key]['value']);
-    }
-    createBarChart("barchart_all", '', chart_title, labels, values, colors);
+            continue;
+        if (key === 'total')
+            continue;
+    labels.push(result[key]['label']);
+    values.push(result[key]['value']);
+}
+
+createBarChart("barchart_all", '', chart_title, labels, values, colors);
 }
 
 

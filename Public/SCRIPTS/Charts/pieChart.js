@@ -97,7 +97,7 @@ function init_piechart_cateogory(rows, id_judet = null) {
     const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange", '#9ACD32', '#20B2AA']
     let labels = [];
     let values = [];
-    const dict = generate_data_dict_by_rows(rows, id_judet);
+    const dict = generate_data_dict_by_rows(rows,   id_judet);
     const result = generate_lables_data(dict);
     for (const key in dict) {
         if (key === 'procent_total' || key === 'procent_femei' || key === 'procent_barbati')
