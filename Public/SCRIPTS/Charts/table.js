@@ -16,14 +16,15 @@ function generateTable(allTables, sel_category) {
     let counter = 0;
     for (let category in allTables) {
         if (category === sel_category) {
-            for (let id_judet in allTables[category][selected_year][selected_month]) {
+            for (let entry of allTables[category][selected_year][selected_month]) {
+                id_judet = entry.id_judet
                 let row = document.createElement("tr");
-                for (let key in allTables[category][selected_year][selected_month][id_judet]) {
+                for (let key in entry) {
                     if (key !== "luna" && key !== "an") {
                         if (tableHeader === "") {
                             let the_header = document.createElement("thead");
                             let headrow = document.createElement("tr");
-                            for (const headerName in allTables[category][selected_year][selected_month][id_judet]) {
+                            for (const headerName in entry) {
                                 if (headerName !== "luna" && headerName !== "an") {
                                     let cell = document.createElement("th");
                                     let cellText = null;
@@ -43,10 +44,10 @@ function generateTable(allTables, sel_category) {
                         let cell = document.createElement("td");
                         let cellText = null;
                         if (counter % rowsNr === 0) {
-                            cellText = document.createTextNode(COUNTY_DICT[parseInt(id_judet) + 1]);
+                            cellText = document.createTextNode(COUNTY_DICT[id_judet]);
                             counter = 0
                         } else {
-                            cellText = document.createTextNode(allTables[category][selected_year][selected_month][id_judet][key]);
+                            cellText = document.createTextNode(entry[key]);
                         }
 
                         cell.appendChild(cellText);
