@@ -9,7 +9,7 @@ function generateBarMonthsLabels(monthsIndex) {
 }
 
 function createBarChart(chartNameID, field_text, title_text, months, values, colors, add_line = false) {
-    if(all_charts[chartNameID]){
+    if (all_charts[chartNameID]) {
         for (let i = 0; i < all_charts[chartNameID].data.datasets.length; i++) {
             all_charts[chartNameID].data.datasets[i].data = values;
         }
@@ -106,11 +106,10 @@ function init_barchart_total(table, field, id_judet = null) {
                     }
                 }
             } else {
-                if(field == 'procent_total'){
+                if (field == 'procent_total') {
                     values.push(get_procent_romania(year, month));
                     month_labels.push(month);
-                }
-                else{
+                } else {
                     sum = 0;
                     for (var row of table[year][month]) {
                         sum += row[field];
@@ -125,12 +124,15 @@ function init_barchart_total(table, field, id_judet = null) {
     createBarChart("barchart_total", 'total', 'Numarul somerilor in ultimele 12 luni', labels, values, null, add_line = true);
 }
 
-function init_barchart(table, year, month, id_judet = null,colors,chart_title){
+function init_barchart(table, year, month, id_judet = null, colors, chart_title) {
     let labels = [];
     let values = [];
     const dict = generate_data_dict(table, year, month, id_judet);
     const result = generate_lables_data(dict);
-    for(const key in dict){
+    for (const key in dict) {
+        if (key === 'procent_total' || key === 'procent_femei' || key === 'procent_barbati')
+           continue;
+        console.log(key)
         labels.push(result[key]['label']);
         values.push(result[key]['value']);
     }
@@ -146,8 +148,8 @@ titles_per_category = {
 }
 
 
-function init_barchart_category(category, year, month, id_judet=null){
+function init_barchart_category(category, year, month, id_judet = null) {
     const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange", '#9ACD32', '#20B2AA']
-    const chart_title= titles_per_category[category]
+    const chart_title = titles_per_category[category]
     init_barchart(all_tables[category], year, month, id_judet, colors, chart_title);
 }
