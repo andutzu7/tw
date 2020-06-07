@@ -109,15 +109,20 @@ function sortTable(c) {
             x = rows[i].getElementsByTagName("TD")[c];
             y = rows[i + 1].getElementsByTagName("TD")[c];
 
-
+            compare_x = x.innerHTML;
+            compare_y = y.innerHTML;
+            if(!isNaN(compare_x) && !isNaN(compare_y)){
+                compare_x = parseFloat(compare_x)
+                compare_y = parseFloat(compare_y)
+            }
             if (up) {//check if the two rows should switch place:
-                if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
+                if (compare_x > compare_y){
                     //if so, mark as a switch and break the loop:
                     shouldSwitch = true;
                     break;
                 }
             } else {
-                if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
+                if (compare_x < compare_y) {
                     //if so, mark as a switch and break the loop:
                     shouldSwitch = true;
                     break;
