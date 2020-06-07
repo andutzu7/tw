@@ -57,6 +57,8 @@ function generate_data_dict_by_rows(rows, id_judet = null) {
     for (let row of rows) {
         if (id_judet == null || row.id_judet === id_judet) {
             for (let key in row) {
+                if(key === 'total')
+                    continue;
                 if (['an', 'luna', 'id_judet'].indexOf(key) < 0) {
                     if (key in dict) {
                         dict[key] += row[key]

@@ -106,7 +106,7 @@ function init_barchart_total(table, field, id_judet = null) {
                     }
                 }
             } else {
-                if (field == 'procent_total') {
+                if (field === 'procent_total') {
                     values.push(get_procent_romania(year, month));
                     month_labels.push(month);
                 } else {
@@ -132,7 +132,10 @@ function init_barchart(table, year, month, id_judet = null, colors, chart_title)
     for (const key in dict) {
         if (key === 'procent_total' || key === 'procent_femei' || key === 'procent_barbati')
            continue;
-        console.log(key)
+        if(chart_title === 'Distributia pe nivele de educatie'){
+            if(key === 'total')
+                continue;
+        }
         labels.push(result[key]['label']);
         values.push(result[key]['value']);
     }
