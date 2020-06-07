@@ -76,20 +76,18 @@ function init_piechart_indemnizatie(rows, id_judet = null) {
     createPieChart("piechart_indemnizatie", labels, values, colors)
 }
 
-function init_piechart_gender_medii(rows, id_judet = null) {
-    colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654"]
-    labels = ['rural_femei', 'rural_barbati', 'urban_barbati', 'urban_femei']
-    values = [0, 0, 0, 0]
+function init_piechart_medii(rows, id_judet = null) {
+    colors = ["#ffc2e5", "#3399ff"]
+    labels = ['urban', 'rural']
+    values = [0,0]
     for (var row of rows) {
         if (id_judet == null || id_judet === row['id_judet']) {
-            values[0] += row.rural_femei
-            values[1] += row.rural_barbati
-            values[2] += row.urban_barbati
-            values[3] += row.urban_femei
+            values[0] += row.urban_femei + row.urban_barbati
+            values[1] += row.rural_femei + row.rural_barbati
         }
     }
     values = normalize_values(values)
-    createPieChart("piechart_gender_medii", labels, values, colors)
+    createPieChart("piechart_medii", labels, values, colors)
 }
 
 
