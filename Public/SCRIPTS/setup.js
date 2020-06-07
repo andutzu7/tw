@@ -64,7 +64,6 @@ function select_county(id){
     }
 
     selected_county = id
-
     init_piechart_gender_medii(all_tables['medii'][selected_year][selected_month], id);
     init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month], id);
     init_barchart_total(all_tables['rata'], selected_total, id);
@@ -77,9 +76,11 @@ function select_county(id){
 
 function select_category(category){
 
+    selected_criteria = category
+
     init_barchart_category(category, selected_year, selected_month, selected_county);
     init_piechart_cateogory(all_tables[category][selected_year][selected_month], selected_county);
-    //change_table(category)  // TODO
+    change_table(category)
 }
 
 
@@ -88,8 +89,6 @@ function init_rata() {
     set_county_hover(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
     init_barchart_total(all_tables['rata'], selected_total);
     init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month]);
-    generate_table();
-
 
     for (let year in all_tables['rata']) {
         for (let month in all_tables['rata'][year]) {
@@ -114,7 +113,7 @@ function init_varste() {
 
 
 function init_educatie() {
-    // select_category('educatie')
+    //select_category('educatie')
 }
 
 

@@ -1,12 +1,13 @@
-function generate_table() {
-    generateTable(all_tables);
+function change_table(category) {
+    generateTable(all_tables, category)
 }
 
-function generateTable(allTables) {
-    month = 1
-    year = 2020
-    sel_category = 'varste'
+function generateTable(allTables, sel_category) {
     let table = document.getElementById("Table");
+    const elem = document.getElementById('myTable');
+    if (elem != null)
+        elem.parentNode.removeChild(elem);
+
     let tbl = document.createElement("table");
     tbl.setAttribute("id", "myTable");
     let tblBody = document.createElement("tbody");
@@ -15,14 +16,14 @@ function generateTable(allTables) {
     let counter = 0;
     for (let category in allTables) {
         if (category === sel_category) {
-            for (let id_judet in allTables[category][year][month]) {
+            for (let id_judet in allTables[category][selected_year][selected_month]) {
                 let row = document.createElement("tr");
-                for (let key in allTables[category][year][month][id_judet]) {
+                for (let key in allTables[category][selected_year][selected_month][id_judet]) {
                     if (key !== "luna" && key !== "an") {
                         if (tableHeader === "") {
                             let the_header = document.createElement("thead");
                             let headrow = document.createElement("tr");
-                            for (const headerName in allTables[category][year][month][id_judet]) {
+                            for (const headerName in allTables[category][selected_year][selected_month][id_judet]) {
                                 if (headerName !== "luna" && headerName !== "an") {
                                     let cell = document.createElement("th");
                                     let cellText = null;
@@ -42,10 +43,10 @@ function generateTable(allTables) {
                         let cell = document.createElement("td");
                         let cellText = null;
                         if (counter % rowsNr === 0) {
-                            cellText = document.createTextNode(COUNTY_DICT[parseInt(id_judet)+1]);
+                            cellText = document.createTextNode(COUNTY_DICT[parseInt(id_judet) + 1]);
                             counter = 0
                         } else {
-                            cellText = document.createTextNode(allTables[category][year][month][id_judet][key]);
+                            cellText = document.createTextNode(allTables[category][selected_year][selected_month][id_judet][key]);
                         }
 
                         cell.appendChild(cellText);
