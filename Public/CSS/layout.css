@@ -43,6 +43,12 @@ body {
     height:90%;
 }
 
+#romanian_map{
+    /* border: 1px solid pink;
+    border-radius: 200px; */
+    width: 100%;
+}
+
 .pie1 {
     grid-area: pie1;
     background-color: rgb(96, 131, 139);
