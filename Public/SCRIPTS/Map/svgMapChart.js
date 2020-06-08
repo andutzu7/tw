@@ -72,6 +72,7 @@ function set_county_on_click_events(){
 function changeContent(e) {
     id = parseInt(e.target.id.split('_')[2])
     document.getElementById("countryBackButton").style.display = 'block'
+    document.getElementById("main-menu").style.display = 'block'
     select_county(id)
 };
 
@@ -121,6 +122,7 @@ function set_header_info(id_judet=null){
 
 function select_romania(){
     document.getElementById("countryBackButton").style.display = 'None'
+    document.getElementById("main-menu").style.display = 'None'
     select_county(null);
 }
 
