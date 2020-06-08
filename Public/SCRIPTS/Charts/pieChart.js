@@ -20,8 +20,8 @@ function createPieChart(elementID, labels, values, colors) {
             tooltips: {
                 titleFontSize: 20,
                 bodyFontSize: 20,
-                titleFontFamily: "Comic Sans MS",
-                bodyFontFamily: "Comic Sans MS",
+                titleFontFamily: "Trebuchet MS ",
+                bodyFontFamily: "Trebuchet MS ",
                 callbacks: {
                     label: function (tooltipItem, data) {
                         value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]
@@ -35,14 +35,14 @@ function createPieChart(elementID, labels, values, colors) {
                 display: true,
                 position: "bottom",
                 labels: {
-                    fontFamily: "Comic Sans MS",
+                    fontFamily: "Trebuchet MS ",
                     fontSize: 20,
                     fontColor: "white",
                     boxWidth: 10
                 }
             },
             title: {
-                fontFamily: "Comic Sans MS",
+                fontFamily: "Trebuchet MS ",
                 fontSize: 20,
                 display: false,
                 text: 'https://youtu.be/QaPrQa3oMy0'

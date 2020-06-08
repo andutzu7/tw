@@ -51,8 +51,8 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
                 fontColor: "white",
                 titleFontSize: 20,
                 bodyFontSize: 20,
-                titleFontFamily: "Comic Sans MS",
-                bodyFontFamily: "Comic Sans MS",
+                titleFontFamily: "Trebuchet MS ",
+                bodyFontFamily: "Trebuchet MS ",
             },
             responsive: true,
             maintainAspectRatio: false,
@@ -63,7 +63,7 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
                 fontColor: "white",
                 display: true,
                 text: title_text,
-                fontFamily: "Comic Sans MS",
+                fontFamily: "Trebuchet MS ",
                 fontSize: 20
 
             }, scales: {
@@ -74,7 +74,7 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
                         }
                     },
                     ticks: {
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: "Trebuchet MS ",
                         fontSize: 20,
                         fontColor: "white"
                     }
@@ -83,7 +83,7 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
                 yAxes: [{
                     ticks: {
                         fontColor: "white",
-                        fontFamily: "Comic Sans MS",
+                        fontFamily: "Trebuchet MS ",
                         fontSize: 20
                     }
                 }]

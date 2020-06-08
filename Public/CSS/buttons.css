@@ -1,10 +1,10 @@
-
 .btn-group {
     position: absolute;
     display: flex;
     padding: 0 2px;
     height: 25px;
     right: 2%;
+
 }
 
 .barchart_button {
