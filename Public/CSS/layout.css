@@ -21,11 +21,6 @@ body {
     height: 300px;
 }
 
-.map-container {
-    grid-area: harta;
-    display: flex;
-}
-
 .chart-container {
     position: relative;
 }
@@ -35,9 +30,17 @@ body {
 }
 
 .header-container {
-    height: 600px;
+    height: min(375px, 100%);
     grid-area: head;
-    background-color: rgb(47, 66, 71);
+    /* background-color: rgb(47, 66, 71); */
+}
+
+.map-container {
+    /* border: 2px dotted red;
+    border-radius: 200px; */
+    grid-area: harta;
+    display: flex;
+    height:90%;
 }
 
 .pie1 {

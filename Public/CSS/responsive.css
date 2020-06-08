@@ -30,7 +30,7 @@
         display: grid;
         grid-template-areas: "headerinfo" "harta" "criterii";
         grid-template-columns: 100vw;
-        grid-template-rows: 20% auto 10%;
+        grid-template-rows: 20% 70% 10%;
         height: 95vh;
     }
 
@@ -70,6 +70,4 @@
         text-align: left;
         padding-left: 10%;
     }
-
 }
-
