@@ -13,7 +13,7 @@ function genPDF() {
     });
     doc.addImage(imgData, 'JPEG', 0, 0, width, height);
 
-    canvas1 = document.getElementById('piechart_gender_medii');
+    canvas1 = document.getElementById('piechart_medii');
     imgData = canvas1.toDataURL("image/jpeg", 1.0);
     doc.fromHTML(document.getElementById('pieChartPDF_piechart_gender_medii').innerHTML, 20, 20, {
         'width': 80
