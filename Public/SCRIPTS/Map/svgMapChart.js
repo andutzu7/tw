@@ -71,6 +71,7 @@ function set_county_on_click_events(){
 
 function changeContent(e) {
     id = parseInt(e.target.id.split('_')[2])
+    document.getElementById("countryBackButton").style.display = 'block'
     select_county(id)
 };
 
@@ -78,7 +79,7 @@ function changeContent(e) {
 function get_procent_romania(year, month){
     let someri = 0
     let populatie = 0
-    
+
     for(var row of all_tables['rata'][year][month]){
         someri += row['total']
         populatie += row['total'] * 100 / row['procent_total']
@@ -115,6 +116,12 @@ function set_header_info(id_judet=null){
 
     document.getElementById("header-total-value").innerText = `${result['total']} someri`
     document.getElementById("header-procent-value").innerText = `${result['procent']}%`
+}
+
+
+function select_romania(){
+    document.getElementById("countryBackButton").style.display = 'None'
+    select_county(null);
 }
 
 

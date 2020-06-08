@@ -17,3 +17,16 @@
 #romanian_map{
     width: 100%;
 }
+
+#countryBackButton{
+    display: None;
+    position: absolute;
+    width: 50px;
+    margin-left: 10px;
+    margin-top: 70px;
+}
+
+
+#countryBackButton:hover > g > path{
+    fill: red;
+}

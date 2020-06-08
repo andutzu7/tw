@@ -16,6 +16,7 @@ function createPieChart(elementID, labels, values, colors) {
             }]
         },
         options: {
+            rotation: 0.5 * Math.PI,
             tooltips: {
                 titleFontSize: 20,
                 bodyFontSize: 20,
