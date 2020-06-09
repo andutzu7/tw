@@ -82,10 +82,11 @@ function normalize_values(values) {
 }
 
 
-function init_piechart_indemnizatie(rows, id_judet = null) {
+function init_piechart_indemnizatie(rows, id_judet, id_to_compare) {
     colors = ["#ffc2e5", "#3399ff"]
     labels = ['indemnizati', 'neindemnizati']
     values = [0, 0]
+    second_set = null
     for (var row of rows) {
         if (id_judet == null || id_judet === row['id_judet']) {
             values[0] += row.indemnizati
@@ -93,13 +94,27 @@ function init_piechart_indemnizatie(rows, id_judet = null) {
         }
     }
     values = normalize_values(values)
-    createPieChart("piechart_indemnizatie", labels, values, colors)
+
+    if(id_to_compare){
+        second_set = [0,0]
+
+        for (var row of rows) {
+            if (id_to_compare === row['id_judet']) {
+                second_set[0] += row.indemnizati
+                second_set[1] += row.neindemnizati
+            }
+        }
+        second_set = normalize_values(second_set)
+    }
+
+    createPieChart("piechart_indemnizatie", labels, values, colors, second_set)
 }
 
-function init_piechart_medii(rows, id_judet = null) {
+function init_piechart_medii(rows, id_judet, id_to_compare) {
     colors = ["#ffc2e5", "#3399ff"]
     labels = ['urban', 'rural']
     values = [0,0]
+    second_set = null
     for (var row of rows) {
         if (id_judet == null || id_judet === row['id_judet']) {
             values[0] += row.urban_femei + row.urban_barbati
@@ -107,16 +122,29 @@ function init_piechart_medii(rows, id_judet = null) {
         }
     }
     values = normalize_values(values)
-    createPieChart("piechart_medii", labels, values, colors)
+
+    if(id_to_compare){
+        second_set = [0,0]
+
+        for (var row of rows) {
+            if (id_to_compare === row['id_judet']) {
+                second_set[0] += row.urban_femei + row.urban_barbati
+                second_set[1] += row.rural_femei + row.rural_barbati
+            }
+        }
+        second_set = normalize_values(second_set)
+    }
+    createPieChart("piechart_medii", labels, values, colors, second_set)
 }
 
 
-function init_piechart_cateogory(rows, id_judet = null) {
+function init_piechart_cateogory(rows, id_judet, id_to_compare) {
     const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange", '#9ACD32', '#20B2AA']
     let labels = [];
     let values = [];
-    const dict = generate_data_dict_by_rows(rows,   id_judet);
-    const result = generate_lables_data(dict);
+    second_set = null;
+    dict = generate_data_dict_by_rows(rows, id_judet);
+    result = generate_lables_data(dict);
     for (const key in dict) {
         if (key === 'procent_total' || key === 'procent_femei' || key === 'procent_barbati')
             continue;
@@ -125,5 +153,19 @@ function init_piechart_cateogory(rows, id_judet = null) {
     }
     values = normalize_values(values);
 
-    createPieChart("piechart_all", labels, values, colors)
+    if(id_to_compare){
+        second_set = []
+        labels2 = []
+
+        dict = generate_data_dict_by_rows(rows, id_to_compare);
+        result = generate_lables_data(dict);
+        for (const key in dict) {
+            if (key === 'procent_total' || key === 'procent_femei' || key === 'procent_barbati')
+                continue;
+            second_set.push(result[key]['value']);
+        }
+        second_set = normalize_values(second_set)
+    }
+
+    createPieChart("piechart_all", labels, values, colors, second_set)
 }
