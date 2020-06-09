@@ -32,7 +32,7 @@
                         <div class="dropdown">
                               <div id="form-criterii">
                                     <label>
-                                          <select class="select-criteriu" onchange="dropdownOnChange(this.value)">
+                                          <select class="select-criteriu" id='months-dropdown' onchange="dropdownOnChange(this.value)">
                                           </select>
                                     </label>
                               </div>
@@ -184,7 +184,7 @@
                               <div class="criterii1">
                                     <div class="dropdown1">
                                           <div id="form-compare">
-                                                <select class="select-criteriu1" onchange="console.log(this.value)">
+                                                <select class="select-criteriu1" id='compare-dropdown' onchange="console.log(COUNTY_DICT_REVERSE[this.value])">
                                                 </select>
                                           </div>
                                     </div>

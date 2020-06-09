@@ -8,7 +8,7 @@ function hide_menu(){
 }
 
 function export_func(value){
-    if(valu == 'export'){
+    if(value == 'export'){
         return
     }
     mapper = {

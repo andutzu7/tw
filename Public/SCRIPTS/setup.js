@@ -10,6 +10,7 @@ selected_total = 'total' // or "total_procent"
 
 MONTHS_STR = []
 COUNTY_DICT = {}
+COUNTY_DICT_REVERSE = {}
 
 
 
@@ -96,8 +97,12 @@ function init_rata() {
         }
     }
 
-    append_options_to_dropdown(MONTHS_STR,".select-criteriu1")
-    append_options_to_dropdown(MONTHS_STR,"#form-compare")
+    options = Object.values(COUNTY_DICT)
+    options.push('COMPARA CU')
+
+    append_options_to_dropdown(options, "compare-dropdown")
+    append_options_to_dropdown(MONTHS_STR, "months-dropdown")
+    
 
     set_header_info(selected_county)
     // select_category('rata')
@@ -127,7 +132,10 @@ function fetch_judete(api_url) {
         .then((data) => {
             for (let row of data) {
                 COUNTY_DICT[row['id']] = row['nume']
+                COUNTY_DICT_REVERSE[row['nume']] = row['id']
             }
+
+
         })
 }
 
