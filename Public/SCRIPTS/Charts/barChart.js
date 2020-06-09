@@ -30,10 +30,16 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
                 for (let i = 0; i < max_sets/2; i++) {
                     all_charts[chartNameID].data.datasets[i].data = values;
                 }
+                if(add_line){
+                    second_color_set = "rgba(255,100,100,0.7)"
+                }
+                else{
+                    second_color_set = colors;
+                }
                 all_charts[chartNameID].data.datasets.push({
                     label: field_text,
                     type: "bar",
-                    backgroundColor: "rgba(255,100,100,0.7)",
+                    backgroundColor: second_color_set,
                     data: second_set,
                 })
                 if(add_line){
@@ -201,6 +207,19 @@ function init_barchart(table, year, month, id_judet, colors, chart_title, id_to_
         values.push(result[key]['value']);
     }
 
+
+    if(id_to_compare){
+        second_set = []
+        const dict = generate_data_dict(table, year, month, id_to_compare);
+        const result = generate_lables_data(dict);
+        for (const key in dict) {
+            if (key === 'procent_total' || key === 'procent_femei' || key === 'procent_barbati')
+                continue;
+            if (key === 'total')
+                continue;
+            second_set.push(result[key]['value']);
+        }
+    }
     
 
     createBarChart("barchart_all", '', chart_title, labels, values, colors, second_set);
