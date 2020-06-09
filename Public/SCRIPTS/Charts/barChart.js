@@ -8,20 +8,64 @@ function generateBarMonthsLabels(monthsIndex) {
     return displayedLabel;
 }
 
-function createBarChart(chartNameID, field_text, title_text, months, values, colors, add_line = false) {
+function createBarChart(chartNameID, field_text, title_text, months, values, colors, second_set, add_line = false) {
+    if (colors == null) {
+        colors = "rgba(219,0,0,0.3)"
+    }
     if (all_charts[chartNameID]) {
-        for (let i = 0; i < all_charts[chartNameID].data.datasets.length; i++) {
-            all_charts[chartNameID].data.datasets[i].data = values;
+        max_sets = 2;
+        if(add_line){
+            max_sets = 4
         }
+        if(second_set){
+            if(all_charts[chartNameID].data.datasets.length == max_sets){
+                for (let i = 0; i < all_charts[chartNameID].data.datasets.length / 2; i++) {
+                    all_charts[chartNameID].data.datasets[i].data = values;
+                }
+                for (let i = all_charts[chartNameID].data.datasets.length / 2; i < all_charts[chartNameID].data.datasets.length; i++) {
+                    all_charts[chartNameID].data.datasets[i].data = second_set;
+                }
+            }
+            else{
+                for (let i = 0; i < max_sets/2; i++) {
+                    all_charts[chartNameID].data.datasets[i].data = values;
+                }
+                all_charts[chartNameID].data.datasets.push({
+                    label: field_text,
+                    type: "bar",
+                    backgroundColor: "rgba(255,100,100,0.7)",
+                    data: second_set,
+                })
+                if(add_line){
+                    all_charts[chartNameID].data.datasets.push({
+                        label: field_text,
+                        type: "line",
+                        borderColor: "pink",
+                        data: second_set,
+                        fill: false
+                    })
+                }
+            }
+        }
+        else{
+            if(all_charts[chartNameID].data.datasets.length == max_sets){
+                for (let i = 0; i < max_sets/2; i++) {
+                    all_charts[chartNameID].data.datasets.pop()
+                }
+            }
+            else{
+                for (let i = 0; i < all_charts[chartNameID].data.datasets.length; i++) {
+                    all_charts[chartNameID].data.datasets[i].data = values;
+                }
+            }
+        }
+
         all_charts[chartNameID].data.labels = months;
         all_charts[chartNameID].update()
         return;
     }
 
     var ctx = document.getElementById(chartNameID);
-    if (colors == null) {
-        colors = "rgba(219,0,0,0.3)"
-    }
     datasets = [{
         label: field_text,
         type: "bar",
@@ -121,7 +165,7 @@ function init_barchart_total(table, field, id_judet = null) {
         }
     }
     labels = generateBarMonthsLabels(month_labels);
-    createBarChart("barchart_total", 'total', 'Numarul somerilor in ultimele 12 luni', labels, values, null, add_line = true);
+    createBarChart("barchart_total", 'total', 'Numarul somerilor in ultimele 12 luni', labels, values, null, [6000,6000,600,6000,6000,7000,6000,6000,600,6000,6000,7000], add_line = true);
 }
 
 function init_barchart(table, year, month, id_judet = null, colors, chart_title) {
@@ -138,7 +182,7 @@ function init_barchart(table, year, month, id_judet = null, colors, chart_title)
     values.push(result[key]['value']);
 }
 
-createBarChart("barchart_all", '', chart_title, labels, values, colors);
+createBarChart("barchart_all", '', chart_title, labels, values, colors,null);
 }
 
 
