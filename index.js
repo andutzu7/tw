@@ -51,7 +51,7 @@ function parse_url(url) {
 update_data();
 const port = process.env.PORT || 3000;
 const server = http.createServer((req, res) => {
-
+    console.log(req.url)
     res.setHeader('Access-Control-Allow-Origin', '*');
     if (req.method == 'POST') {
         if (req.url == '/dev/reload_db') {
@@ -64,9 +64,6 @@ const server = http.createServer((req, res) => {
         if (req.url.startsWith('/export')){
             args = parse_url(req.url)
             a = 'dasa';
-
-
-
             res.end(a);
             return;
         }
@@ -79,17 +76,20 @@ const server = http.createServer((req, res) => {
             }
         }
 
-        /*if (req.url.startsWith('/view')) {
+        if (req.url.startsWith('/view')) {
 
-            const path = "./tw/Public/HTML/";
+            const path = "../tw/Public/HTML/";
             fs.readFile(path + 'index.html', function (err, html) {
                 if (err) {
                     throw err;
                 }
                 res.end(html);
             });
-        } else {
-            const path = "./tw/Public/";
+        } else if(req.url == '/favicon.ico'){
+            
+        }
+        else{
+            const path = "../tw/Public";
             const splitted_url = req.url.split(".");
             const extension = splitted_url[splitted_url.length - 1]; //workaround pt cazurile in care un fisier e de forma blabla.txt.js
             switch (extension) {
@@ -109,7 +109,7 @@ const server = http.createServer((req, res) => {
                 }
                 res.end(data);
             });
-        }*/
+        }
     }
 });
 

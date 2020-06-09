@@ -10,3 +10,6 @@ https://www.w3schools.com/howto/howto_js_sort_table.asp
 svg source
 https://www.amcharts.com/svg-maps/?map=romania
 https://www.flaticon.com/authors/freepik --svg icon
+
+
+https://stackoverflow.com/questions/36270886/event-clipboarddata-setdata-in-copy-event

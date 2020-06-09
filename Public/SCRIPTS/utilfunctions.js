@@ -76,7 +76,7 @@ function generate_data_dict_by_rows(rows, id_judet = null) {
 function parse_link_param() {
     const current_link = window.location.href;
     //separam din link stringul cu criterii, apoi il transformam in array
-    const criteria = current_link.split("?")[1].split(",");
+    const criteria = current_link.split("?")[1].split("&");
     let selected_criteria = {};
     criteria.forEach(function (entry) {
         selected_criteria[entry.split("=")[0]] = entry.split("=")[1];
@@ -89,30 +89,13 @@ function create_link_from_criteria(criteria) {
     let page_link = current_link.split("?")[0].split(",");
     page_link += '?'; //needed
     for (const [key, value] of Object.entries(criteria)) {
-        page_link += key;
-        page_link += '=';
-        page_link += value;
-        page_link += '&';
+        if(value){
+            page_link += key;
+            page_link += '=';
+            page_link += value;
+            page_link += '&';
+        }
     }
     page_link = page_link.slice(0, -1);
     return page_link;
-}
-
-
-function back_button_on_click(){
-    let country_backButton = document.getElementById('countryBackButton');
-    country_backButton.onclick = function changeContent() {
-        svg.style.display='block';
-        let country_barchart = document.getElementById('countryBarChart');
-        country_barchart.style.visibility='hidden';
-
-        let country_piechart = document.getElementById('countryPieChart');
-        country_piechart.style.visibility='hidden';
-
-        let country_textbox = document.getElementById('countryTextbox');
-        country_textbox.style.visibility='hidden';
-
-        let country_backButton = document.getElementById('countryBackButton');
-        country_backButton.style.visibility='hidden';
-    }
 }
