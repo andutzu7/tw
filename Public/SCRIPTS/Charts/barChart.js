@@ -19,6 +19,7 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
         second_color_set = colors;
     }
     if (all_charts[chartNameID]) {
+        all_charts[chartNameID].options.title.text = title_text
         max_sets = 2;
         if(add_line){
             max_sets = 4
@@ -247,12 +248,12 @@ titles_per_category = {
     'varste': 'Distributia per varste',
     'rata': 'Rata somajului',
     'educatie': 'Distributia pe nivele de educatie',
-    'medii': 'Media somajului'
+    'medii': 'Somajul in functie de medii'
 }
 
 
 function init_barchart_category(category, year, month, id_judet, id_to_compare) {
     const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange", '#9ACD32', '#20B2AA']
-    const chart_title = titles_per_category[category]
+    chart_title = titles_per_category[category]
     init_barchart(all_tables[category], year, month, id_judet, colors, chart_title, id_to_compare);
 }
