@@ -1,7 +1,26 @@
-function createPieChart(elementID, labels, values, colors) {
+function createPieChart(elementID, labels, values, colors, second_set=null) {
     if (all_charts[elementID]) {
         all_charts[elementID].data.datasets[0].data = values;
         all_charts[elementID].data.labels = labels;
+
+        if(second_set){
+            if(all_charts[elementID].data.datasets.length == 2){
+                all_charts[elementID].data.datasets[1].data = second_set;
+            }
+            else{
+                console.log('here')
+                all_charts[elementID].data.datasets.push({
+                    backgroundColor: colors,
+                    data: second_set
+                })
+            }
+        }
+        else{
+            if(all_charts[elementID].data.datasets.length == 2){
+                all_charts[elementID].data.datasets.pop()
+            } 
+        }
+
         all_charts[elementID].update()
         return
     }
