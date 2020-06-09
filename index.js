@@ -94,14 +94,13 @@ const server = http.createServer((req, res) => {
             const extension = splitted_url[splitted_url.length - 1]; //workaround pt cazurile in care un fisier e de forma blabla.txt.js
             switch (extension) {
                 case "css":
-                    res.setHeader('Content-Type', 'utf8', 'text/css');
-                    console.log('stylesheet/css')
+                    res.setHeader('Content-Type', 'text/css');
                     break;
                 case "js":
-                    res.setHeader('Content-Type', 'utf8', 'application/javascript');
+                    res.setHeader('Content-Type', 'application/javascript');
                     break;
                 case "html":
-                    res.setHeader('Content-Type', 'utf8', 'text/html');
+                    res.setHeader('Content-Type', 'text/html');
                     break;
             }
             fs.readFile(path + req.url, function (err, data) {
