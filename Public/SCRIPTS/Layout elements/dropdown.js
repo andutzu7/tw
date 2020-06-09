@@ -20,3 +20,11 @@ function dropdownOnChange(raw_year_month) {
 
     select_year_month(year, month)
 }
+
+function select_option_with_value(dropdown_id, value){
+    for(let option of document.getElementById(dropdown_id).getElementsByTagName('option')){
+        if(option.text == value){
+            option.selected = 'selected'
+        }
+    }
+}
