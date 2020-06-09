@@ -95,7 +95,9 @@ function init_rata() {
             MONTHS_STR.push(`${year}-${MONTHS[month - 1]}`)
         }
     }
-    append_options_to_dropdown(MONTHS_STR);
+
+    append_options_to_dropdown(MONTHS_STR,".select-criteriu1")
+    append_options_to_dropdown(MONTHS_STR,"#form-compare")
 
     set_header_info(selected_county)
     // select_category('rata')

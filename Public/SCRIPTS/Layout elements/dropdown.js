@@ -1,6 +1,6 @@
-function append_options_to_dropdown(months) {
+function append_options_to_dropdown(months,what_to_select) {
 
-    let dropdown = document.querySelector(".select-criteriu");
+    let dropdown = document.querySelector(what_to_select);
     months.forEach(function (element) {
         let option = document.createElement("option");
         let text = document.createTextNode(element);
