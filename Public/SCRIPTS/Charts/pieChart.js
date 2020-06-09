@@ -8,7 +8,6 @@ function createPieChart(elementID, labels, values, colors, second_set=null) {
                 all_charts[elementID].data.datasets[1].data = second_set;
             }
             else{
-                console.log('here')
                 all_charts[elementID].data.datasets.push({
                     backgroundColor: colors,
                     data: second_set
@@ -24,15 +23,26 @@ function createPieChart(elementID, labels, values, colors, second_set=null) {
         all_charts[elementID].update()
         return
     }
+
+    datasets = [{
+        backgroundColor: colors,
+        data: values
+    }]
+
+    if(second_set){
+        console.log('here')
+        datasets.push({
+            backgroundColor: colors,
+            data: second_set
+        })
+    }
+
     var ctx2 = document.getElementById(elementID);
     all_charts[elementID] = new Chart(ctx2, {
         type: 'doughnut',
         data: {
             labels: labels,
-            datasets: [{
-                backgroundColor: colors,
-                data: values
-            }]
+            datasets: datasets
         },
         options: {
             rotation: 0.5 * Math.PI,

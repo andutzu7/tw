@@ -12,6 +12,12 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
     if (colors == null) {
         colors = "rgba(219,0,0,0.3)"
     }
+    if(add_line){
+        second_color_set = "rgba(255,100,100,0.7)"
+    }
+    else{
+        second_color_set = colors;
+    }
     if (all_charts[chartNameID]) {
         max_sets = 2;
         if(add_line){
@@ -29,12 +35,6 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
             else{
                 for (let i = 0; i < max_sets/2; i++) {
                     all_charts[chartNameID].data.datasets[i].data = values;
-                }
-                if(add_line){
-                    second_color_set = "rgba(255,100,100,0.7)"
-                }
-                else{
-                    second_color_set = colors;
                 }
                 all_charts[chartNameID].data.datasets.push({
                     label: field_text,
@@ -90,6 +90,24 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
         })
     }
 
+    if(second_set){
+        datasets.push({
+            label: field_text,
+            type: "bar",
+            backgroundColor: second_color_set,
+            data: second_set,
+        })
+        if(add_line){
+            datasets.push({
+                label: field_text,
+                type: "line",
+                borderColor: "pink",
+                data: second_set,
+                fill: false
+            })
+        }
+    }
+
     all_charts[chartNameID] = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -143,7 +161,6 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
 }
 
 function init_barchart_total(table, field,  id_judet, id_to_compare) {
-    console.log(id_judet)
     selected_total = field
     values = []
     month_labels = []

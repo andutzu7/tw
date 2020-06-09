@@ -73,22 +73,48 @@ function generate_data_dict_by_rows(rows, id_judet = null) {
 }
 
 
-function parse_link_param() {
-    const current_link = window.location.href;
+function parse_link_param(current_link=null) {
+    if(current_link == null){
+        current_link = window.location.href;
+    }
     //separam din link stringul cu criterii, apoi il transformam in array
-    const criteria = current_link.split("?")[1].split("&");
-    let selected_criteria = {};
-    criteria.forEach(function (entry) {
-        selected_criteria[entry.split("=")[0]] = entry.split("=")[1];
-    });
-    return selected_criteria;
+
+    config = {
+        'judet': null,
+        'an': null,
+        'luna': null,
+        'comparatie': null,
+        'total': null,
+        'criteriu': null
+    }
+    url_attrs = current_link.split("?")
+    if(url_attrs.length > 1){
+        const attributes = url_attrs[1].split("&");
+        attributes.forEach(function (entry) {
+            attribute = entry.split("=")
+            key = attribute[0]
+            value = attribute[1]
+            if(key in config){
+                config[key] = value
+            }
+        });
+    }
+
+    if(config['judet']){
+        config['judet'] = config['judet'].toUpperCase()
+    }
+    if(config['comparatie']){
+        config['comparatie'] = config['comparatie'].toUpperCase()
+    }
+
+    return config;
 }
 
-function create_link_from_criteria(criteria) {
+function create_link_from_criteria(config) {
     const current_link = window.location.href;
     let page_link = current_link.split("?")[0].split(",");
     page_link += '?'; //needed
-    for (const [key, value] of Object.entries(criteria)) {
+    for (const [key, value] of Object.entries(config)) {
         if(value){
             page_link += key;
             page_link += '=';
@@ -96,6 +122,11 @@ function create_link_from_criteria(criteria) {
             page_link += '&';
         }
     }
-    page_link = page_link.slice(0, -1);
+    if(page_link.endsWith('&')){
+        page_link = page_link.slice(0, -1);
+    }
+    if(page_link.endsWith('?')){
+        page_link = page_link.slice(0, -1);
+    }
     return page_link;
 }

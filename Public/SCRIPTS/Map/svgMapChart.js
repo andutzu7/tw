@@ -71,8 +71,8 @@ function set_county_on_click_events(){
 
 function changeContent(e) {
     id = parseInt(e.target.id.split('_')[2])
-    document.getElementById("countryBackButton").style.display = 'block'
     select_county(id)
+    document.getElementById("countryBackButton").style.display = 'block'
 };
 
 
@@ -92,21 +92,23 @@ function get_procent_romania(year, month){
 function set_header_info(id_judet=null){
     result = {};
     if(id_judet){
+        if(compared_county){
+            county_name = COUNTY_DICT[compared_county]
+            document.getElementById("header-location2-name").innerText = `vs ${county_name}`
+        }
         for(var row of all_tables['rata'][selected_year][selected_month]){
             if(row['id_judet']==id_judet){
                 result['total'] = row['total']
                 result['procent'] = row['procent_total']
             }
         }
-        document.getElementById("header-location-name").innerText = COUNTY_DICT[id]
+        document.getElementById("header-location-name").innerText = COUNTY_DICT[id_judet]
     }
     else{
         let someri = 0
-        let populatie = 0
 
         for(var row of all_tables['rata'][selected_year][selected_month]){
             someri += row['total']
-            populatie += row['total'] * 100 / row['procent_total']
         }
 
         result['total'] = someri
@@ -116,6 +118,12 @@ function set_header_info(id_judet=null){
 
     document.getElementById("header-total-value").innerText = `${result['total']} someri`
     document.getElementById("header-procent-value").innerText = `${result['procent']}%`
+
+    if(id_judet){
+        document.getElementById("countryBackButton").style.display = 'block'
+    }
+    
+
 }
 
 
@@ -130,13 +138,8 @@ function select_romania(){
 
 function compare_with(county_name){
     if(selected_county){
-        county_id = COUNTY_DICT_REVERSE[county_name]
-        compared_county = county_id
-
+        compared_county = COUNTY_DICT_REVERSE[county_name]
         select_county(selected_county)
-
-        console.log(county_id)
-        document.getElementById("header-location2-name").innerText = `vs ${county_name}`
     }
     select_option_with_value('form-compare', 'COMPARA CU')
 }
