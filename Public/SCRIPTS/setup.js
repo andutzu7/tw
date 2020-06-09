@@ -171,11 +171,17 @@ params = parse_link_param()
 
 console.log(params)
 
-selected_criteria = params['criteriu']
-selected_year = params['an']
-selected_month = params['luna']
-selected_total = params['total']
-selected_county = params['judet']
-compared_county = params['comparatie']
+if(params['criteriu'])
+    selected_criteria = params['criteriu']
+if(params['an'])
+    selected_year = params['an']
+if(params['luna'])
+    selected_month = params['luna']
+if(params['total'])
+    selected_total = params['total']
+if(params['judet'])
+    selected_county = params['judet']
+if(params['comparatie'])
+    compared_county = params['comparatie']
 
 setup_hardcoded(url)
