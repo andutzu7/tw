@@ -85,7 +85,17 @@ const server = http.createServer((req, res) => {
                 }
                 res.end(html);
             });
-        } else if(req.url == '/favicon.ico'){
+        } else if (req.url.startsWith('/raport')) {
+
+            const path = "Public/HTML/raport.html";
+            fs.readFile(path, function (err, html) {
+                if (err) {
+                    throw err;
+                }
+                res.end(html);
+            });
+        }  
+        else if(req.url == '/favicon.ico'){
             res.end('')
         }
         else{
@@ -101,6 +111,12 @@ const server = http.createServer((req, res) => {
                     break;
                 case "html":
                     res.setHeader('Content-Type', 'text/html');
+                    break;
+                case "jpg":
+                    res.setHeader('Content-Type', 'image/jpg');
+                    break;
+                case "png":
+                    res.setHeader('Content-Type', 'image/png');
                     break;
             }
             fs.readFile(path + req.url, function (err, data) {

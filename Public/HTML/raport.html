@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>RUnDa</title>
+    <link rel="stylesheet" href="../CSS/ReportCSS.css ">
+
+</head>
+<body>
+<header>
+    <h1>Scholarly Report - RUnDa</h1>
+</header>
+
+<div role="contentinfo">
+    <dl>
+        <dt>Licenta</dt>
+        <dd>
+            <a href="mit.txt">MIT License</a>
+        </dd>
+    </dl>
+</div>
+<section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+    <h2>Descrierea proiectului</h2>
+    <p>
+        RUnDa(Romanian Unemployment Data) este un instrument Web de vizualizare si comparare multi-criteriala
+        a datelor publice referitoare la somajul din Romania pe ultimele 12 luni.
+    </p>
+</section>
+<section id="structure">
+    <h2>Structura</h2>
+    <p>
+        Proiectul consta in colectarea datelor de pe data.gov.ro in mod dinamic si popularea unei baze de date care poate
+        fi accesat printr-un REST API. API-ul la randul lui este apelat de catre partea de client, unde datele preluate sunt 
+        formatate in asa fel in cat sa ofere perspective relevante si corelari intre diferite aspecte ale somajului.
+    </p>
+    <h2>Tehnologii folosite</h2>
+    <section>
+
+        <h3>Python</h3>
+        <p>
+            Pentru a parcurge site-ul data.gov.ro si a colecta datele despre lunare despre somaj am folosit limbajul Python.
+            Dupa ce au fost colectate, datele sunt validate si trecute printr un filtru astfel incat sa aiba acelasi nume
+            al judetelor si acelasi nume al campurilor.
+        </p>
+
+    </section>
+    <section id="inline">
+        <h3>Baze de Date</h3>
+        <p>
+            Pentru stocarea dateler colectate am folosit o baza de data MySQL
+        </p>
+    </section>
+    <section id="Root">
+        <h3>node.js</h3>
+        <p>
+            Pentru a accesa baza de date creata anterior am creat un REST API in node js prin care fetch-uim toate datele 
+            din DB o singura data, deoarece acestea se schimba extrem de rar si cand se schimba, microserviciul de colectare 
+            scris in python va updata DB-ul si va anunta API-ul de acest lucru, API-ul urmand sa fetch-uiasca din nou toate 
+            datele si sa le salveze in cache pentru a nu fi nevoie de un query pentru fiecare request.
+        </p>
+        <p>
+            Acest workflow este permis din cauza naturii datelor si rata de schimbare a acestora. 
+        </p>
+    </section>
+    <section id="references">
+
+        <h3>HTML - CSS - JS</h3>
+        <p>
+            Pentru partea de client am folosit HTML pentru a structura datele si interfata intr-un single page application, oferind o ierarhie 
+            a obiectelor usor de manipulat cu ajutorul CSS. 
+            Pentru preluarea datelor din API, gestionarea lor si a interfetei, dar si pentru generarea exporturilor am folosit JavaScript.
+            Am folosit si ChartJS si JSPDF pentru generarea de grafice, respectiv export de date in format pdf.
+        </p>
+
+    </section>
+
+    <section>
+
+        <h3>Heroku</h3>
+        <p>
+            Heroku este o platforma care permite developerilor sa dezvolte, sa ruleze si sa opereze aplicatii in
+            totalitate pe cloud.
+            Am folosit Heroku pentru a hosta baza de date, API-ul si pentru a rula in mod recurent scriptul care colecteaza 
+            si valideaza date.
+        </p>
+
+    </section>
+
+</section>
+<section id="semantics">
+
+    <h2>Functionalitati</h2>
+
+    <section id="person-org">
+
+        <h3>Vizualizarea statisticlor pe intreaga tara</h3>
+        <p>Datele agregate a tuturor judetelor</p>
+
+
+    </section>
+    <section>
+
+        <h3>Vizualizarea statisticlor per judet</h3>
+        <p>Utilizatorul poate selecta un judet</p>
+        <p>Utilizatorul poate compara datele despre somaj a doua judete</p>
+
+
+
+
+    </section>
+    <section>
+        <h3>Abilitatea de a selecta subcategoria de date</h3>
+        <p>Date despre somaj relativ la </p>
+        <ul>
+            <li>Medii de trai</li>
+            <li>Nivelul de educatie</li>
+            <li>Varsta</li>
+            <li>Indemnizatie si rata somajului</li>
+        </ul>
+    </section>
+    <section>
+        <h3>Abilitatea de a exporta date</h3>
+        <p>Utilizatorul poate exporta datele in urmatoarele formate</p>
+        <ul>
+            <li>SVG</li>
+            <li>PDF</li>
+            <li>XML</li>
+            <li>CSV</li>
+        </ul>
+        <p>Utilizatorul poate distribui prin URL pagina, stagiul criteriilor selectate fiind stocat in parametrii URL-ului.</p>
+    </section>
+
+</section>
+
+
+<section id="diagram">
+
+    <h2>Ghid de utilizare</h2>
+    <p>
+        Click pe harta pentru a selecta un judet
+    </p>
+    <p>
+        Pentru a selecta o categorie se folosesc butoanele "Medii", "Rata", "Educatie" si "Varste".
+        In momentul in care o categorie este selectata, se schimba automat si datele din tabel.
+    </p>
+    <p>
+        Pentru a deselcta un judet sau pentru a iesi din view-ul de comparare se apasa butonul de "inapoi", 
+        vizibil doar cand este selectat un judet
+    </p>
+    <p>
+        Butonul de "share" copiaza in clipboard un link cu parametrii selectati in momentul respectiv.
+        Cand cineva va accesa acel link, graficele se vor modifica in consecinta.
+    </p>
+    <p>
+        Pentru a exporta date, se folosete dropdown-ul "Export".
+    </p>
+    <p>
+        Click pe header din tabel pentru a ordona crescator/descrescator coloana respectiva.
+    </p>
+    <p>
+        Pentru a selecta luna se foloste dropdown-ul din header care are optiuni de forma AN-Luna.
+    </p>
+    <p>
+        Pentru a compara judetul selectat cu alt judet, se folosete dropdown-ul "COMPARA CU".
+        Dropdown-ul nu este functional daca nu este selectat un judet.
+        Legenda in modul de comparare se schimba in felul urmator: 
+            stanga - judetul prinicipal si dreapta - judetul secundar pentru barcharturi
+            si pentru piecharturi inelul din exterior este judetul principal.
+    </p>
+</section>
+
+<section id="diagram">
+
+    <h2>Diagrama aplicatiei</h2>
+    <div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2020-06-09T20:19:28.946Z\&quot; agent=\&quot;5.0 (Macintosh)\&quot; etag=\&quot;qCFfazt2292jaoaMdtWv\&quot; version=\&quot;13.2.1\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;C5RBs43oDa-KdzZeNtuy\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;,&quot;toolbar&quot;:&quot;pages zoom layers lightbox&quot;,&quot;page&quot;:0}"></div>
+    <script type="text/javascript" src="https://app.diagrams.net/js/viewer.min.js"></script>
+</section>
+
+<section id="diagram">
+
+    <h2>Progres</h2>
+    <img src="../OTHER/1din4.jpg" >
+    <img src="../OTHER/2din4.png" >
+    <img src="../OTHER/3din4.jpg" >
+    <img src="../OTHER/4din4.png" >
+    <img src="../OTHER/5din4.png" >
+</section>
+
+</section>
+<section id="scholarly-article">
+
+    <h2>Autori</h2>
+    <p>
+    <ul>
+        <li>Ciobanu Teofil</li>
+        <li>Vavilov Andrei</li>
+        <li>Mocanu Octavian</li>
+    </ul>
+    </p>
+    <p class="issue">
+        Link catre repository-ul de Github:
+        <a href=https://github.com/ceofil/tw>Click</a>
+    </p>
+
+</section>
+
+<section id="ref">
+    <h2> References </h2>
+
+    <p class="issue">
+        <a href=https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/>Exemple de chart-uri in ChartJS</a>
+    </p>
+    <p class="issue">
+        <a href=https://www.chartjs.org/docs/latest/>Documentatia ChartJS</a>
+    </p>
+    <p class="issue">
+        <a href=http://www.petercollingridge.co.uk/tutorials/svg/interactive/tooltip/>Lucrul cu SVG ( Tooltip) </a>
+    </p>
+    <p class="issue">
+        <a href=https://developer.mozilla.org/en-US/>MDN</a>
+    </p>
+    <p class="issue">
+        <a href=https://www.youtube.com/watch?v=QxbJ9b-mpoA>Sortare Tablele</a>
+    </p>
+    <p class="issue">
+        <a href=https://www.w3schools.com/howto/howto_js_sort_table.asp>Sortare Tabele</a>
+    </p>
+    <p class="issue">
+        <a href=https://www.amcharts.com/svg-maps/?map=romania>Harta SVG</a>
+    </p>
+    <p class="issue">
+        <a href=https://www.flaticon.com/authors/freepik>Iconite SVG</a>
+    </p>
+
+    <p class="issue">
+        <a href=https://w3c.github.io/scholarly-html/#semantics>CSS-ul Template Scholarly</a>
+    </p>
+</section>
+</body>
+</html>
