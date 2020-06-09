@@ -86,7 +86,7 @@ const server = http.createServer((req, res) => {
                 res.end(html);
             });
         } else if(req.url == '/favicon.ico'){
-
+            res.end('')
         }
         else{
             const path = "Public";
@@ -95,6 +95,7 @@ const server = http.createServer((req, res) => {
             switch (extension) {
                 case "css":
                     res.setHeader('Content-Type', 'utf8', 'text/css');
+                    console.log('stylesheet/css')
                     break;
                 case "js":
                     res.setHeader('Content-Type', 'utf8', 'application/javascript');
@@ -105,7 +106,7 @@ const server = http.createServer((req, res) => {
             }
             fs.readFile(path + req.url, function (err, data) {
                 if (err) {
-                    throw err;
+                    // res.end(err)
                 }
                 res.end(data);
             });
