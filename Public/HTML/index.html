@@ -12,6 +12,7 @@
       <link rel="stylesheet" href="../CSS/responsive.css">
       <link rel="stylesheet" href="../CSS/dropdown.css">
       <link rel="stylesheet" href="../CSS/buttons.css">
+      <link rel="stylesheet" href="../CSS/menu.css">
 </head>
 
 <body>
@@ -21,6 +22,7 @@
                         <div class='header-gr-1'>
                               <h2 class='header-text' id='header-const-text'>Date despre somaj</h2>
                               <h1 class='header-text' id='header-location-name'>ROMANIA</h1>
+                              <h1 class='header-text' id='header-location2-name'>judet cu care compari</h1>
                               <h3 class='header-text' id='header-total-value'>someri</h3>
                         </div>
                         <h4 class='header-text' id='header-procent-value'>%</h4>
@@ -152,11 +154,81 @@
                   </div>
             </div>
 
-            <div id="main-menu">
-                  <button class="download-btn" onclick="javascript:genPDF()">Download PDF</button>
-                  <button class="download-btn" onclick="javascript:xmlExp()">Download XML</button>
-                  <button class="download-btn" onclick="javascript:download()">Download SVG</button>
-                  <button class="download-btn" onclick="javascript:csvExp()">Download CSV</button> 
+            <div id="main-menu-container">
+                  <!-- <div id="trigger" onclick="display_menu()">
+                        Display menu TODO: svg icon - 3 lines
+                  </div> -->
+                  <div id="main-menu">
+
+                        <div class="menu-btn">
+                              <div class="share-btn" onclick="console.log('share')">
+                                    SHARE
+                              </div>
+                        </div>
+                        <div class="menu-btn">
+                              <div class="criterii1">
+                                    <div class="dropdown1">
+                                          <div id="form-export">
+                                                <select class="select-criteriu1" onchange="export_func(this.value)">
+                                                      <option value="export">EXPORT</option>
+                                                      <option value="csv">CSV</option>
+                                                      <option value="xml">XML</option>
+                                                      <option value="pdf">PDF</option>
+                                                      <option value="svg">SVG</option>
+                                                </select>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="menu-btn">
+                              <div class="criterii1">
+                                    <div class="dropdown1">
+                                          <div id="form-compare">
+                                                <select class="select-criteriu1" onchange="console.log(this.value)">
+                                                      <option value="0">COMPARA CU</option>
+                                                      <option value="1">ALBA</option>
+                                                      <option value="2">vaslui</option>
+                                                      <option value="3">iasi</option>
+                                                      <option value="4">buc</option>
+                                                </select>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+
+                        <!-- <div class="criterii1">
+                              <div class="dropdown1">
+                                    <div id="form-export1">
+                                          <label>
+                                                Export
+                                          </label>
+                                          <select class="select-criteriu1" onchange="export_func(this.value)">
+                                                <option value="csv">CSV</option>
+                                                <option value="xml">XML</option>
+                                                <option value="pdf">PDF</option>
+                                                <option value="svg">SVG</option>
+                                          </select>
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="criterii1">
+                              <div class="dropdown1">
+                                    <div id="form-compare1">
+                                          <label>
+                                                Compara cu
+                                          </label>
+                                          <select class="select-criteriu1" onchange="console.log(this.value)">
+                                                <option value="1">ALBA</option>
+                                                <option value="2">vaslui</option>
+                                                <option value="3">iasi</option>
+                                                <option value="4">buc</option>
+                                          </select>
+                                    </div>
+                              </div>
+                        </div>
+                        
+                        <button class="download-btn" onclick="console.log('share')">share</button>  -->
+                  </div>
             </div>
 
 
@@ -221,6 +293,7 @@
       <script src="../SCRIPTS/Exports/PDF.js"></script>
       <script src="../SCRIPTS/Map/svgMapChart.js"></script>
       <script src="../SCRIPTS/Layout%20elements/dropdown.js"></script>
+      <script src="../SCRIPTS/Layout%20elements/menu.js"></script>
       <script src="../SCRIPTS/setup.js"></script>
 </body>
 

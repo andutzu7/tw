@@ -96,11 +96,12 @@ body {
     }
 }
 
-#main-menu{
+#main-menu-container{
     grid-area: menu;
-    height: 55px;
+    height: 100%;
     background-color: rgb(47, 66, 71);
+}
+
+#main-menu{
     animation: example 0.25s ease-out;
-    
-    display: none;
 }
