@@ -78,18 +78,18 @@ const server = http.createServer((req, res) => {
 
         if (req.url.startsWith('/view')) {
 
-            const path = "../tw/Public/HTML/";
-            fs.readFile(path + 'index.html', function (err, html) {
+            const path = "Public/HTML/index.html";
+            fs.readFile(path, function (err, html) {
                 if (err) {
                     throw err;
                 }
                 res.end(html);
             });
         } else if(req.url == '/favicon.ico'){
-            
+
         }
         else{
-            const path = "../tw/Public";
+            const path = "Public";
             const splitted_url = req.url.split(".");
             const extension = splitted_url[splitted_url.length - 1]; //workaround pt cazurile in care un fisier e de forma blabla.txt.js
             switch (extension) {
