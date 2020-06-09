@@ -121,8 +121,9 @@ function set_header_info(id_judet=null){
 
 function select_romania(){
     document.getElementById("countryBackButton").style.display = 'None'
-    document.getElementById("header-location2-name").style.display = 'None'
+    document.getElementById("header-location2-name").innerText = ``
     select_option_with_value('form-compare', 'COMPARA CU')
+    compared_county = null
     select_county(null);
 }
 
@@ -130,8 +131,11 @@ function select_romania(){
 function compare_with(county_name){
     if(selected_county){
         county_id = COUNTY_DICT_REVERSE[county_name]
+        compared_county = county_id
+
+        select_county(selected_county)
+
         console.log(county_id)
-        document.getElementById("header-location2-name").style.display = 'block'
         document.getElementById("header-location2-name").innerText = `vs ${county_name}`
     }
     select_option_with_value('form-compare', 'COMPARA CU')

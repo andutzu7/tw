@@ -136,10 +136,13 @@ function createBarChart(chartNameID, field_text, title_text, months, values, col
     });
 }
 
-function init_barchart_total(table, field, id_judet = null) {
+function init_barchart_total(table, field,  id_judet, id_to_compare) {
+    console.log(id_judet)
     selected_total = field
     values = []
     month_labels = []
+
+    let second_set = null
     for (var year in table) {
         for (var month in table[year]) {
             if (id_judet) {
@@ -164,13 +167,29 @@ function init_barchart_total(table, field, id_judet = null) {
             }
         }
     }
+
+    if(id_to_compare){
+        second_set = []
+        for (var year in table) {
+            for (var month in table[year]) {
+                for (var row of table[year][month]) {
+                    if (row['id_judet'] === id_to_compare) {
+                        second_set.push(row[field]);
+                    }
+                }
+            }
+        }
+    }
     labels = generateBarMonthsLabels(month_labels);
-    createBarChart("barchart_total", 'total', 'Numarul somerilor in ultimele 12 luni', labels, values, null, [6000,6000,600,6000,6000,7000,6000,6000,600,6000,6000,7000], add_line = true);
+    createBarChart("barchart_total", 'total', 'Numarul somerilor in ultimele 12 luni', labels, values, null, second_set, add_line = true);
 }
 
-function init_barchart(table, year, month, id_judet = null, colors, chart_title) {
+function init_barchart(table, year, month, id_judet, colors, chart_title, id_to_compare) {
     let labels = [];
     let values = [];
+
+    let second_set = null
+
     const dict = generate_data_dict(table, year, month, id_judet);
     const result = generate_lables_data(dict);
     for (const key in dict) {
@@ -178,11 +197,13 @@ function init_barchart(table, year, month, id_judet = null, colors, chart_title)
             continue;
         if (key === 'total')
             continue;
-    labels.push(result[key]['label']);
-    values.push(result[key]['value']);
-}
+        labels.push(result[key]['label']);
+        values.push(result[key]['value']);
+    }
 
-createBarChart("barchart_all", '', chart_title, labels, values, colors,null);
+    
+
+    createBarChart("barchart_all", '', chart_title, labels, values, colors, second_set);
 }
 
 
@@ -194,8 +215,8 @@ titles_per_category = {
 }
 
 
-function init_barchart_category(category, year, month, id_judet = null) {
+function init_barchart_category(category, year, month, id_judet, id_to_compare) {
     const colors = ["#ffc2e5", "#3399ff", "#ee70a6", "#f38654", "yellow", "orange", '#9ACD32', '#20B2AA']
     const chart_title = titles_per_category[category]
-    init_barchart(all_tables[category], year, month, id_judet, colors, chart_title);
+    init_barchart(all_tables[category], year, month, id_judet, colors, chart_title, id_to_compare);
 }

@@ -4,6 +4,7 @@ selected_month = 4; // TODO: call select_month_year with latest month on init
 selected_year = 2020;
 selected_criteria = null;
 selected_county = null;
+compared_county = null;
 
 
 selected_total = 'total' // or "total_procent"
@@ -50,11 +51,6 @@ function select_year_month(year, month){
     colorize_map(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
     set_county_hover(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
 
-    init_barchart_total(all_tables['rata'], selected_total);
-    init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month]);
-
-    init_piechart_medii(all_tables['medii'][selected_year][selected_month]);
-
     select_county(selected_county)
 }
 
@@ -65,9 +61,9 @@ function select_county(id){
     }
 
     selected_county = id
-    init_piechart_medii(all_tables['medii'][selected_year][selected_month], id);
-    init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month], id);
-    init_barchart_total(all_tables['rata'], selected_total, id);
+    init_piechart_medii(all_tables['medii'][selected_year][selected_month], id, compared_county);
+    init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month], id, compared_county);
+    init_barchart_total(all_tables['rata'], selected_total, id, compared_county);
 
     select_category(selected_criteria, selected_county)
 
@@ -76,11 +72,10 @@ function select_county(id){
 
 
 function select_category(category){
-
     selected_criteria = category
 
-    init_barchart_category(category, selected_year, selected_month, selected_county);
-    init_piechart_cateogory(all_tables[category][selected_year][selected_month], selected_county);
+    init_barchart_category(category, selected_year, selected_month, selected_county, compared_county);
+    init_piechart_cateogory(all_tables[category][selected_year][selected_month], selected_county, compared_county);
     change_table(category)
 }
 
@@ -88,8 +83,8 @@ function select_category(category){
 function init_rata() {
     colorize_map(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
     set_county_hover(all_tables['rata'][selected_year][selected_month], 'total', selected_year, selected_month);
-    init_barchart_total(all_tables['rata'], selected_total);
-    init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month]);
+    init_barchart_total(all_tables['rata'], selected_total, selected_county, compared_county);
+    init_piechart_indemnizatie(all_tables['rata'][selected_year][selected_month], selected_county, compared_county);
 
     for (let year in all_tables['rata']) {
         for (let month in all_tables['rata'][year]) {
@@ -109,7 +104,7 @@ function init_rata() {
 }
 
 function init_medii() {
-    init_piechart_medii(all_tables['medii'][selected_year][selected_month]);
+    init_piechart_medii(all_tables['medii'][selected_year][selected_month], selected_county, compared_county);
     // select_category('medii')
 }
 
@@ -134,8 +129,6 @@ function fetch_judete(api_url) {
                 COUNTY_DICT[row['id']] = row['nume']
                 COUNTY_DICT_REVERSE[row['nume']] = row['id']
             }
-
-
         })
 }
 
