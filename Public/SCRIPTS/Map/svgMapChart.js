@@ -121,6 +121,7 @@ function set_header_info(id_judet=null){
 
 function select_romania(){
     document.getElementById("countryBackButton").style.display = 'None'
+    document.getElementById("main-menu").style.display = 'None'
     select_county(null);
 }
 
