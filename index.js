@@ -1,13 +1,18 @@
 const http = require('http');
 const mysql = require('mysql');
 const fs = require('fs');
+const dotenv = require('dotenv')
+const result = dotenv.config()
+ 
+const config = result.parsed
+console.log(config)
 
 pool = mysql.createPool({
     connectionLimit: 10,
-    host: 'eu-cdbr-west-03.cleardb.net',
-    user: 'b4ce0916cecd87',
-    password: '0aa128f5',
-    database: 'heroku_79d4353e46b22ee'
+    host: config['host'],
+    user: config['user'],
+    password: config['password'],
+    database: config['database']
 });
 
 

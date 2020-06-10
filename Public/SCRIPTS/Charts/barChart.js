@@ -205,7 +205,11 @@ function init_barchart_total(table, field,  id_judet, id_to_compare) {
         }
     }
     labels = generateBarMonthsLabels(month_labels);
-    createBarChart("barchart_total", 'total', 'Numarul somerilor in ultimele 12 luni', labels, values, null, second_set, add_line = true);
+    title = 'Numarul somerilor in ultimele 12 luni'
+    if(field == 'procent_total'){
+        title = 'Rata somajului in ultimele 12 luni'
+    }
+    createBarChart("barchart_total", 'total', title, labels, values, null, second_set, add_line = true);
 }
 
 function init_barchart(table, year, month, id_judet, colors, chart_title, id_to_compare) {
