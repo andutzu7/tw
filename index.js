@@ -1,18 +1,15 @@
 const http = require('http');
 const mysql = require('mysql');
 const fs = require('fs');
-const dotenv = require('dotenv')
-const result = dotenv.config()
- 
-const config = result.parsed
-console.log(config)
+
+console.log(process.env.host)
 
 pool = mysql.createPool({
     connectionLimit: 10,
-    host: config['host'],
-    user: config['user'],
-    password: config['password'],
-    database: config['database']
+    host: process.env.host,
+    user: process.env.user,
+    password: process.env.password,
+    database: process.env.database
 });
 
 
@@ -37,21 +34,6 @@ function update_data() {
     console.log('server reloaded data')
 }
 
-function parse_url(url) {
-    // format xml sau csv
-    // luni 1..12
-    // an
-    // categorie
-    // judete
-    var url1 = require('url');
-    adr = url;
-    var q = url1.parse(adr, true);
-    console.log(q.query['format']);
-    var dict = {
-    }
-
-    return q.query;
-}
 
 update_data();
 const port = process.env.PORT || 3000;
@@ -66,20 +48,13 @@ const server = http.createServer((req, res) => {
     }
 
     if (req.method == 'GET') {
-        if (req.url.startsWith('/export')){
-            args = parse_url(req.url)
-            a = 'dasa';
-            res.end(a);
-            return;
-        }
-
-
         for (let table_name of all_tables) {
-            if (req.url == `/${table_name}`) {
+            if (req.url == `/${table_name}`) { 
                 res.end(JSON.stringify(data[table_name]))
                 return;
             }
         }
+
 
         if (req.url.startsWith('/view')) {
 

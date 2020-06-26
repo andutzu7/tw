@@ -197,11 +197,10 @@ def update_data(cursor, csv_links, rebuild=False):
 
 
 def main():
-    # longUrl = "mysql://b4ce0916cecd87:0aa128f5@eu-cdbr-west-03.cleardb.net/heroku_79d4353e46b22ee?reconnect=true"
-    url = "eu-cdbr-west-03.cleardb.net"
-    database = "heroku_79d4353e46b22ee"
-    password = "0aa128f5"
-    user = "b4ce0916cecd87"
+    url = os.environ['host']
+    database = os.environ['database']
+    password = os.environ['password']
+    user = os.environ['user']
 
     csv_links = get_all_csv_links()
 

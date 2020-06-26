@@ -3,6 +3,7 @@ import json
 from lxml import html
 import csv
 import urllib3
+import re
 
 
 def print_dict(dictionary):
@@ -40,7 +41,13 @@ def get_month_links():
 
 
 def get_csv_links(month_link):
-    _, _, month, year = month_link.split('-')
+    f_data_gov = month_link.split('-')
+    if len(f_data_gov) == 4:
+        month = f_data_gov[2]
+        year = f_data_gov[3]
+    else:
+        month = re.sub('[0-9]', '', f_data_gov[2])
+        year = re.sub('[a-z]', '', f_data_gov[2])
 
     url = 'https://data.gov.ro{}'.format(month_link)
 
